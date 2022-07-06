@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="sk">
+    <head>
+        <link
+            rel="shortcut icon"
+            href="{{ url_for('static', filename='favicon.ico') }}"
+        >
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="opravy, oprava, notebook, počítače, antivírus, NOD32, Eset, reflow, reballing, BGA obvody, inštalácia, servis, elektronika, LCD TV, TV, plasma" />
+        <meta name="author" content="Viktor Modroczký" />
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <header>
+            <nav class="fixed-top">
+                <div class="nav-wrapper grey darken-3">
+                    {% if show_hamburger %}
+                    <a
+                        href="#"
+                        data-target="slide-out"
+                        class="sidenav-trigger"
+                    >
+                        <i class="material-icons">menu</i>
+                    </a>
+                    {% endif %}
+                    <a
+                        href="{{ logo_click }}"
+                        class="brand-logo"
+                        style="padding-left: 16px"
+                    >
+                        <i class="valign-wrapper">
+                            <img
+                                src="{{ url_for('static', filename='logo.png') }}"
+                                alt="TM Logo"
+                                style="height: 60%;"
+                            >
+                        </i>
+                        {% if not request.MOBILE %}
+                        <span>Firma Tibor Modroczky</span>
+                        {% endif %}
+                    </a>
+                    <a 
+                        href="https://www.eset.com/sk/"
+                        class="right"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="valign-wrapper">
+                            <img
+                                src="{{ url_for('static', filename='bronze_partner_navbar_sm.png') if request.MOBILE else url_for('static', filename='bronze_partner_navbar.png') }}"
+                                alt="Eset Logo"
+                                style="height: 100%;"
+                            >
+                        </i>
+                    </a>
+                </div>
+            </nav>
+            {% block header_extra %}{% endblock %}
+        </header>
+        {% block main %}{% endblock %}
+        {% block footer %}{% endblock %}
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $('.tooltipped').tooltip();
+            });
+        </script>
+        {% block extra_scripts %}{% endblock %}
+        {% block extra_styles %}{% endblock %}
+    </body>
+</html>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    a, a:hover, a:visited, a:active {
+        color: inherit;
+        text-decoration: none;
+    }
+    nav.fixed-top {
+        position: fixed; top: 0px; z-index: 1;
+    }
+</style>

@@ -1,0 +1,421 @@
+{% extends "layout.html" %}
+
+{% block header_extra %}
+<ul id="slide-out" class="sidenav sidenav-fixed">
+    {% for key, value in actions.items() %}
+    <li>
+        <a href="#{{ value.anchor }}" class="sidenav-close">
+            <i class="material-icons">{{ value.icon }}</i>
+            {{ value.short_name }}
+        </a>
+    </li>
+    {% endfor %}
+    <li><div class="divider"></div></li>
+    <li>
+        <a href="#kontakt" class="sidenav-close">
+            <i class="material-icons">contact_page</i>
+            Kontakt
+        </a>
+    </li>
+</ul>
+{% endblock %}
+
+{% block main %}
+<main>
+    {% for key, value in actions.items() %}
+    <div id="{{ value.anchor }}" class="parallax-container">
+        <div class="parallax">
+            <img
+                src="{{ url_for('static', filename=value['image_sm']) if request.MOBILE else url_for('static', filename=value['image']) }}"
+                alt="Parallax {{value.short_name}}"
+            >
+        </div>
+    </div>
+    <div class="section white">
+        <div class="row container">
+            {% if request.MOBILE %}
+            <h4 class="header">{{ key }}</h4>
+            {% else %}
+            <h2 class="header">{{ key }}</h2>
+            {% endif %}
+            <p class="grey-text text-darken-3 lighten-3">
+                <ul>
+                    {% for item in value['items'] %}
+                    <li>
+                        <img
+                            class="responsive-size"
+                            src="{{ url_for('static', filename='circle.png') }}"
+                        />
+                        {% if request.MOBILE %}
+                        <style>
+                            img.responsive-size {
+                                height: 8px;
+                                width: 8px;
+                            }
+                        </style>
+                        <span style="padding-left: 8px; font-size: 110%;">{{ item }}</span>
+                        {% else %}
+                        <style>
+                            img.responsive-size {
+                                height: 10px;
+                                width: 10px;
+                            }
+                        </style>
+                        <span style="padding-left: 8px; font-size: 115%;">{{ item }}</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if request.MOBILE %}
+    <div
+        id="fab"
+        class="fixed-action-btn"
+        style="display:none; bottom: 88px; right: 28px;"
+    >
+        <a 
+            href="#oprava-spotrebnej-elektroniky"
+            class="btn-floating btn-small grey darken-1"
+        >
+            <i class="material-icons">arrow_upward</i>
+        </a>
+    </div>
+    <div
+        class="fixed-action-btn"
+        style="bottom: 16px; right: 16px;"
+    >
+        <a 
+            href="#kontakt"
+            class="btn-floating btn-large blue darken-2"
+        >
+            <i class="material-icons">perm_phone_msg</i>
+        </a>
+    </div>
+    {% else %}
+    <div
+        id="fab"
+        class="fixed-action-btn"
+        style="display:none;"
+    >
+        <a 
+            href="#oprava-spotrebnej-elektroniky"
+            class="btn-floating btn-large blue darken-2 tooltipped"
+            data-position="left"
+            data-tooltip="Prejsť na začiatok"
+        >
+            <i class="material-icons">arrow_upward</i>
+        </a>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="page-footer grey darken-2">
+    <div class="container">
+        <div class="col s12">
+            <div id="kontakt" class="card {{ 'hoverable' if not request.MOBILE }}">
+                <div class="card-content black-text">
+                    <div id="map"></div>
+                    <span class="card-title" style="padding-top: 16px;">Kontaktné informácie</span>
+                    {% if not request.MOBILE %}
+                    <div class="row valign-wrapper">
+                        <div class="col s6">
+                            <div class="container center-align">
+                                <i class="material-icons">pin_drop</i>
+                                <div>
+                                    <p>Firma Tibor Modroczky</p>
+                                    <p>Diakovská 712</p>
+                                    <p>925 01 Matúškovo</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s6">
+                            <div class="container center-align">
+                                <p class="valign-wrapper">
+                                    <i class="material-icons">email</i>
+                                    <a
+                                        href="mailto:modroczkyt@gmail.com"
+                                        class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                                        data-position="right"
+                                        data-tooltip="Poslať e-mail"
+                                    >
+                                        modroczkyt@gmail.com
+                                    </a>
+                                </p>
+                                <p class="valign-wrapper">
+                                    <i class="material-icons">call</i>
+                                    <a 
+                                        href="tel:0317826228"
+                                        class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                                        data-position="right"
+                                        data-tooltip="Zavolať na telefón"
+                                    >
+                                        031 782 6228
+                                    </a>
+                                </p>
+                                <p class="valign-wrapper">
+                                    <i class="material-icons">smartphone</i>
+                                    <a 
+                                        href="tel:+421905460506"
+                                        class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                                        data-position="right"
+                                        data-tooltip="Zavolať na mobil"
+                                    >
+                                        0905 460 506
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div>
+                        <div class="container">
+                            <div>
+                                <p>Firma Tibor Modroczky</p>
+                                <p>Diakovská 712</p>
+                                <p>925 01 Matúškovo</p>
+                            </div>
+                            <p class="valign-wrapper">
+                                <i class="material-icons">email</i>
+                                <a
+                                    href="mailto:modroczkyt@gmail.com"
+                                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                                    data-position="right"
+                                    data-tooltip="Poslať e-mail"
+                                >
+                                    modroczkyt@gmail.com
+                                </a>
+                            </p>
+                            <p class="valign-wrapper">
+                                <i class="material-icons">call</i>
+                                <a 
+                                    href="tel:0317826228"
+                                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                                    data-position="right"
+                                    data-tooltip="Zavolať na telefón"
+                                >
+                                    031 782 6228
+                                </a>
+                            </p>
+                            <p class="valign-wrapper">
+                                <i class="material-icons">smartphone</i>
+                                <a 
+                                    href="tel:+421905460506"
+                                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                                    data-position="right"
+                                    data-tooltip="Zavolať na mobil"
+                                >
+                                    0905 460 506
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="card-action">
+                    <a 
+                        href="https://www.google.com/maps/search/?api=1&query=48.164536066774424,17.743565037899195"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="blue-text text-darken-2"
+                    >
+                        Otvoriť v Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            
+            <a
+                href="http://www.klamont.sk/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <img style="height: 36px;" src="{{ url_for('static', filename='klamont_logo.png') }}"/>
+            </a>
+            <blockquote style="border-left: 5px solid #757575;">
+                All photographs on this site are used for illustration purposes only and
+                their contents do not endorse any activities provided by Firma Tibor Modroczky.
+                The photographs are licensed under the
+                <a
+                    href="https://www.pexels.com/license/" 
+                    class="blue-text text-lighten-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Pexels License
+                </a> or
+                <a
+                    href="https://creativecommons.org/publicdomain/zero/1.0/"
+                    class="blue-text text-lighten-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    CC0 License
+                </a>
+                and do not require attribution.
+            </blockquote>
+        </div>
+    </div>
+    <div class="footer-copyright grey darken-3">
+        <div class="container center-align">
+            <span
+                class="{{ 'left' if not request.MOBILE }}"
+                style="display: inline-block;"
+            >
+                © 2022 Viktor Modroczký
+            </span>
+            <span 
+                class="{{ 'right' if not request.MOBILE }}"
+                style="display: inline-block;"
+            >
+                Made with
+                <a
+                    href="https://palletsprojects.com/p/flask/"
+                    class="blue-text text-lighten-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Flask
+                </a>
+                and
+                <a
+                    href="https://materializecss.com/"
+                    class="blue-text text-lighten-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Materialize
+                </a>
+            </span>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+{% block extra_styles %}
+<style>
+    header, main, footer {
+        padding-left: 300px;
+    }
+    nav {
+        width: calc(100% - 300px);
+    }
+    @media only screen and (max-width : 992px) {
+        header, main, footer {
+            padding-left: 0;
+        }
+        nav {
+            width: 100%;
+        }
+        .parallax-container {
+            height: 350px;
+        }
+    }
+    .footer-logo {
+        padding-left: 8px;
+        height: 20px;
+        width: auto;
+    }
+    .contact-padding {
+        padding: 8px;
+    }
+    #map {
+        height: 256px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block extra_scripts %}
+<script async src="https://maps.googleapis.com/maps/api/js?key={{maps_api_key}}&callback=initMap&language=sk&v=weekly"></script>
+<script>
+    $(document).ready(function() {
+        $('.parallax').parallax();
+    });
+    $(document).ready(function() {
+        $('.sidenav').sidenav();
+    });
+    $(document).ready(function(){
+        $('.fixed-action-btn').floatingActionButton();
+    });
+    // Initialize and add the map
+    function initMap() {
+    // The location
+    const location = { lat: 48.164536066774424, lng: 17.743565037899195 };
+    // The map, centered
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: location,
+    });
+    // The marker
+    const marker = new google.maps.Marker({
+        position: location,
+        map: map,
+    });
+    }
+    window.initMap = initMap;
+
+    var controller = new ScrollMagic.Controller()
+    
+    var repairElectronicsScene = new ScrollMagic.Scene({
+        offset: 500,
+        triggerElement: '#oprava-spotrebnej-elektroniky'
+    })
+    var repairLaptopsScene = new ScrollMagic.Scene({
+        offset: 500,
+        triggerElement: '#oprava-notebookov'
+    })
+    var repairComputersScene = new ScrollMagic.Scene({
+        offset: 500,
+        triggerElement: '#oprava-pocitacov'
+    })
+    var softwareScene = new ScrollMagic.Scene({
+        offset: 500,
+        triggerElement: '#instalacia-softveru'
+    })
+    var programmingScene = new ScrollMagic.Scene({
+        offset: 500,
+        triggerElement: '#programovanie-obvodov'
+    })
+    var sellScene = new ScrollMagic.Scene({
+        offset: 500,
+        triggerElement: '#predaj'
+    })
+    var contactScene = new ScrollMagic.Scene({
+        triggerElement: '#kontakt'
+    })
+
+    repairElectronicsScene.on("start", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'))
+    repairLaptopsScene.on("start", (event) => history.pushState(null, null, '#oprava-notebookov'))
+    repairComputersScene.on("start", (event) => history.pushState(null, null, '#oprava-pocitacov'))
+    softwareScene.on("start", (event) => history.pushState(null, null, '#instalacia-softveru'))
+    programmingScene.on("start", (event) => history.pushState(null, null, '#programovanie-obvodov'))
+    sellScene.on("start", (event) => history.pushState(null, null, '#predaj'))
+    contactScene.on("start", (event) => history.pushState(null, null, '#kontakt'))
+    
+    controller.addScene([
+        repairElectronicsScene,
+        repairLaptopsScene,
+        repairComputersScene,
+        softwareScene,
+        programmingScene,
+        sellScene,
+        contactScene
+    ])
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() == 0) {
+            $('#fab').stop().fadeOut(350)
+        }
+        else {
+            $('#fab').fadeIn(350)
+        }
+    });
+</script>
+{% endblock %}
