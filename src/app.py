@@ -18,7 +18,7 @@ Mobility(app)
 def index():
     return render_template(
         'index.html',
-        title='Servis elektroniky - Firma Tibor Modroczky',
+        title='Servis výpočtovej techniky a spotrebnej elektroniky - Firma Tibor Modroczky',
         logo_click='#oprava-spotrebnej-elektroniky',
         show_hamburger=True,
         actions=actions,

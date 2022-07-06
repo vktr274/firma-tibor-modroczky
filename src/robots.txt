@@ -1,1 +1,1 @@
-Sitemap: https://www.modroczky.eu.pythonanywhere.com/sitemap.xml
+Sitemap: https://modroczky.eu.pythonanywhere.com/sitemap.xml
