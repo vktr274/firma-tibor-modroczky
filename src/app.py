@@ -30,7 +30,7 @@ def index():
 def page_not_found(e):
     return render_template(
         '404.html', 
-        title='Stránka neexistuje',
+        title='Stránka sa nenašla',
         logo_click='index',
         show_hamburger=False
     ), 404
