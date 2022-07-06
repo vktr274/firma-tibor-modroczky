@@ -120,7 +120,7 @@
         <div class="col s12">
             <div id="kontakt" class="card {{ 'hoverable' if not request.MOBILE }}">
                 <div class="card-content black-text">
-                    <div id="map"></div>
+                    <div id="map" style="z-index: 1;"></div>
                     <span class="card-title" style="padding-top: 16px;">Kontaktné informácie</span>
                     {% if not request.MOBILE %}
                     <div class="row valign-wrapper">
