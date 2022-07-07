@@ -122,7 +122,11 @@
         <div class="col s12">
             <div id="kontakt" class="card {{ 'hoverable' if not request.MOBILE }}">
                 <div class="card-content black-text">
-                    <div id="map" style="z-index: 1;"></div>
+                    <iframe
+                        class="map"
+                        loading="lazy"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=17.219,47.784,18.268,48.54&layer=mapnik&marker=48.164536066774424,17.743565037899195">
+                    </iframe>
                     <span class="card-title" style="padding-top: 16px;">Kontaktné informácie</span>
                     {% if not request.MOBILE %}
                     <div class="row valign-wrapper">
@@ -327,15 +331,16 @@
     .contact-padding {
         padding: 8px;
     }
-    #map {
+    .map {
         height: 256px;
         width: 100%;
+        z-index: 1;
+        border: 0;
     }
 </style>
 {% endblock %}
 
 {% block extra_scripts %}
-<script async src="https://maps.googleapis.com/maps/api/js?key={{maps_api_key}}&callback=initMap&language=sk&v=weekly"></script>
 <script>
     $(document).ready(function() {
         $('.parallax').parallax();
@@ -346,22 +351,6 @@
     $(document).ready(function(){
         $('.fixed-action-btn').floatingActionButton();
     });
-    // Initialize and add the map
-    function initMap() {
-    // The location
-    const location = { lat: 48.164536066774424, lng: 17.743565037899195 };
-    // The map, centered
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 8,
-        center: location,
-    });
-    // The marker
-    const marker = new google.maps.Marker({
-        position: location,
-        map: map,
-    });
-    }
-    window.initMap = initMap;
 
     var controller = new ScrollMagic.Controller()
     

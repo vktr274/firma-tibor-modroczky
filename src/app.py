@@ -21,8 +21,7 @@ def index():
         title='Servis výpočtovej techniky a spotrebnej elektroniky - Firma Tibor Modroczky',
         logo_click='#oprava-spotrebnej-elektroniky',
         show_hamburger=True,
-        actions=actions,
-        maps_api_key=os.environ.get('MAPS_API_KEY')
+        actions=actions
     )
 
 
