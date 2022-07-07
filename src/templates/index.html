@@ -23,50 +23,52 @@
 {% block main %}
 <main>
     {% for key, value in actions.items() %}
-    <div id="{{ value.anchor }}" class="parallax-container">
-        <div class="parallax">
-            <img
-                src="{{ url_for('static', filename=value['image_sm']) if request.MOBILE else url_for('static', filename=value['image']) }}"
-                alt="Parallax {{value.short_name}}"
-            >
+    <div id="{{ value.anchor }}">
+        <div class="parallax-container">
+            <div class="parallax">
+                <img
+                    src="{{ url_for('static', filename=value['image_sm']) if request.MOBILE else url_for('static', filename=value['image']) }}"
+                    alt="Parallax {{value.short_name}}"
+                >
+            </div>
         </div>
-    </div>
-    <div class="section white z-depth-5">
-        <div class="row container">
-            {% if request.MOBILE %}
-            <h4 class="header">{{ key }}</h4>
-            {% else %}
-            <h2 class="header">{{ key }}</h2>
-            {% endif %}
-            <p class="grey-text text-darken-3 lighten-3">
-                <ul>
-                    {% for item in value['items'] %}
-                    <li>
-                        <img
-                            class="responsive-size"
-                            src="{{ url_for('static', filename='circle.png') }}"
-                        />
-                        {% if request.MOBILE %}
-                        <style>
-                            img.responsive-size {
-                                height: 8px;
-                                width: 8px;
-                            }
-                        </style>
-                        <span style="padding-left: 8px; font-size: 110%;">{{ item }}</span>
-                        {% else %}
-                        <style>
-                            img.responsive-size {
-                                height: 10px;
-                                width: 10px;
-                            }
-                        </style>
-                        <span style="padding-left: 8px; font-size: 115%;">{{ item }}</span>
-                        {% endif %}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </p>
+        <div class="section white z-depth-5">
+            <div class="row container">
+                {% if request.MOBILE %}
+                <h4 class="header">{{ key }}</h4>
+                {% else %}
+                <h2 class="header">{{ key }}</h2>
+                {% endif %}
+                <p class="grey-text text-darken-3 lighten-3">
+                    <ul>
+                        {% for item in value['items'] %}
+                        <li>
+                            <img
+                                class="responsive-size"
+                                src="{{ url_for('static', filename='circle.png') }}"
+                            />
+                            {% if request.MOBILE %}
+                            <style>
+                                img.responsive-size {
+                                    height: 8px;
+                                    width: 8px;
+                                }
+                            </style>
+                            <span style="padding-left: 8px; font-size: 110%;">{{ item }}</span>
+                            {% else %}
+                            <style>
+                                img.responsive-size {
+                                    height: 10px;
+                                    width: 10px;
+                                }
+                            </style>
+                            <span style="padding-left: 8px; font-size: 115%;">{{ item }}</span>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
         </div>
     </div>
     {% endfor %}
@@ -364,40 +366,41 @@
     var controller = new ScrollMagic.Controller()
     
     var repairElectronicsScene = new ScrollMagic.Scene({
-        offset: 500,
+        duration: '100%',
         triggerElement: '#oprava-spotrebnej-elektroniky'
     })
     var repairLaptopsScene = new ScrollMagic.Scene({
-        offset: 500,
+        duration: '100%',
         triggerElement: '#oprava-notebookov'
     })
     var repairComputersScene = new ScrollMagic.Scene({
-        offset: 500,
+        duration: '100%',
         triggerElement: '#oprava-pocitacov'
     })
     var softwareScene = new ScrollMagic.Scene({
-        offset: 500,
+        duration: '100%',
         triggerElement: '#instalacia-softveru'
     })
     var programmingScene = new ScrollMagic.Scene({
-        offset: 500,
+        duration: '100%',
         triggerElement: '#programovanie-obvodov'
     })
     var sellScene = new ScrollMagic.Scene({
-        offset: 500,
+        duration: '100%',
         triggerElement: '#predaj'
     })
     var contactScene = new ScrollMagic.Scene({
+        duration: '100%',
         triggerElement: '#kontakt'
     })
 
-    repairElectronicsScene.on("start", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'))
-    repairLaptopsScene.on("start", (event) => history.pushState(null, null, '#oprava-notebookov'))
-    repairComputersScene.on("start", (event) => history.pushState(null, null, '#oprava-pocitacov'))
-    softwareScene.on("start", (event) => history.pushState(null, null, '#instalacia-softveru'))
-    programmingScene.on("start", (event) => history.pushState(null, null, '#programovanie-obvodov'))
-    sellScene.on("start", (event) => history.pushState(null, null, '#predaj'))
-    contactScene.on("start", (event) => history.pushState(null, null, '#kontakt'))
+    repairElectronicsScene.on("enter", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'))
+    repairLaptopsScene.on("enter", (event) => history.pushState(null, null, '#oprava-notebookov'))
+    repairComputersScene.on("enter", (event) => history.pushState(null, null, '#oprava-pocitacov'))
+    softwareScene.on("enter", (event) => history.pushState(null, null, '#instalacia-softveru'))
+    programmingScene.on("enter", (event) => history.pushState(null, null, '#programovanie-obvodov'))
+    sellScene.on("enter", (event) => history.pushState(null, null, '#predaj'))
+    contactScene.on("enter", (event) => history.pushState(null, null, '#kontakt'))
     
     controller.addScene([
         repairElectronicsScene,
