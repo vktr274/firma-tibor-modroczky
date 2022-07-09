@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block google_meta %}
+<meta name="google-site-verification" content="{{google_site_verification}}" />
+{% endblock %}
+
 {% block header_extra %}
 <ul id="slide-out" class="sidenav sidenav-fixed">
     {% for key, value in actions.items() %}
