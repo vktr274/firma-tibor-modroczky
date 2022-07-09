@@ -34,11 +34,11 @@
         </div>
         <div class="section white z-depth-5">
             <div class="row container">
-                {% if request.MOBILE %}
-                <h4 class="header">{{ key }}</h4>
-                {% else %}
-                <h2 class="header">{{ key }}</h2>
-                {% endif %}
+                <!-- Mobile header -->
+                <h4 class="header hide-on-med-and-up">{{ key }}</h4>
+                <!--- Tablet and Desktop header -->
+                <h2 class="header hide-on-small-only">{{ key }}</h2>
+                <!-- end-->
                 <p class="grey-text text-darken-3 lighten-3">
                     <ul>
                         {% for item in value['items'] %}
@@ -47,23 +47,7 @@
                                 class="responsive-size"
                                 src="{{ url_for('static', filename='circle.png') }}"
                             />
-                            {% if request.MOBILE %}
-                            <style>
-                                img.responsive-size {
-                                    height: 8px;
-                                    width: 8px;
-                                }
-                            </style>
-                            <span style="padding-left: 8px; font-size: 110%;">{{ item }}</span>
-                            {% else %}
-                            <style>
-                                img.responsive-size {
-                                    height: 10px;
-                                    width: 10px;
-                                }
-                            </style>
-                            <span style="padding-left: 8px; font-size: 115%;">{{ item }}</span>
-                            {% endif %}
+                            <span class="action-item">{{ item }}</span>
                         </li>
                         {% endfor %}
                     </ul>
@@ -73,34 +57,36 @@
     </div>
     {% endfor %}
 
-    {% if request.MOBILE %}
-    <div
-        id="fab"
-        class="fixed-action-btn"
-        style="display:none; bottom: 88px; right: 28px;"
-    >
-        <a 
-            href="#oprava-spotrebnej-elektroniky"
-            class="btn-floating btn-small grey darken-1"
+    <!-- Mobile and Tablet action buttons -->
+    <div class="hide-on-large-only">
+        <div
+            id="fab-mobile-tablet"
+            class="fixed-action-btn"
+            style="display:none; bottom: 88px; right: 28px;"
         >
-            <i class="material-icons">arrow_upward</i>
-        </a>
-    </div>
-    <div
-        class="fixed-action-btn"
-        style="bottom: 16px; right: 16px;"
-    >
-        <a 
-            href="#kontakt"
-            class="btn-floating btn-large blue darken-2"
+            <a 
+                href="#oprava-spotrebnej-elektroniky"
+                class="btn-floating btn-small grey darken-1"
+            >
+                <i class="material-icons">arrow_upward</i>
+            </a>
+        </div>
+        <div
+            class="fixed-action-btn"
+            style="bottom: 16px; right: 16px;"
         >
-            <i class="material-icons">perm_phone_msg</i>
-        </a>
+            <a 
+                href="#kontakt"
+                class="btn-floating btn-large blue darken-2"
+            >
+                <i class="material-icons">perm_phone_msg</i>
+            </a>
+        </div>
     </div>
-    {% else %}
+    <!-- Desktop action button -->
     <div
-        id="fab"
-        class="fixed-action-btn"
+        id="fab-desktop"
+        class="fixed-action-btn hide-on-med-and-down"
         style="display:none;"
     >
         <a 
@@ -112,7 +98,7 @@
             <i class="material-icons">arrow_upward</i>
         </a>
     </div>
-    {% endif %}
+    <!-- end -->
 </main>
 {% endblock %}
 
@@ -128,8 +114,8 @@
                         src="https://www.openstreetmap.org/export/embed.html?bbox=17.219,47.784,18.268,48.54&layer=mapnik&marker=48.164536066774424,17.743565037899195">
                     </iframe>
                     <span class="card-title" style="padding-top: 16px;">Kontaktné informácie</span>
-                    {% if not request.MOBILE %}
-                    <div class="row valign-wrapper">
+                    <!-- Desktop ad Tablet contact -->
+                    <div class="row valign-wrapper hide-on-small-only">
                         <div class="col s6">
                             <div class="container center-align">
                                 <i class="material-icons">pin_drop</i>
@@ -178,8 +164,8 @@
                             </div>
                         </div>
                     </div>
-                    {% else %}
-                    <div>
+                    <!--  Mobile contact -->
+                    <div class="hide-on-med-and-up">
                         <div class="container">
                             <div>
                                 <p>Firma Tibor Modroczky</p>
@@ -221,7 +207,7 @@
                             </p>
                         </div>
                     </div>
-                    {% endif %}
+                    <!-- end -->
                 </div>
                 <div class="card-action">
                     <a 
@@ -270,15 +256,23 @@
     </div>
     <div class="footer-copyright grey darken-3">
         <div class="container center-align">
+            <!-- Desktop only -->
             <span
-                class="{{ 'left' if not request.MOBILE }}"
-                style="display: inline-block;"
+                class="left hide-on-med-and-down"
             >
                 © 2022 Viktor Modroczký
             </span>
+            <!-- Mobile and Tablet -->
+            <p
+                class="hide-on-large-only"
+                style="margin: 0; padding: 0;"
+            >
+                © 2022 Viktor Modroczký
+            </p>
+            <!-- end -->
+            <!-- Desktop only -->
             <span 
-                class="{{ 'right' if not request.MOBILE }}"
-                style="display: inline-block;"
+                class="right hide-on-med-and-down"
             >
                 Made with
                 <a
@@ -299,6 +293,31 @@
                     Materialize
                 </a>
             </span>
+            <!-- Mobile and Tablet -->
+            <p 
+                class="hide-on-large-only"
+                style="margin: 0; padding: 0;"
+            >
+                Made with
+                <a
+                    href="https://palletsprojects.com/p/flask/"
+                    class="blue-text text-lighten-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Flask
+                </a>
+                and
+                <a
+                    href="https://materializecss.com/"
+                    class="blue-text text-lighten-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Materialize
+                </a>
+            </p>
+            <!-- end -->
         </div>
     </div>
 </footer>
@@ -312,6 +331,14 @@
     nav {
         width: calc(100% - 300px);
     }
+    img.responsive-size {
+        height: 10px;
+        width: 10px;
+    }
+    span.action-item {
+        padding-left: 8px; 
+        font-size: 115%;
+    }
     @media only screen and (max-width : 992px) {
         header, main, footer {
             padding-left: 0;
@@ -321,6 +348,14 @@
         }
         .parallax-container {
             height: 350px;
+        }
+        img.responsive-size {
+            height: 8px;
+            width: 8px;
+        }
+        span.action-item {
+            padding-left: 8px; 
+            font-size: 110%;
         }
     }
     .footer-logo {
@@ -403,10 +438,12 @@
 
     $(window).scroll(function() {
         if ($(this).scrollTop() == 0) {
-            $('#fab').stop().fadeOut(350)
+            $('#fab-mobile-tablet').stop().fadeOut(350)
+            $('#fab-desktop').stop().fadeOut(350)
         }
         else {
-            $('#fab').fadeIn(350)
+            $('#fab-mobile-tablet').fadeIn(350)
+            $('#fab-desktop').fadeIn(350)
         }
     });
 </script>

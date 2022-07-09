@@ -42,9 +42,9 @@
                                 style="height: 70%;"
                             >
                         </i>
-                        {% if not request.MOBILE %}
-                        <span>Firma Tibor Modroczky</span>
-                        {% endif %}
+                        <!-- Desktop only -->
+                        <span class="hide-on-med-and-down">Firma Tibor Modroczky</span>
+                        <!-- end -->
                     </a>
                     <a
                         href="https://www.eset.com/sk/"
@@ -53,11 +53,21 @@
                         rel="noopener noreferrer"
                     >
                         <i class="valign-wrapper">
+                            <!-- Desktop only -->
                             <img
-                                src="{{ url_for('static', filename='bronze_partner_navbar_sm.png') if request.MOBILE else url_for('static', filename='bronze_partner_navbar.png') }}"
+                                src="{{ url_for('static', filename='bronze_partner_navbar.png') }}"
                                 alt="Eset Logo"
                                 style="height: 100%;"
+                                class="hide-on-med-and-down"
                             >
+                            <!-- Mobile and Tablet -->
+                            <img
+                                src="{{ url_for('static', filename='bronze_partner_navbar_sm.png') }}"
+                                alt="Eset Logo"
+                                style="height: 100%;"
+                                class="hide-on-large-only"
+                            >
+                            <!-- end -->
                         </i>
                     </a>
                 </div>
