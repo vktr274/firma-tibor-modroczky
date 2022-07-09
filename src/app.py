@@ -21,7 +21,7 @@ def index():
         title='Servis výpočtovej techniky a spotrebnej elektroniky - Firma Tibor Modroczky',
         logo_click='#oprava-spotrebnej-elektroniky',
         show_hamburger=True,
-        google_site_verification=os.os.environ.get('GOOGLE_SITE_VERIFICATION'),
+        google_site_verification=os.environ.get('GOOGLE_SITE_VERIFICATION'),
         actions=actions
     )
 
