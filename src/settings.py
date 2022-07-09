@@ -1,7 +1,6 @@
 actions = {
     "Oprava spotrebnej elektroniky všetkých značiek": {
         "image": "repair.jpg",
-        "image_sm": "repair_sm.jpg",
         "icon": "radio",
         "short_name": "Oprava elektroniky",
         "anchor": "oprava-spotrebnej-elektroniky",
@@ -15,7 +14,6 @@ actions = {
     },
     "Oprava notebookov": {
         "image": "laptop.jpg",
-        "image_sm": "laptop_sm.jpg",
         "icon": "laptop_windows",
         "short_name": "Oprava notebookov",
         "anchor": "oprava-notebookov",
@@ -36,7 +34,6 @@ actions = {
     },
     "Oprava počítačov": {
         "image": "pc.jpg",
-        "image_sm": "pc_sm.jpg",
         "icon": "desktop_windows",
         "short_name": "Oprava počítačov",
         "anchor": "oprava-pocitacov",
@@ -49,7 +46,6 @@ actions = {
     },
     "Inštalácia softvéru": {
         "image": "sw.jpg",
-        "image_sm": "sw_sm.jpg",
         "icon": "terminal",
         "short_name": "Inštalácia softvéru",
         "anchor": "instalacia-softveru",
@@ -65,7 +61,6 @@ actions = {
     },
     "Programovanie obvodov": {
         "image": "chip.jpg",
-        "image_sm": "chip_sm.jpg",
         "icon": "developer_board",
         "short_name": "Programovanie obvodov",
         "anchor": "programovanie-obvodov",
@@ -77,7 +72,6 @@ actions = {
     },
     "Predaj": {
         "image": "build.jpg",
-        "image_sm": "build_sm.jpg",
         "icon": "store",
         "short_name": "Predaj",
         "anchor": "predaj",
