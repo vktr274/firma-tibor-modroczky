@@ -29,12 +29,22 @@
     {% for key, value in actions.items() %}
     <div id="{{ value.anchor }}">
         <div class="parallax-container">
-            <div class="parallax">
+            <!-- Desktop only -->
+            <div class="parallax hide-on-med-and-down">
                 <img
-                    src="{{ url_for('static', filename=value['image_sm']) if request.MOBILE else url_for('static', filename=value['image']) }}"
+                    src="{{ url_for('static', filename=value['image']) }}"
                     alt="Parallax {{value.short_name}}"
                 >
             </div>
+            <!-- Tablet and Mobile -->
+            <div class="parallax hide-on-large-only">
+                <img
+                    src="{{ url_for('static', filename=value['image']) }}"
+                    alt="Parallax {{value.short_name}}"
+                    class="static-parallax"
+                >
+            </div>
+            <!-- end -->
         </div>
         <div class="section white z-depth-5">
             <div class="row container">
@@ -350,9 +360,6 @@
         nav {
             width: 100%;
         }
-        .parallax-container {
-            height: 350px;
-        }
         img.responsive-marker {
             height: 8px;
             width: 8px;
@@ -360,6 +367,12 @@
         span.action-item {
             padding-left: 8px; 
             font-size: 110%;
+        }
+        .parallax-container {
+            height: 300px;
+        }
+        img.static-parallax {
+            height: 300px; width: 100%; object-fit: cover;
         }
     }
     .footer-logo {
