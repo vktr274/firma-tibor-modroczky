@@ -19,7 +19,7 @@ def index():
     return render_template(
         'index.html',
         title='Servis výpočtovej techniky a spotrebnej elektroniky - Firma Tibor Modroczky',
-        logo_click='#oprava-spotrebnej-elektroniky',
+        logo_click='#',
         show_hamburger=True,
         google_site_verification=os.environ.get('GOOGLE_SITE_VERIFICATION'),
         actions=actions
