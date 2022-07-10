@@ -28,6 +28,19 @@
 <main>
     {% for key, value in actions.items() %}
     <div id="{{ value.anchor }}">
+        {% if loop.first %}
+        <style>
+            div.responsive-top-fill {
+                height: 64px;
+            }
+            @media only screen and (max-width : 600px) {
+                div.responsive-top-fill {
+                    height: 56px;
+                }
+            }
+        </style>
+        <div class="responsive-top-fill"></div>
+        {% endif %}
         <div class="parallax-container">
             <!-- Desktop only -->
             <div class="parallax hide-on-med-and-down">
