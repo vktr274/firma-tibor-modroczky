@@ -454,7 +454,7 @@
     ])
 
     $(window).scroll(function() {
-        if ($(this).scrollTop() == 0) {
+        if ($(this).scrollTop() <= $('nav').height()) {
             $('#fab-mobile-tablet').stop().fadeOut(350)
             $('#fab-desktop').stop().fadeOut(350)
         }
