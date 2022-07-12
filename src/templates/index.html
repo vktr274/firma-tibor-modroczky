@@ -519,15 +519,17 @@
     sellScene.on("enter", (event) => history.pushState(null, null, '#predaj'))
     contactScene.on("enter", (event) => history.pushState(null, null, '#kontakt'))
     
-    controller.addScene([
-        introScene,
-        repairElectronicsScene,
-        repairLaptopsScene,
-        repairComputersScene,
-        softwareScene,
-        programmingScene,
-        sellScene,
-        contactScene
-    ])
+    $(document).ready(function() {
+        controller.addScene([
+            introScene,
+            repairElectronicsScene,
+            repairLaptopsScene,
+            repairComputersScene,
+            softwareScene,
+            programmingScene,
+            sellScene,
+            contactScene
+        ])
+    })
 </script>
 {% endblock %}
