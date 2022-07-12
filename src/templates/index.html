@@ -460,15 +460,15 @@
     })
 
     function bounce() {
-        $('#details').effect('bounce', { times: 2 }, 750)
+        $('#details').stop(true, true).effect('bounce', { times: 2 }, 750)
     }
     $(document).ready(bounce)
     setInterval(bounce, 5000)
 
     $(window).scroll(function() {
         if ($(this).scrollTop() == 0) {
-            $('#fab-mobile-tablet').stop().fadeOut(350)
-            $('#fab-desktop').stop().fadeOut(350)
+            $('#fab-mobile-tablet').stop(true, true).fadeOut(350)
+            $('#fab-desktop').stop(true, true).fadeOut(350)
         }
         else {
             $('#fab-mobile-tablet').fadeIn(350)
