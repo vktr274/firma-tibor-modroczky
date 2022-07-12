@@ -459,11 +459,12 @@
         $('#uvod').animate({'height': $(window).outerHeight()}, 350)
     })
 
+    var details = $('#details')
+
     function bounce() {
-        $('#details').stop(true, true).effect('bounce', { times: 2 }, 750)
+        details.effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000)
     }
     $(document).ready(bounce)
-    setInterval(bounce, 5000)
 
     $(window).scroll(function() {
         if ($(this).scrollTop() == 0) {
