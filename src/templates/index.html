@@ -26,21 +26,27 @@
 
 {% block main %}
 <main>
+    <div id="uvod" style="position: relative; text-align: center;">
+        <img 
+            src="{{ url_for('static', filename='top.jpg') }}"
+            style="height: 100%; width: 100%; object-fit: cover;"
+        />
+        <div class="top-container">
+            {% for item in intro %}
+            <p class="white-text responsive-top-text">
+                {{ item }}
+            </p>
+            {% endfor %}
+        </div>
+        <a href="#oprava-spotrebnej-elektroniky" class="top-icon-container">
+            <div id="details">
+                <span class="white-text" style="display: block;">Podrobnosti</span>
+                <i class="white-text material-icons responsive-top-icon">expand_more</i>
+            </div>
+        </a>
+    </div>
     {% for key, value in actions.items() %}
     <div id="{{ value.anchor }}">
-        {% if loop.first %}
-        <style>
-            div.responsive-top-fill {
-                height: 64px;
-            }
-            @media only screen and (max-width : 600px) {
-                div.responsive-top-fill {
-                    height: 56px;
-                }
-            }
-        </style>
-        <div class="responsive-top-fill"></div>
-        {% endif %}
         <div class="parallax-container">
             <!-- Desktop only -->
             <div class="parallax hide-on-med-and-down">
@@ -92,7 +98,7 @@
             style="display:none; bottom: 88px; right: 28px;"
         >
             <a 
-                href="#oprava-spotrebnej-elektroniky"
+                href="#uvod"
                 class="btn-floating btn-small grey darken-1"
             >
                 <i class="material-icons">arrow_upward</i>
@@ -117,7 +123,7 @@
         style="display:none;"
     >
         <a 
-            href="#oprava-spotrebnej-elektroniky"
+            href="#uvod"
             class="btn-floating btn-large blue darken-2 tooltipped"
             data-position="left"
             data-tooltip="Prejsť na začiatok"
@@ -366,6 +372,25 @@
         padding-left: 8px; 
         font-size: 115%;
     }
+    p.responsive-top-text {
+        font-weight: lighter;
+        font-size: 215%;
+    }
+    div.top-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    i.responsive-top-icon {
+        font-size: 32px;
+    }
+    a.top-icon-container {
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%,-10%);
+    }
     @media only screen and (max-width : 992px) {
         header, main, footer {
             padding-left: 0;
@@ -385,7 +410,22 @@
             height: 300px;
         }
         img.static-parallax {
-            height: 300px; width: 100%; object-fit: cover;
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+        p.responsive-top-text {
+            font-weight: lighter;
+            font-size: 150%;
+        }
+        i.responsive-top-icon {
+            font-size: 24px;
+        }
+    }
+    @media only screen and (max-width : 600px) {
+        p.responsive-top-text {
+            font-weight: lighter;
+            font-size: 125%;
         }
     }
     .contact-padding {
@@ -404,16 +444,33 @@
 <script>
     $(document).ready(function() {
         $('.parallax').parallax();
-    });
+    })
     $(document).ready(function() {
         $('.sidenav').sidenav();
-    });
+    })
     $(document).ready(function(){
         $('.fixed-action-btn').floatingActionButton();
-    });
+    })
+    $(document).ready(function(){
+        $('#uvod').css('height', $(window).outerHeight())
+
+    })
+    $(window).resize(function(){
+        $('#uvod').animate({'height': $(window).outerHeight()}, 400)
+    })
+
+    function bounce() {
+        $('#details').effect('bounce', { times: 2 }, 750)
+        setTimeout(bounce, 4000)
+    }
+    $(document).ready(bounce)
 
     var controller = new ScrollMagic.Controller()
     
+    var introScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#uvod'
+    })
     var repairElectronicsScene = new ScrollMagic.Scene({
         duration: '100%',
         triggerElement: '#oprava-spotrebnej-elektroniky'
@@ -443,6 +500,7 @@
         triggerElement: '#kontakt'
     })
 
+    introScene.on("enter", (event) => history.pushState(null, null, '#uvod'))
     repairElectronicsScene.on("enter", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'))
     repairLaptopsScene.on("enter", (event) => history.pushState(null, null, '#oprava-notebookov'))
     repairComputersScene.on("enter", (event) => history.pushState(null, null, '#oprava-pocitacov'))
@@ -452,6 +510,7 @@
     contactScene.on("enter", (event) => history.pushState(null, null, '#kontakt'))
     
     controller.addScene([
+        introScene,
         repairElectronicsScene,
         repairLaptopsScene,
         repairComputersScene,
@@ -470,6 +529,6 @@
             $('#fab-mobile-tablet').fadeIn(350)
             $('#fab-desktop').fadeIn(350)
         }
-    });
+    })
 </script>
 {% endblock %}

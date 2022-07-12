@@ -1,3 +1,9 @@
+intro = [
+    "Oprava a predaj elektroniky.",
+    "Inštalácia softvéru a údržba počítačov.",
+    "Programovanie pamätí a mikroprocesorov."
+]
+
 actions = {
     "Oprava spotrebnej elektroniky všetkých značiek": {
         "image": "repair.jpg",
