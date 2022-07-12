@@ -459,10 +459,8 @@
         $('#uvod').animate({'height': $(window).outerHeight()}, 350)
     })
 
-    var details = $('#details')
-
     function bounce() {
-        details.effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000)
+        $('#details').effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000)
     }
     $(document).ready(bounce)
 
