@@ -456,14 +456,25 @@
 
     })
     $(window).resize(function(){
-        $('#uvod').animate({'height': $(window).outerHeight()}, 400)
+        $('#uvod').animate({'height': $(window).outerHeight()}, 350)
     })
 
     function bounce() {
         $('#details').effect('bounce', { times: 2 }, 750)
-        setTimeout(bounce, 4000)
     }
     $(document).ready(bounce)
+    setInterval(bounce, 5000)
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() == 0) {
+            $('#fab-mobile-tablet').stop().fadeOut(350)
+            $('#fab-desktop').stop().fadeOut(350)
+        }
+        else {
+            $('#fab-mobile-tablet').fadeIn(350)
+            $('#fab-desktop').fadeIn(350)
+        }
+    })
 
     var controller = new ScrollMagic.Controller()
     
@@ -519,16 +530,5 @@
         sellScene,
         contactScene
     ])
-
-    $(window).scroll(function() {
-        if ($(this).scrollTop() == 0) {
-            $('#fab-mobile-tablet').stop().fadeOut(350)
-            $('#fab-desktop').stop().fadeOut(350)
-        }
-        else {
-            $('#fab-mobile-tablet').fadeIn(350)
-            $('#fab-desktop').fadeIn(350)
-        }
-    })
 </script>
 {% endblock %}
