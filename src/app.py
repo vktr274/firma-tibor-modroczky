@@ -16,7 +16,7 @@ def index():
     return render_template(
         'index.html',
         title='Servis výpočtovej techniky a spotrebnej elektroniky - Firma Tibor Modroczky',
-        logo_click='#uvod',
+        go_to='#',
         show_hamburger=True,
         google_site_verification=os.environ.get('GOOGLE_SITE_VERIFICATION'),
         actions=actions,
@@ -29,7 +29,7 @@ def page_not_found(e):
     return render_template(
         '404.html',
         title='Stránka sa nenašla',
-        logo_click='index',
+        go_to='index',
         show_hamburger=False
     ), 404
 
