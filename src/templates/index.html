@@ -462,6 +462,7 @@
     $(window).resize(function(){
         $('#uvod').animate({
             'height': $(window).outerHeight() - $('nav').height(),
+            'min-height': $('nav').height() + $('#p-container').height() + $('#details').height(),
             'margin-top': $('nav').height()
         }, 350)
     })
