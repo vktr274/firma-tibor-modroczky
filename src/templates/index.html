@@ -428,12 +428,6 @@
             font-size: 140%;
         }
     }
-    @media only screen and (max-height : 500px) {
-        p.responsive-top-text {
-            display: inline;
-            font-size: 150%;
-        }
-    }
     .contact-padding {
         padding: 8px;
     }
@@ -460,6 +454,7 @@
     $(document).ready(function(){
         $('#uvod').css({
             'height': $(window).outerHeight() - $('nav').height(),
+            'min-height': $('nav').height() + $('#p-container').height() + $('#details').height(),
             'margin-top': $('nav').height()
         })
         $('#p-container').css('padding-bottom', $('#details').height())
