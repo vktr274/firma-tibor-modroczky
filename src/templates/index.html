@@ -32,11 +32,13 @@
             style="height: 100%; width: 100%; object-fit: cover;"
         />
         <div class="top-container">
-            {% for item in intro %}
-            <p class="white-text responsive-top-text">
-                {{ item }}
-            </p>
-            {% endfor %}
+            <div id="p-container">
+                {% for item in intro %}
+                <p class="white-text responsive-top-text">
+                    {{ item }}
+                </p>
+                {% endfor %}
+            </div>
         </div>
         <a href="#oprava-spotrebnej-elektroniky" class="top-icon-container">
             <div id="details">
@@ -387,9 +389,9 @@
     }
     a.top-icon-container {
         position: absolute;
-        top: 90%;
+        bottom: 2%;
         left: 50%;
-        transform: translate(-50%,-10%);
+        transform: translate(-50%,-2%);
     }
     @media only screen and (max-width : 992px) {
         header, main, footer {
@@ -428,6 +430,13 @@
             font-size: 140%;
         }
     }
+    @media only screen and (max-height : 500px) {
+        p.responsive-top-text {
+            font-weight: lighter;
+            font-size: 150%;
+            display: inline;
+        }
+    }
     .contact-padding {
         padding: 8px;
     }
@@ -452,11 +461,17 @@
         $('.fixed-action-btn').floatingActionButton();
     })
     $(document).ready(function(){
-        $('#uvod').css('height', $(window).outerHeight())
-
+        $('#uvod').css({
+            'height': $(window).outerHeight() - $('nav').height(),
+            'margin-top': $('nav').height()
+        })
+        $('#p-container').css('padding-bottom', $('#details').css('height'))
     })
     $(window).resize(function(){
-        $('#uvod').animate({'height': $(window).outerHeight()}, 350)
+        $('#uvod').animate({
+            'height': $(window).outerHeight() - $('nav').height(),
+            'margin-top': $('nav').height()
+        }, 350)
     })
 
     function bounce() {
