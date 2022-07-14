@@ -32,6 +32,7 @@
             style="height: 100%; width: 100%; object-fit: cover;"
         />
         <div class="top-container">
+            <img class="top-img" src="{{ url_for('static', filename='logo_center.png') }}" />
             <div id="p-container">
                 {% for item in intro %}
                 <p class="white-text responsive-top-text">
@@ -365,6 +366,7 @@
     }
     nav {
         width: calc(100% - 300px);
+        display: none;
     }
     img.responsive-marker {
         height: 10px;
@@ -375,8 +377,9 @@
         font-size: 115%;
     }
     p.responsive-top-text {
+        overflow-wrap: break-word;
         font-weight: lighter;
-        font-size: 225%;
+        font-size: 200%;
     }
     div.top-container {
         position: absolute;
@@ -392,6 +395,9 @@
         bottom: 2%;
         left: 50%;
         transform: translate(-50%,-2%);
+    }
+    img.top-img {
+        width: 520px;
     }
     @media only screen and (max-width : 992px) {
         header, main, footer {
@@ -422,10 +428,24 @@
         i.responsive-top-icon {
             font-size: 24px;
         }
+        img.top-img {
+            width: 420px;
+        }
     }
     @media only screen and (max-width : 600px) {
         p.responsive-top-text {
             font-size: 140%;
+        }
+        img.top-img {
+            width: 320px;
+        }
+    }
+    @media only screen and (max-width : 400px) {
+        p.responsive-top-text {
+            font-size: 120%;
+        }
+        img.top-img {
+            width: 220px;
         }
     }
     .contact-padding {
@@ -453,17 +473,19 @@
     })
     $(document).ready(function(){
         $('#uvod').css({
-            'height': $(window).outerHeight() - $('nav').height(),
-            'min-height': $('nav').height() + $('#p-container').height() + $('#details').height(),
-            'margin-top': $('nav').height()
+            'height': $(window).outerHeight(),
+            'min-height':
+                $('nav').height() + $('#p-container').height() +
+                $('#details').height() + $('.top-img').height(),
         })
         $('#p-container').css('padding-bottom', $('#details').height())
     })
     $(window).resize(function(){
         $('#uvod').animate({
-            'height': $(window).outerHeight() - $('nav').height(),
-            'min-height': $('nav').height() + $('#p-container').height() + $('#details').height(),
-            'margin-top': $('nav').height()
+            'height': $(window).outerHeight(),
+            'min-height':
+                $('nav').height() + $('#p-container').height() +
+                $('#details').height() + $('.top-img').height(),
         }, 350)
     })
 
@@ -474,17 +496,22 @@
 
     $(window).scroll(function() {
         if ($(this).scrollTop() == 0) {
-            $('#fab-mobile-tablet').stop(true, true).fadeOut(350)
-            $('#fab-desktop').stop(true, true).fadeOut(350)
+            $('#fab-mobile-tablet').stop(true, true).fadeOut(500)
+            $('#fab-desktop').stop(true, true).fadeOut(500)
         }
         else {
-            $('#fab-mobile-tablet').fadeIn(350)
-            $('#fab-desktop').fadeIn(350)
+            $('#fab-mobile-tablet').fadeIn(500)
+            $('#fab-desktop').fadeIn(500)
         }
     })
 
     var controller = new ScrollMagic.Controller()
     
+    var navScene = new ScrollMagic.Scene({
+        duration: $(window).height(),
+        triggerElement: '#uvod',
+        triggerHook: 'onLeave'
+    })
     var introScene = new ScrollMagic.Scene({
         duration: '100%',
         triggerElement: '#uvod'
@@ -518,6 +545,16 @@
         triggerElement: '#kontakt'
     })
 
+    navScene.on("leave", (event) => {
+        if (event.scrollDirection == 'FORWARD') {
+            $('nav').fadeIn(500)
+        }
+    })
+    navScene.on("enter", (event) => {
+        if (event.scrollDirection == 'REVERSE') {
+            $('nav').stop(true, true).fadeOut(500)
+        }
+    })
     introScene.on("enter", (event) => history.pushState(null, null, '#uvod'))
     repairElectronicsScene.on("enter", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'))
     repairLaptopsScene.on("enter", (event) => history.pushState(null, null, '#oprava-notebookov'))
@@ -529,6 +566,7 @@
     
     $(document).ready(function() {
         controller.addScene([
+            navScene,
             introScene,
             repairElectronicsScene,
             repairLaptopsScene,
