@@ -16,7 +16,44 @@
     </head>
     <body>
         <header>
-            <nav class="fixed-top">
+            <nav id="nav-transparent" class="fixed-top transparent z-depth-0" style="display: none;">
+                <div class="nav-wrapper transparent">
+                    {% if show_hamburger %}
+                    <a
+                        href="#"
+                        data-target="slide-out"
+                        class="sidenav-trigger"
+                    >
+                        <i class="material-icons">menu</i>
+                    </a>
+                    {% endif %}
+                    <a
+                        href="https://www.eset.com/sk/"
+                        class="right"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <i class="valign-wrapper">
+                            <!-- Desktop only -->
+                            <img
+                                src="{{ url_for('static', filename='bronze_partner_navbar.png') }}"
+                                alt="Eset Logo"
+                                style="height: 100%;"
+                                class="hide-on-med-and-down"
+                            >
+                            <!-- Mobile and Tablet -->
+                            <img
+                                src="{{ url_for('static', filename='bronze_partner_navbar_sm.png') }}"
+                                alt="Eset Logo"
+                                style="height: 100%;"
+                                class="hide-on-large-only"
+                            >
+                            <!-- end -->
+                        </i>
+                    </a>
+                </div>
+            </nav>
+            <nav id="nav-normal" class="fixed-top">
                 <div class="nav-wrapper grey darken-3">
                     {% if show_hamburger %}
                     <a

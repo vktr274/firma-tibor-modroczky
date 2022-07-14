@@ -366,7 +366,12 @@
     }
     nav {
         width: calc(100% - 300px);
+    }
+    #nav-normal {
         display: none;
+    }
+    #nav-transparent {
+        display: block !important;
     }
     img.responsive-marker {
         height: 10px;
@@ -475,7 +480,7 @@
         $('#uvod').css({
             'height': $(window).outerHeight(),
             'min-height':
-                $('nav').height() + $('#p-container').height() +
+                $('#nav-normal').height() + $('#p-container').height() +
                 $('#details').height() + $('.top-img').height(),
         })
         $('#p-container').css('padding-bottom', $('#details').height())
@@ -484,7 +489,7 @@
         $('#uvod').animate({
             'height': $(window).outerHeight(),
             'min-height':
-                $('nav').height() + $('#p-container').height() +
+                $('#nav-normal').height() + $('#p-container').height() +
                 $('#details').height() + $('.top-img').height(),
         }, 350)
     })
@@ -551,12 +556,14 @@
 
     navScene.on("leave", (event) => {
         if (event.scrollDirection == 'FORWARD') {
-            $('nav').fadeIn(500)
+            $('#nav-normal').fadeIn(500)
+            $('#nav-transparent').stop(true, true).fadeOut(500)
         }
     })
     navScene.on("enter", (event) => {
         if (event.scrollDirection == 'REVERSE') {
-            $('nav').stop(true, true).fadeOut(500)
+            $('#nav-normal').stop(true, true).fadeOut(500)
+            $('#nav-transparent').fadeIn(500)
         }
     })
     introScene.on("enter", (event) => history.pushState(null, null, '#uvod'))
