@@ -545,6 +545,10 @@
         triggerElement: '#kontakt'
     })
 
+    $(window).resize(function() {
+        navScene.duration($(window).height())
+    })
+
     navScene.on("leave", (event) => {
         if (event.scrollDirection == 'FORWARD') {
             $('nav').fadeIn(500)
