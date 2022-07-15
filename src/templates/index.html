@@ -513,6 +513,7 @@
     var controller = new ScrollMagic.Controller()
     
     var navScene = new ScrollMagic.Scene({
+        offset: -$('nav').height(),
         duration: $(window).height(),
         triggerElement: '#uvod',
         triggerHook: 'onLeave'
