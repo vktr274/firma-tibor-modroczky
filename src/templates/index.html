@@ -501,8 +501,8 @@
 
     $(window).scroll(function() {
         if ($(this).scrollTop() == 0) {
-            $('#fab-mobile-tablet').stop(true, true).fadeOut(500)
-            $('#fab-desktop').stop(true, true).fadeOut(500)
+            $('#fab-mobile-tablet').stop(true, false).fadeOut(500)
+            $('#fab-desktop').stop(true, false).fadeOut(500)
         }
         else {
             $('#fab-mobile-tablet').fadeIn(500)
@@ -510,14 +510,19 @@
         }
     })
 
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= $('#uvod').height() - $('nav').height()) {
+            $('#nav-normal').fadeIn(500)
+            $('#nav-transparent').hide()
+        }
+        else {
+            $('#nav-normal').stop(true, false).fadeOut(500)
+            $('#nav-transparent').show()
+        }
+    })
+
     var controller = new ScrollMagic.Controller()
     
-    var navScene = new ScrollMagic.Scene({
-        offset: -$('nav').height(),
-        duration: $(window).height(),
-        triggerElement: '#uvod',
-        triggerHook: 'onLeave'
-    })
     var introScene = new ScrollMagic.Scene({
         duration: '100%',
         triggerElement: '#uvod'
@@ -551,22 +556,6 @@
         triggerElement: '#kontakt'
     })
 
-    $(window).resize(function() {
-        navScene.duration($(window).height())
-    })
-
-    navScene.on("leave", (event) => {
-        if (event.scrollDirection == 'FORWARD') {
-            $('#nav-normal').fadeIn(500)
-            $('#nav-transparent').stop(true, true).fadeOut(500)
-        }
-    })
-    navScene.on("enter", (event) => {
-        if (event.scrollDirection == 'REVERSE') {
-            $('#nav-normal').stop(true, true).fadeOut(500)
-            $('#nav-transparent').fadeIn(500)
-        }
-    })
     introScene.on("enter", (event) => history.pushState(null, null, '#uvod'))
     repairElectronicsScene.on("enter", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'))
     repairLaptopsScene.on("enter", (event) => history.pushState(null, null, '#oprava-notebookov'))
@@ -578,7 +567,6 @@
     
     $(document).ready(function() {
         controller.addScene([
-            navScene,
             introScene,
             repairElectronicsScene,
             repairLaptopsScene,
