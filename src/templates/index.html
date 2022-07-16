@@ -41,9 +41,10 @@
         <img 
             src="{{ url_for('static', filename='top.jpg') }}"
             style="height: 100%; width: 100%; object-fit: cover;"
+            alt="Plošný spoj"
         />
         <div class="top-container">
-            <img class="top-img" src="{{ url_for('static', filename='logo_center.png') }}" />
+            <img class="top-img" src="{{ url_for('static', filename='logo_center.png') }}" alt="Firma Tibor Modroczky Logo"/>
             <div id="p-container">
                 {% for item in intro %}
                 <p class="white-text responsive-top-text">
@@ -66,14 +67,14 @@
             <div class="parallax hide-on-med-and-down">
                 <img
                     src="{{ url_for('static', filename=value['image']) }}"
-                    alt="Parallax {{value.short_name}}"
+                    alt="{{value.short_name}}"
                 >
             </div>
             <!-- Tablet and Mobile -->
             <div class="parallax hide-on-large-only">
                 <img
                     src="{{ url_for('static', filename=value['image']) }}"
-                    alt="Parallax {{value.short_name}}"
+                    alt="{{value.short_name}}"
                     class="static-parallax"
                 >
             </div>
@@ -93,6 +94,7 @@
                             <img
                                 class="responsive-marker"
                                 src="{{ url_for('static', filename='circle.png') }}"
+                                alt="marker"
                             />
                             <span class="action-item">{{ item }}</span>
                         </li>
@@ -282,7 +284,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <img style="height: 48px;" src="{{ url_for('static', filename='klamont_logo.png') }}"/>
+                <img style="height: 48px;" src="{{ url_for('static', filename='klamont_logo.png') }}" alt="Klamont Logo"/>
             </a>
             <blockquote style="border-left: 5px solid #757575;">
                 All photographs on this site are used for illustration purposes only and
