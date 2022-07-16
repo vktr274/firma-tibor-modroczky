@@ -21,6 +21,17 @@
             Kontakt
         </a>
     </li>
+    <li>
+        <a
+            href="https://forms.gle/KthsowBGahU9bZCJ8"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="modal-trigger"
+        >
+            <i class="material-icons">sticky_note_2</i>
+            Spätná väzba k stránke
+        </a>
+    </li>
 </ul>
 {% endblock %}
 
@@ -144,13 +155,28 @@
         <div class="col s12">
             <div id="kontakt" class="card {{ 'hoverable' if not request.MOBILE }}">
                 <div class="card-content black-text">
-                    <iframe
-                        class="map"
-                        loading="lazy"
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=17.219,47.784,18.268,48.54&layer=mapnik&marker=48.164536066774424,17.743565037899195">
-                    </iframe>
-                    <span class="card-title" style="padding-top: 16px;">Kontaktné informácie</span>
-                    <!-- Desktop ad Tablet contact -->
+                    <div style="position: relative;">
+                        <div id="loading-map" class="loading">
+                            <div class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-blue-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div><div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div><div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <iframe
+                            class="map"
+                            loading="lazy"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=17.219,47.784,18.268,48.54&layer=mapnik&marker=48.164536066774424,17.743565037899195">
+                        </iframe>
+                    </div>
+                    <span class="card-title" style="padding-top: 8px; padding-bottom: 8px;">Kontaktné informácie</span>
+                    <!-- Desktop and Tablet contact -->
                     <div class="row valign-wrapper hide-on-small-only">
                         <div class="col s6">
                             <div class="container center-align">
@@ -201,47 +227,39 @@
                         </div>
                     </div>
                     <!--  Mobile contact -->
-                    <div class="hide-on-med-and-up">
-                        <div class="container">
-                            <div>
-                                <p>Firma Tibor Modroczky</p>
-                                <p>Diakovská 712</p>
-                                <p>925 01 Matúškovo</p>
-                            </div>
-                            <p class="valign-wrapper">
-                                <i class="material-icons">email</i>
-                                <a
-                                    href="mailto:modroczkyt@gmail.com"
-                                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
-                                    data-position="right"
-                                    data-tooltip="Poslať e-mail"
-                                >
-                                    modroczkyt@gmail.com
-                                </a>
-                            </p>
-                            <p class="valign-wrapper">
-                                <i class="material-icons">call</i>
-                                <a 
-                                    href="tel:0317826228"
-                                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
-                                    data-position="right"
-                                    data-tooltip="Zavolať na telefón"
-                                >
-                                    031 782 6228
-                                </a>
-                            </p>
-                            <p class="valign-wrapper">
-                                <i class="material-icons">smartphone</i>
-                                <a 
-                                    href="tel:+421905460506"
-                                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
-                                    data-position="right"
-                                    data-tooltip="Zavolať na mobil"
-                                >
-                                    0905 460 506
-                                </a>
-                            </p>
+                    <div class="container hide-on-med-and-up">
+                        <div style="padding-bottom: 8px;">
+                            <p>Firma Tibor Modroczky</p>
+                            <p>Diakovská 712</p>
+                            <p>925 01 Matúškovo</p>
                         </div>
+                        <p class="valign-wrapper">
+                            <i class="material-icons">email</i>
+                            <a
+                                href="mailto:modroczkyt@gmail.com"
+                                class="contact-padding"
+                            >
+                                modroczkyt@gmail.com
+                            </a>
+                        </p>
+                        <p class="valign-wrapper">
+                            <i class="material-icons">call</i>
+                            <a 
+                                href="tel:0317826228"
+                                class="contact-padding"
+                            >
+                                031 782 6228
+                            </a>
+                        </p>
+                        <p class="valign-wrapper">
+                            <i class="material-icons">smartphone</i>
+                            <a 
+                                href="tel:+421905460506"
+                                class="contact-padding"
+                            >
+                                0905 460 506
+                            </a>
+                        </p>
                     </div>
                     <!-- end -->
                 </div>
@@ -404,6 +422,21 @@
     img.top-img {
         width: 520px;
     }
+    a.contact-padding {
+        padding: 8px;
+    }
+    iframe.map {
+        height: 256px;
+        width: 100%;
+        z-index: 1;
+        border: 0;
+    }
+    div.loading {
+        position: absolute;
+        top: 50%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
     @media only screen and (max-width : 992px) {
         header, main, footer {
             padding-left: 0;
@@ -453,15 +486,6 @@
             width: 220px;
         }
     }
-    .contact-padding {
-        padding: 8px;
-    }
-    .map {
-        height: 256px;
-        width: 100%;
-        z-index: 1;
-        border: 0;
-    }
 </style>
 {% endblock %}
 
@@ -492,6 +516,9 @@
                 $('#nav-normal').height() + $('#p-container').height() +
                 $('#details').height() + $('.top-img').height(),
         }, 350)
+    })
+    $('.map').on('load', () => {
+        $('#loading-map').css('display', 'none')
     })
 
     function bounce() {
