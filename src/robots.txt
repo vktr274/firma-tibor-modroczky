@@ -1,1 +1,3 @@
 Sitemap: https://modroczky.eu.pythonanywhere.com/sitemap.xml
+User-agent: *
+Disallow:
