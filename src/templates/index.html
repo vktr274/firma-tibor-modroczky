@@ -113,11 +113,7 @@
         </div>
         <div class="section white z-depth-5">
             <div class="row container">
-                <!-- Mobile header -->
-                <h2 class="header hide-on-med-and-up" style="font-weight: lighter; font-size: 230%; margin-top: 16px;">{{ key }}</h2>
-                <!--- Tablet and Desktop header -->
-                <h2 class="header hide-on-small-only" style="font-weight: lighter; font-size: 360%; margin-top: 20px;">{{ key }}</h2>
-                <!-- end-->
+                <h2 class="header responsive-h2">{{ key }}</h2>
                 <p class="grey-text text-darken-3 lighten-3">
                     <ul>
                         {% for item in value['items'] %}
@@ -470,6 +466,11 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+    h2.responsive-h2 {
+        font-weight: lighter;
+        font-size: 340%;
+        margin-top: 20px;
+    }
     @media only screen and (max-width : 992px) {
         header, main, footer {
             padding-left: 0;
@@ -502,6 +503,10 @@
         img.top-img {
             width: 420px;
         }
+        h2.responsive-h2 {
+            font-size: 300%;
+            margin-top: 18px;
+        }
     }
     @media only screen and (max-width : 600px) {
         p.responsive-top-text {
@@ -510,6 +515,10 @@
         img.top-img {
             width: 320px;
         }
+        h2.responsive-h2 {
+            font-size: 230%;
+            margin-top: 16px;
+        }
     }
     @media only screen and (max-width : 400px) {
         p.responsive-top-text {
@@ -517,6 +526,10 @@
         }
         img.top-img {
             width: 220px;
+        }
+        h2.responsive-h2 {
+            font-size: 200%;
+            margin-top: 14px;
         }
     }
 </style>
