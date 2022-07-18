@@ -1,7 +1,33 @@
 {% extends "layout.html" %}
 
-{% block google_meta %}
+{% block head_extra %}
 <meta name="google-site-verification" content="{{google_site_verification}}" />
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    "name": "Firma Tibor Modroczky",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Diakovská 712",
+        "addressLocality": "Matúškovo",
+        "postalCode": "92501",
+        "addressCountry": "SK"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.761293,
+        "longitude": -73.982294
+    },
+    "url": "{{url_for(request.endpoint, _external=True)}}",
+    "telephone": "+421905460506",
+    "telephone": "0317826228",
+    "email": "modroczkyt@gmail.com",
+    "logo": "{{url_for('static', filename='logo_large.png', _external=True)}}",
+    "description": "Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
+}
+</script>
 {% endblock %}
 
 {% block header_extra %}
