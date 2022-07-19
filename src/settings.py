@@ -12,10 +12,10 @@ actions = {
         "short_name": "Oprava elektroniky",
         "anchor": "oprava-spotrebnej-elektroniky",
         "items": [
-            "oprava TV prijímačov",
+            "oprava televízorov",
             "oprava satelitných prijímačov",
             "oprava monitorov",
-            "oprava DVD a video zariadení",
+            "oprava DVD prehrávačov a video zariadení",
             "oprava audio zariadení"
         ]
     },
@@ -62,11 +62,11 @@ actions = {
         "items": [
             "reinštalácia systému Windows",
             "inštalácia ovládačov",
-            "inštalácia antivírusového systému ESET",
+            "inštalácia antivírusového programu ESET",
             "odvírenie systému",
             "záloha a obnova dát",
             "prenesenie systému a súborov na nový HDD alebo SSD",
-            "diagnostika a údržba"
+            "diagnostika a údržba počítačov a notebookov"
         ]
     },
     "Programovanie obvodov": {
@@ -76,7 +76,7 @@ actions = {
         "short_name": "Programovanie obvodov",
         "anchor": "programovanie-obvodov",
         "items": [
-            "programovanie pamätí EPROM, EEPROM, Flash EPROM, sériových E(E)PROM rôznych typov",
+            "programovanie pamätí EPROM, EEPROM, Flash EPROM a sériových E(E)PROM rôznych typov",
             "programovanie mikroprocesorov Atmel, PIC atď...",
             "ponúkame aj možnosť odpájania a pripájania SMD obvodov"
         ]
