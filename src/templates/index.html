@@ -578,108 +578,66 @@
 
 {% block extra_scripts %}
 <script>
-    $(document).ready(function() {
+    function bounce() {
+        $('#details').effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000);
+    };
+
+    var controller = new ScrollMagic.Controller();
+    
+    var introScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#uvod'
+    });
+    var repairElectronicsScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#oprava-spotrebnej-elektroniky'
+    });
+    var repairLaptopsScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#oprava-notebookov'
+    });
+    var repairComputersScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#oprava-pocitacov'
+    });
+    var softwareScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#instalacia-softveru'
+    });
+    var programmingScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#programovanie-obvodov'
+    });
+    var sellScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#predaj'
+    });
+    var contactScene = new ScrollMagic.Scene({
+        duration: '100%',
+        triggerElement: '#kontakt'
+    });
+
+    introScene.on("enter", (event) => history.pushState(null, null, '#uvod'));
+    repairElectronicsScene.on("enter", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'));
+    repairLaptopsScene.on("enter", (event) => history.pushState(null, null, '#oprava-notebookov'));
+    repairComputersScene.on("enter", (event) => history.pushState(null, null, '#oprava-pocitacov'));
+    softwareScene.on("enter", (event) => history.pushState(null, null, '#instalacia-softveru'));
+    programmingScene.on("enter", (event) => history.pushState(null, null, '#programovanie-obvodov'));
+    sellScene.on("enter", (event) => history.pushState(null, null, '#predaj'));
+    contactScene.on("enter", (event) => history.pushState(null, null, '#kontakt'));
+
+    $(document).ready(() => {
         $('.parallax').parallax();
-    })
-    $(document).ready(function() {
         $('.sidenav').sidenav();
-    })
-    $(document).ready(function(){
         $('.fixed-action-btn').floatingActionButton();
-    })
-    $(document).ready(function(){
         $('#uvod').css({
             'height': $(window).outerHeight(),
             'min-height':
                 $('#nav-normal').height() + $('.top-container').height() +
                 $('#details').height()
-        })
-        $('#p-container').css('padding-bottom', $('#details').height())
-    })
-    $(window).resize(function(){
-        $('#uvod').animate({
-            'height': $(window).outerHeight(),
-            'min-height':
-                $('#nav-normal').height() + $('.top-container').height() +
-                $('#details').height()
-        }, 350)
-    })
-    $('.map').on('load', () => {
-        $('#loading-map').css('display', 'none')
-    })
-
-    function bounce() {
-        $('#details').effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000)
-    }
-    $(document).ready(bounce)
-
-    $(window).scroll(function() {
-        if ($(this).scrollTop() == 0) {
-            $('#fab-mobile-tablet').stop(true, false).fadeOut(500)
-            $('#fab-desktop').stop(true, false).fadeOut(500)
-        }
-        else {
-            $('#fab-mobile-tablet').fadeIn(500)
-            $('#fab-desktop').fadeIn(500)
-        }
-    })
-
-    $(window).scroll(function() {
-        if ($(this).scrollTop() >= $('#uvod').height() - $('nav').height()) {
-            $('#nav-normal').fadeIn(500)
-            $('#nav-transparent').hide()
-        }
-        else {
-            $('#nav-normal').stop(true, false).fadeOut(500)
-            $('#nav-transparent').show()
-        }
-    })
-
-    var controller = new ScrollMagic.Controller()
-    
-    var introScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#uvod'
-    })
-    var repairElectronicsScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#oprava-spotrebnej-elektroniky'
-    })
-    var repairLaptopsScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#oprava-notebookov'
-    })
-    var repairComputersScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#oprava-pocitacov'
-    })
-    var softwareScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#instalacia-softveru'
-    })
-    var programmingScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#programovanie-obvodov'
-    })
-    var sellScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#predaj'
-    })
-    var contactScene = new ScrollMagic.Scene({
-        duration: '100%',
-        triggerElement: '#kontakt'
-    })
-
-    introScene.on("enter", (event) => history.pushState(null, null, '#uvod'))
-    repairElectronicsScene.on("enter", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'))
-    repairLaptopsScene.on("enter", (event) => history.pushState(null, null, '#oprava-notebookov'))
-    repairComputersScene.on("enter", (event) => history.pushState(null, null, '#oprava-pocitacov'))
-    softwareScene.on("enter", (event) => history.pushState(null, null, '#instalacia-softveru'))
-    programmingScene.on("enter", (event) => history.pushState(null, null, '#programovanie-obvodov'))
-    sellScene.on("enter", (event) => history.pushState(null, null, '#predaj'))
-    contactScene.on("enter", (event) => history.pushState(null, null, '#kontakt'))
-    
-    $(document).ready(function() {
+        });
+        $('#p-container').css('padding-bottom', $('#details').height());
+        bounce();
         controller.addScene([
             introScene,
             repairElectronicsScene,
@@ -689,7 +647,40 @@
             programmingScene,
             sellScene,
             contactScene
-        ])
-    })
+        ]);
+    });
+
+    $(window).resize(() => {
+        $('#uvod').animate({
+            'height': $(window).outerHeight(),
+            'min-height':
+                $('#nav-normal').height() + $('.top-container').height() +
+                $('#details').height()
+        }, 350);
+    });
+
+    $(window).scroll(() => {
+        if ($(this).scrollTop() == 0) {
+            $('#fab-mobile-tablet').stop(true, false).fadeOut(500);
+            $('#fab-desktop').stop(true, false).fadeOut(500);
+        }
+        else {
+            $('#fab-mobile-tablet').fadeIn(500);
+            $('#fab-desktop').fadeIn(500);
+        }
+
+        if ($(this).scrollTop() >= $('#uvod').height() - $('nav').height()) {
+            $('#nav-normal').fadeIn(500);
+            $('#nav-transparent').hide();
+        }
+        else {
+            $('#nav-normal').stop(true, false).fadeOut(500);
+            $('#nav-transparent').show();
+        }
+    });
+
+    $('.map').on('load', () => {
+        $('#loading-map').css('display', 'none');
+    });
 </script>
 {% endblock %}
