@@ -6,7 +6,8 @@ intro = [
 
 actions = {
     "Oprava spotrebnej elektroniky všetkých značiek": {
-        "image": "repair.jpg",
+        "image": "repair.webp",
+        "image_fallback": "repair.jpg",
         "icon": "radio",
         "short_name": "Oprava elektroniky",
         "anchor": "oprava-spotrebnej-elektroniky",
@@ -19,7 +20,8 @@ actions = {
         ]
     },
     "Oprava notebookov": {
-        "image": "laptop.jpg",
+        "image": "laptop.webp",
+        "image_fallback": "laptop.jpg",
         "icon": "laptop_windows",
         "short_name": "Oprava notebookov",
         "anchor": "oprava-notebookov",
@@ -39,7 +41,8 @@ actions = {
         ]
     },
     "Oprava počítačov": {
-        "image": "pc.jpg",
+        "image": "pc.webp",
+        "image_fallback": "pc.jpg",
         "icon": "desktop_windows",
         "short_name": "Oprava počítačov",
         "anchor": "oprava-pocitacov",
@@ -51,7 +54,8 @@ actions = {
         ]
     },
     "Inštalácia softvéru": {
-        "image": "sw.jpg",
+        "image": "sw.webp",
+        "image_fallback": "sw.jpg",
         "icon": "terminal",
         "short_name": "Inštalácia softvéru",
         "anchor": "instalacia-softveru",
@@ -66,7 +70,8 @@ actions = {
         ]
     },
     "Programovanie obvodov": {
-        "image": "chip.jpg",
+        "image": "chip.webp",
+        "image_fallback": "chip.jpg",
         "icon": "developer_board",
         "short_name": "Programovanie obvodov",
         "anchor": "programovanie-obvodov",
@@ -77,7 +82,8 @@ actions = {
         ]
     },
     "Predaj": {
-        "image": "build.jpg",
+        "image": "build.webp",
+        "image_fallback": "build.jpg",
         "icon": "store",
         "short_name": "Predaj",
         "anchor": "predaj",

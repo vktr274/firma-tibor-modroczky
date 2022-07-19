@@ -23,7 +23,7 @@
     "url": "{{url_for(request.endpoint, _external=True)}}",
     "telephone": ["+421905460506", "0317826228"],
     "email": "modroczkyt@gmail.com",
-    "logo": "{{url_for('static', filename='logo_large.png', _external=True)}}",
+    "logo": "{{url_for('static', filename='logo_large.webp', _external=True)}}",
     "description": "Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
 }
 </script>
@@ -63,18 +63,30 @@
 {% block main %}
 <main>
     <div id="uvod" style="position: relative; text-align: center;">
-        <img 
-            src="{{ url_for('static', filename='top.jpg') }}"
-            style="height: 100%; width: 100%; object-fit: cover;"
-            alt="Plošný spoj"
-        />
+        <picture style="height: 100%; width: 100%;">
+            <source
+                type="image/webp"
+                srcset="{{ url_for('static', filename='top.webp') }}"
+            />
+            <img 
+                src="{{ url_for('static', filename='top.jpg') }}"
+                style="height: 100%; width: 100%; object-fit: cover;"
+                alt="Plošný spoj"
+            />
+        </picture>
         <div class="top-container">
             <h1>
-                <img
-                    class="top-img"
-                    src="{{ url_for('static', filename='logo_center.png') }}"
-                    alt="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky"
-                />
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="{{ url_for('static', filename='logo_center.webp') }}"
+                    />
+                    <img
+                        class="top-img"
+                        src="{{ url_for('static', filename='logo_center.png') }}"
+                        alt="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky"
+                    />
+                </picture>
             </h1>
             <div id="p-container">
                 {% for item in intro %}
@@ -96,18 +108,30 @@
         <div class="parallax-container">
             <!-- Desktop only -->
             <div class="parallax hide-on-med-and-down">
-                <img
-                    src="{{ url_for('static', filename=value['image']) }}"
-                    alt="{{value.short_name}}"
-                >
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="{{ url_for('static', filename=value['image']) }}"
+                    />
+                    <img
+                        src="{{ url_for('static', filename=value['image_fallback']) }}"
+                        alt="{{value.short_name}}"
+                    >
+                </picture>
             </div>
             <!-- Tablet and Mobile -->
             <div class="parallax hide-on-large-only">
-                <img
-                    src="{{ url_for('static', filename=value['image']) }}"
-                    alt="{{value.short_name}}"
-                    class="static-parallax"
-                >
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="{{ url_for('static', filename=value['image']) }}"
+                    />
+                    <img
+                        src="{{ url_for('static', filename=value['image_fallback']) }}"
+                        alt="{{value.short_name}}"
+                        class="static-parallax"
+                    >
+                </picture>
             </div>
             <!-- end -->
         </div>
@@ -118,11 +142,17 @@
                     <ul>
                         {% for item in value['items'] %}
                         <li>
-                            <img
-                                class="responsive-marker"
-                                src="{{ url_for('static', filename='circle.png') }}"
-                                alt="marker"
-                            />
+                            <picture>
+                                <source
+                                    type="image/webp"
+                                    srcset="{{ url_for('static', filename='circle.webp') }}"
+                                />
+                                <img
+                                    class="responsive-marker"
+                                    src="{{ url_for('static', filename='circle.png') }}"
+                                    alt="marker"
+                                />
+                            </picture>
                             <span class="action-item">{{ item }}</span>
                         </li>
                         {% endfor %}
@@ -312,7 +342,17 @@
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <img style="height: 48px;" src="{{ url_for('static', filename='klamont_logo.png') }}" alt="Klamont Logo"/>
+                <picture>
+                    <source
+                        type="image/webp"
+                        srcset="{{ url_for('static', filename='klamont_logo.webp') }}"
+                    />
+                    <img
+                        style="height: 48px;"
+                        src="{{ url_for('static', filename='klamont_logo.png') }}"
+                        alt="Klamont Logo"
+                    />
+                </picture>
             </a>
             <blockquote style="border-left: 5px solid #757575;">
                 All photographs on this site are used for illustration purposes only and
@@ -421,7 +461,7 @@
     #nav-transparent {
         display: block !important;
     }
-    img.responsive-marker {
+    img.responsive-marker, source.responsive-marker {
         height: 10px;
         width: 10px;
     }
@@ -449,7 +489,7 @@
         left: 50%;
         transform: translate(-50%,-2%);
     }
-    img.top-img {
+    img.top-img, source.top-img {
         width: 520px;
     }
     a.contact-padding {
@@ -479,7 +519,7 @@
         nav {
             width: 100%;
         }
-        img.responsive-marker {
+        img.responsive-marker, source.responsive-marker {
             height: 8px;
             width: 8px;
         }
@@ -490,7 +530,7 @@
         .parallax-container {
             height: 300px;
         }
-        img.static-parallax {
+        img.static-parallax, source.static-parallax {
             height: 300px;
             width: 100%;
             object-fit: cover;
@@ -501,7 +541,7 @@
         i.responsive-top-icon {
             font-size: 24px;
         }
-        img.top-img {
+        img.top-img, source.top-img {
             width: 420px;
         }
         h2.responsive-h2 {
@@ -513,7 +553,7 @@
         p.responsive-top-text {
             font-size: 140%;
         }
-        img.top-img {
+        img.top-img, source.top-img {
             width: 320px;
         }
         h2.responsive-h2 {
@@ -525,7 +565,7 @@
         p.responsive-top-text {
             font-size: 120%;
         }
-        img.top-img {
+        img.top-img, source.top-img {
             width: 220px;
         }
         h2.responsive-h2 {
