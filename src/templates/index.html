@@ -628,9 +628,6 @@
     contactScene.on("enter", (event) => history.pushState(null, null, '#kontakt'));
 
     $(document).ready(() => {
-        $('.parallax').parallax();
-        $('.sidenav').sidenav();
-        $('.fixed-action-btn').floatingActionButton();
         $('#uvod').css({
             'height': $(window).outerHeight(),
             'min-height':
@@ -638,7 +635,12 @@
                 $('#details').height()
         });
         $('#p-container').css('padding-bottom', $('#details').height());
+        $('.sidenav').sidenav();
+        $('.fixed-action-btn').floatingActionButton();
+        $('.parallax').parallax();
+        
         bounce();
+
         controller.addScene([
             introScene,
             repairElectronicsScene,
