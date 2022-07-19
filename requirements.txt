@@ -2,3 +2,4 @@ python-dotenv==0.19.1
 flask==2.1.0
 flask-sitemap==0.4.0
 flask-mobility==1.1.0
+flask-minify==0.39

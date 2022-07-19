@@ -1,11 +1,13 @@
 from flask import Flask, render_template, send_from_directory
 from flask_sitemap import Sitemap
 from flask_mobility import Mobility
+from flask_minify import Minify
 from settings import actions, intro
 import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+Minify(app=app, html=True, js=True, cssless=True)
 ext = Sitemap(app=app)
 Mobility(app)
 
