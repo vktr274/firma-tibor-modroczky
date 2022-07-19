@@ -82,7 +82,7 @@
                         srcset="{{ url_for('static', filename='logo_center.webp') }}"
                     />
                     <img
-                        class="top-img"
+                        class="intro-logo"
                         src="{{ url_for('static', filename='logo_center.png') }}"
                         alt="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky"
                     />
@@ -348,7 +348,7 @@
                         srcset="{{ url_for('static', filename='klamont_logo.webp') }}"
                     />
                     <img
-                        style="height: 48px;"
+                        style="height: 48px; width: auto;"
                         src="{{ url_for('static', filename='klamont_logo.png') }}"
                         alt="Klamont Logo"
                     />
@@ -489,8 +489,9 @@
         left: 50%;
         transform: translate(-50%,-2%);
     }
-    img.top-img, source.top-img {
+    img.intro-logo, source.intro-logo {
         width: 520px;
+        height: auto;
     }
     a.contact-padding {
         padding: 8px;
@@ -541,7 +542,7 @@
         i.responsive-top-icon {
             font-size: 24px;
         }
-        img.top-img, source.top-img {
+        img.intro-logo, source.intro-logo {
             width: 420px;
         }
         h2.responsive-h2 {
@@ -553,7 +554,7 @@
         p.responsive-top-text {
             font-size: 140%;
         }
-        img.top-img, source.top-img {
+        img.intro-logo, source.intro-logo {
             width: 320px;
         }
         h2.responsive-h2 {
@@ -565,7 +566,7 @@
         p.responsive-top-text {
             font-size: 120%;
         }
-        img.top-img, source.top-img {
+        img.intro-logo, source.intro-logo {
             width: 220px;
         }
         h2.responsive-h2 {
