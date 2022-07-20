@@ -618,14 +618,14 @@
         triggerElement: '#kontakt'
     });
 
-    introScene.on("enter", (event) => history.pushState(null, null, '#uvod'));
-    repairElectronicsScene.on("enter", (event) => history.pushState(null, null, '#oprava-spotrebnej-elektroniky'));
-    repairLaptopsScene.on("enter", (event) => history.pushState(null, null, '#oprava-notebookov'));
-    repairComputersScene.on("enter", (event) => history.pushState(null, null, '#oprava-pocitacov'));
-    softwareScene.on("enter", (event) => history.pushState(null, null, '#instalacia-softveru'));
-    programmingScene.on("enter", (event) => history.pushState(null, null, '#programovanie-obvodov'));
-    sellScene.on("enter", (event) => history.pushState(null, null, '#predaj'));
-    contactScene.on("enter", (event) => history.pushState(null, null, '#kontakt'));
+    introScene.on("enter", (event) => history.replaceState(null, null, '#uvod'));
+    repairElectronicsScene.on("enter", (event) => history.replaceState(null, null, '#oprava-spotrebnej-elektroniky'));
+    repairLaptopsScene.on("enter", (event) => history.replaceState(null, null, '#oprava-notebookov'));
+    repairComputersScene.on("enter", (event) => history.replaceState(null, null, '#oprava-pocitacov'));
+    softwareScene.on("enter", (event) => history.replaceState(null, null, '#instalacia-softveru'));
+    programmingScene.on("enter", (event) => history.replaceState(null, null, '#programovanie-obvodov'));
+    sellScene.on("enter", (event) => history.replaceState(null, null, '#predaj'));
+    contactScene.on("enter", (event) => history.replaceState(null, null, '#kontakt'));
 
     $(document).ready(() => {
         $('#uvod').css({
