@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="sk">
     <head>
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
         <!--Import Google Icon Font-->
         <link rel="preload stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" crossorigin="anonymous">
         <link rel="preload stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/css/materialize.min.css" as="style" crossorigin="anonymous">
-        <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
         
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,10 +40,10 @@
                             <picture class="hide-on-med-and-down" style="height: 100%;">
                                 <source
                                     type="image/webp"
-                                    srcset="{{ url_for('static', filename='bronze_partner_navbar.webp') }}"
+                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar.webp') }}"
                                 />
                                 <img
-                                    src="{{ url_for('static', filename='bronze_partner_navbar.png') }}"
+                                    src="{{ url_for('static', filename='images/bronze_partner_navbar.png') }}"
                                     alt="Eset Bronze Partner"
                                     style="height: 100%; width: auto;"
                                 >
@@ -52,10 +52,10 @@
                             <picture class="hide-on-large-only" style="height: 100%;">
                                 <source
                                     type="image/webp"
-                                    srcset="{{ url_for('static', filename='bronze_partner_navbar_sm.webp') }}"
+                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar_sm.webp') }}"
                                 />
                                 <img
-                                    src="{{ url_for('static', filename='bronze_partner_navbar_sm.png') }}"
+                                    src="{{ url_for('static', filename='images/bronze_partner_navbar_sm.png') }}"
                                     alt="Eset Bronze Partner"
                                     style="height: 100%; width: auto;"
                                     
@@ -87,10 +87,10 @@
                             <picture class="hide-on-med-and-down" style="height: 75%;">
                                 <source
                                     type="image/webp"
-                                    srcset="{{ url_for('static', filename='logo_large.webp') }}"
+                                    srcset="{{ url_for('static', filename='images/logo_large.webp') }}"
                                 />
                                 <img
-                                    src="{{ url_for('static', filename='logo_large.png') }}"
+                                    src="{{ url_for('static', filename='images/logo_large.png') }}"
                                     alt="Firma Tibor Modroczky"
                                     style="height: 100%; width: auto;"
                                 >
@@ -99,10 +99,10 @@
                             <picture class="hide-on-large-only" style="height: 70%;">
                                 <source
                                     type="image/webp"
-                                    srcset="{{ url_for('static', filename='logo.webp') }}"
+                                    srcset="{{ url_for('static', filename='images/logo.webp') }}"
                                 />
                                 <img
-                                    src="{{ url_for('static', filename='logo.png') }}"
+                                    src="{{ url_for('static', filename='images/logo.png') }}"
                                     alt="Firma Tibor Modroczky"
                                     style="height: 100%; width: auto;"
                                 >
@@ -121,10 +121,10 @@
                             <picture class="hide-on-med-and-down" style="height: 100%;">
                                 <source
                                     type="image/webp"
-                                    srcset="{{ url_for('static', filename='bronze_partner_navbar.webp') }}"
+                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar.webp') }}"
                                 />
                                 <img
-                                    src="{{ url_for('static', filename='bronze_partner_navbar.png') }}"
+                                    src="{{ url_for('static', filename='images/bronze_partner_navbar.png') }}"
                                     alt="Eset Bronze Partner"
                                     style="height: 100%; width: auto;"
                                 >
@@ -133,10 +133,10 @@
                             <picture class="hide-on-large-only" style="height: 100%;">
                                 <source
                                     type="image/webp"
-                                    srcset="{{ url_for('static', filename='bronze_partner_navbar_sm.webp') }}"
+                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar_sm.webp') }}"
                                 />
                                 <img
-                                    src="{{ url_for('static', filename='bronze_partner_navbar_sm.png') }}"
+                                    src="{{ url_for('static', filename='images/bronze_partner_navbar_sm.png') }}"
                                     alt="Eset Bronze Partner"
                                     style="height: 100%; width: auto;"
                                     
@@ -152,7 +152,7 @@
         {% block main %}{% endblock %}
         {% block footer %}{% endblock %}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/jquery-ui-1.13.2.bounce-only.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/js/materialize.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" crossorigin="anonymous"></script>
         <script>
