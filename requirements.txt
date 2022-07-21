@@ -3,3 +3,6 @@ flask==2.1.0
 flask-sitemap==0.4.0
 flask-mobility==1.1.0
 flask-minify==0.39
+flask-assets==2.0
+jsmin==3.0.1
+cssmin==0.2.0
