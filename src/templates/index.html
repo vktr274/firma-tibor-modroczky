@@ -483,6 +483,23 @@
         font-size: 340%;
         margin-top: 20px;
     }
+    .leaflet-tooltip {
+        background-color: #323232;
+        color: white;
+        border: 1px solid #323232;
+    }
+    .leaflet-tooltip-top::before {
+        border-top-color: #323232;
+    }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+        background-color: #323232
+    }
+    .leaflet-popup-content {
+        color: white;
+    }
+    .leaflet-popup-close-button span {
+        color: white;
+    }
     @media only screen and (max-width : 992px) {
         header, main, footer {
             padding-left: 0;
@@ -645,11 +662,26 @@
         var icon = L.icon({
             iconUrl: '../static/images/pin.png',
             iconSize: [64, 64],
-            iconAnchor: [32, 64]
-        })
-        L.marker(geo, { icon: icon }).addTo(map);
-
-        $('#loading-map').css('display', 'none')
+            iconAnchor: [32, 64],
+            popupAnchor: [0, -64],
+            tooltipAnchor: [0, -68]
+        });
+        var tooltipText = 'Zobraziť zemepisnú šírku a dĺžku';
+        var tooltipOptions = {
+            direction: 'top',
+            opacity: 1
+        };
+        var marker = L.marker(geo, { icon: icon })
+            .bindPopup('Šírka: 48.16455<br>Dĺžka: 17.74351')
+            .bindTooltip(tooltipText, tooltipOptions);
+        marker.on('popupopen', () => {
+            marker.unbindTooltip();
+        });
+        marker.on('popupclose', () => {
+            marker.bindTooltip(tooltipText, tooltipOptions);
+        });
+        marker.addTo(map);
+        $('#loading-map').css('display', 'none');
     });
 
     $(window).resize(() => {
