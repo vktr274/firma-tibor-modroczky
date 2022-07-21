@@ -42,7 +42,7 @@
 
 {% block main %}
 <main>
-    <div id="uvod" style="position: relative; text-align: center;">
+    <div id="uvod" class="anti-cls" style="position: relative; text-align: center;">
         <picture>
             <source
                 type="image/webp"
@@ -430,6 +430,9 @@
     #nav-transparent {
         display: block !important;
     }
+    .anti-cls { 
+        visibility: hidden;
+    }
     img.responsive-marker {
         height: 10px;
         width: 10px;
@@ -623,6 +626,7 @@
                 $('#details').height()
         });
         $('#p-container').css('padding-bottom', $('#details').height());
+        $('.anti-cls').css("visibility", "visible");
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
         $('.parallax').parallax();
