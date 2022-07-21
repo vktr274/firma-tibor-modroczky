@@ -2,6 +2,13 @@
 
 {% block head_extra %}
 <meta name="google-site-verification" content="{{google_site_verification}}" />
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""
+/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Control.FullScreen.css') }}" />
 {% endblock %}
 
 {% block header_extra %}
@@ -203,12 +210,7 @@
                                 </div>
                             </div>
                         </div>
-                        <iframe
-                            class="map"
-                            title="Mapa lokality Firmy Tibor Modroczky"
-                            loading="lazy"
-                            src="https://www.openstreetmap.org/export/embed.html?bbox=17.219,47.784,18.268,48.54&layer=mapnik&marker=48.164536066774424,17.743565037899195">
-                        </iframe>
+                        <div id="map"></div>
                     </div>
                     <span class="card-title" style="padding-top: 8px; padding-bottom: 8px;">Kontaktné informácie</span>
                     <!-- Desktop and Tablet contact -->
@@ -465,11 +467,10 @@
     a.contact-padding {
         padding: 8px;
     }
-    iframe.map {
+    #map {
         height: 256px;
         width: 100%;
         z-index: 1;
-        border: 0;
     }
     div.loading {
         position: absolute;
@@ -547,6 +548,12 @@
 {% endblock %}
 
 {% block extra_scripts %}
+<script 
+    src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""
+></script>
+<script src="{{ url_for('static', filename='js/Control.FullScreen.js') }}"></script>
 <script>
     function bounce() {
         $('#details').effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000);
@@ -620,6 +627,22 @@
             sellScene,
             contactScene
         ]);
+
+        var geo = [48.164536066774424, 17.743565037899195];
+        var map = L.map('map', {
+            center: geo,
+            zoom: 9,
+            fullscreenControl: true,
+            fullscreenControlOptions: {
+                position: 'topleft'
+            }
+        });
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+        L.marker(geo).addTo(map);
     });
 
     $(window).resize(() => {
@@ -649,10 +672,6 @@
             $('#nav-normal').stop(true, false).fadeOut(500);
             $('#nav-transparent').show();
         }
-    });
-
-    $('.map').on('load', () => {
-        $('#loading-map').css('display', 'none');
     });
 </script>
 <script type="application/ld+json">
