@@ -302,7 +302,7 @@
                 </div>
                 <div class="card-action">
                     <a 
-                        href="https://www.google.com/maps/search/?api=1&query=48.164536066774424,17.743565037899195"
+                        href="https://www.google.com/maps/search/?api=1&query=48.16455,17.74351"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="blue-text text-darken-2"
@@ -628,7 +628,7 @@
             contactScene
         ]);
 
-        var geo = [48.164536066774424, 17.743565037899195];
+        var geo = [48.16455, 17.74351];
         var map = L.map('map', {
             center: geo,
             zoom: 9,
@@ -642,7 +642,12 @@
             subdomains: 'abcd',
             maxZoom: 20
         }).addTo(map);
-        L.marker(geo).addTo(map);
+        var icon = L.icon({
+            iconUrl: '../static/images/pin.png',
+            iconSize: [64, 64],
+            iconAnchor: [32, 64]
+        })
+        L.marker(geo, { icon: icon }).addTo(map);
 
         $('#loading-map').css('display', 'none')
     });
