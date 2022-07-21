@@ -20,7 +20,7 @@
     </head>
     <body>
         <header>
-            <nav id="nav-transparent" class="fixed-top transparent z-depth-0" style="display: none;">
+            <nav id="nav-transparent" class="fixed-top transparent z-depth-0">
                 <div class="nav-wrapper transparent">
                     {% if show_hamburger %}
                     <a
@@ -60,7 +60,6 @@
                                     src="{{ url_for('static', filename='images/bronze_partner_navbar_sm.png') }}"
                                     alt="Eset Bronze Partner"
                                     style="height: 100%; width: auto;"
-                                    
                                 >
                             </picture>
                             <!-- end -->
@@ -68,7 +67,7 @@
                     </a>
                 </div>
             </nav>
-            <nav id="nav-normal" class="fixed-top">
+            <nav id="nav-normal" class="fixed-top" style="display: none;">
                 <div class="nav-wrapper grey darken-3">
                     {% if show_hamburger %}
                     <a
