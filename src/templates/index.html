@@ -643,6 +643,8 @@
             maxZoom: 20
         }).addTo(map);
         L.marker(geo).addTo(map);
+
+        $('#loading-map').css('display', 'none')
     });
 
     $(window).resize(() => {
