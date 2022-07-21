@@ -2,9 +2,11 @@
 <html lang="sk">
     <head>
         <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-        <!--Import Google Icon Font-->
-        <link rel="preload stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" as="style" crossorigin="anonymous">
-        <link rel="preload stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/css/materialize.min.css" as="style" crossorigin="anonymous">
+
+        {% assets "global_css" %}
+        <link rel="preload stylesheet" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
+        {% endassets %}
+
         <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
         
         <meta charset="utf-8">
@@ -151,16 +153,17 @@
         </header>
         {% block main %}{% endblock %}
         {% block footer %}{% endblock %}
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="{{ url_for('static', filename='js/jquery-ui-1.13.2.bounce-only.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/js/materialize.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js" crossorigin="anonymous"></script>
+
+        {% assets "global_js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}" crossorigin="anonymous"></script>
+        {% endassets %}
+
+        {% block extra_scripts %}{% endblock %}
         <script>
             $(document).ready(function(){
                 $('.tooltipped').tooltip();
             });
         </script>
-        {% block extra_scripts %}{% endblock %}
         {% block extra_styles %}{% endblock %}
     </body>
 </html>

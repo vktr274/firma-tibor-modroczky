@@ -2,13 +2,11 @@
 
 {% block head_extra %}
 <meta name="google-site-verification" content="{{google_site_verification}}" />
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-    crossorigin=""
-/>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/Control.FullScreen.css') }}" />
+
+{% assets "index_css" %}
+<link rel="preload stylesheet" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
+{% endassets %}
+
 {% endblock %}
 
 {% block header_extra %}
@@ -565,12 +563,9 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script 
-    src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-    crossorigin=""
-></script>
-<script src="{{ url_for('static', filename='js/Control.FullScreen.js') }}"></script>
+{% assets "index_js" %}
+<script type="text/javascript" src="{{ ASSET_URL }}" crossorigin="anonymous"></script>
+{% endassets %}
 <script>
     function bounce() {
         $('#details').effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000);
