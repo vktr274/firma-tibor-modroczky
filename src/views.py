@@ -5,6 +5,7 @@ import os
 
 page = Blueprint('page', __name__, template_folder='templates')
 
+
 @page.route('/', methods=['GET'])
 @page.route('/index', methods=['GET'])
 def index():
