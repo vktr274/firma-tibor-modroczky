@@ -616,13 +616,13 @@
     contactScene.on("enter", (event) => history.replaceState(null, null, '#kontakt'));
 
     $(document).ready(() => {
-        $('#uvod').animate({
+        $('#uvod').css({
             'height': $(window).outerHeight(),
             'min-height':
                 $('#nav-normal').height() + $('.top-container').height() +
                 $('#details').height()
-        }, 500);
-        $('#p-container').animate({'padding-bottom': $('#details').height()}, 500);
+        });
+        $('#p-container').css('padding-bottom', $('#details').height());
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
         $('.parallax').parallax();
