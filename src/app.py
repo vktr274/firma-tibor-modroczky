@@ -23,4 +23,4 @@ assets.register(bundles)
 
 @ext.register_generator
 def sitemap():
-    yield 'index', {}
+    yield 'page.index', {}
