@@ -18,12 +18,14 @@ bundles = {
         'js/ScrollMagic-2.0.7.min.js',
         'js/leaflet-1.8.0.js',
         'js/Control.FullScreen.js',
+        'js/L.Control.ResetView.min.js',
         output='js/gen/index.js',
         filters='jsmin'
     ),
     'index_css': Bundle(
         'css/leaflet-1.8.0.css',
         'css/Control.FullScreen.css',
+        'css/L.Control.ResetView.min.css',
         output='css/gen/index.css',
         filters='cssmin'
     )
