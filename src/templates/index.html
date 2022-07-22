@@ -41,7 +41,7 @@
 {% endblock %}
 
 {% block main %}
-<main>
+<main style="visibility: hidden;">
     <div id="uvod" style="position: relative; text-align: center;">
         <picture>
             <source
@@ -603,16 +603,16 @@
         triggerElement: '#kontakt'
     });
 
-    introScene.on("enter", (event) => history.replaceState(null, null, '#uvod'));
-    repairElectronicsScene.on("enter", (event) => history.replaceState(null, null, '#oprava-spotrebnej-elektroniky'));
-    repairLaptopsScene.on("enter", (event) => history.replaceState(null, null, '#oprava-notebookov'));
-    repairComputersScene.on("enter", (event) => history.replaceState(null, null, '#oprava-pocitacov'));
-    softwareScene.on("enter", (event) => history.replaceState(null, null, '#instalacia-softveru'));
-    programmingScene.on("enter", (event) => history.replaceState(null, null, '#programovanie-obvodov'));
-    sellScene.on("enter", (event) => history.replaceState(null, null, '#predaj'));
-    contactScene.on("enter", (event) => history.replaceState(null, null, '#kontakt'));
+    introScene.on("enter", function(event) { history.replaceState(null, null, '#uvod') });
+    repairElectronicsScene.on("enter", function(event) { history.replaceState(null, null, '#oprava-spotrebnej-elektroniky') });
+    repairLaptopsScene.on("enter", function(event) { history.replaceState(null, null, '#oprava-notebookov') });
+    repairComputersScene.on("enter", function(event) { history.replaceState(null, null, '#oprava-pocitacov') });
+    softwareScene.on("enter", function(event) { history.replaceState(null, null, '#instalacia-softveru') });
+    programmingScene.on("enter", function(event) { history.replaceState(null, null, '#programovanie-obvodov') });
+    sellScene.on("enter", function(event) { history.replaceState(null, null, '#predaj') });
+    contactScene.on("enter", function(event) { history.replaceState(null, null, '#kontakt') });
 
-    $(document).ready(() => {
+    $(document).ready(function() {
         $('#uvod').css({
             'height': $(window).outerHeight(),
             'min-height':
@@ -620,6 +620,7 @@
                 $('#details').height()
         });
         $('#p-container').css('padding-bottom', $('#details').height());
+        $('main').css('visibility', 'visible');
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
         $('.parallax').parallax();
@@ -673,17 +674,17 @@
         var marker = L.marker(geo, { icon: icon })
             .bindPopup('Šírka: 48.16455<br>Dĺžka: 17.74351')
             .bindTooltip(tooltipText, tooltipOptions);
-        marker.on('popupopen', () => {
+        marker.on('popupopen', function() {
             marker.unbindTooltip();
         });
-        marker.on('popupclose', () => {
+        marker.on('popupclose', function() {
             marker.bindTooltip(tooltipText, tooltipOptions);
         });
         marker.addTo(map);
         $('#loading-map').css('display', 'none');
     });
 
-    $(window).resize(() => {
+    $(window).resize(function() {
         $('#uvod').animate({
             'height': $(window).outerHeight(),
             'min-height':
@@ -692,7 +693,7 @@
         }, 350);
     });
 
-    $(window).scroll(() => {
+    $(window).scroll(function() {
         if ($(this).scrollTop() == 0) {
             $('#fab-mobile-tablet').stop(true, false).fadeOut(500);
             $('#fab-desktop').stop(true, false).fadeOut(500);

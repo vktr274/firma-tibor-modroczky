@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="sk">
     <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
         {% assets "global_css" %}
@@ -159,7 +160,7 @@
 
         {% block extra_scripts %}{% endblock %}
         <script>
-            $(document).ready(function(){
+            $(document).ready(function() {
                 $('.tooltipped').tooltip();
             });
         </script>
