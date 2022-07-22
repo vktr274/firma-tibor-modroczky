@@ -1,12 +1,11 @@
 {% extends "layout.html" %}
 
 {% block head_extra %}
-<meta name="google-site-verification" content="{{google_site_verification}}" />
-
 {% assets "index_css" %}
-<link rel="preload stylesheet" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
+<link rel="preload" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous">
 {% endassets %}
-
+<meta name="google-site-verification" content="{{google_site_verification}}" />
 {% endblock %}
 
 {% block header_extra %}

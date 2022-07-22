@@ -2,12 +2,13 @@
 <html lang="sk">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-
+        
         {% assets "global_css" %}
-        <link rel="preload stylesheet" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
+        <link rel="preload" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous">
         {% endassets %}
-
+        {% block head_extra %}{% endblock %}
+        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
         <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
         
         <meta charset="utf-8">
@@ -16,7 +17,7 @@
         <meta name="keywords" content="opravy, oprava, notebook, počítače, antivírus, NOD32, Eset, reflow, reballing, BGA obvody, inštalácia, servis, elektronika, LCD TV, TV, plasma" />
         <meta name="author" content="Viktor Modroczký, Tibor Modroczky" />
         <meta name="robots" content="index, follow" />
-        {% block head_extra %}{% endblock %}
+        
         <title>{{ title }}</title>
     </head>
     <body>
