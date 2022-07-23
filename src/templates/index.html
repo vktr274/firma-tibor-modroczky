@@ -632,6 +632,7 @@
             }).on("enter", function(event) {
                 history.replaceState(null, null, '#predaj');
                 if (!mapLoaded) {
+                    mapLoaded = true;
                     var geo = [48.16455, 17.74351];
                     var zoom = 9;
                     var map = L.map('map', {
