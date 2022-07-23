@@ -315,62 +315,88 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            
+        <div id="footer-logo-socials" class="row" style="visibility: hidden;">
+            <div id="klamont-logo-col" class="col s6 left-align">
+                <a
+                    href="http://www.klamont.sk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <picture>
+                        <source
+                            type="image/webp"
+                            srcset="{{ url_for('static', filename='images/klamont_logo.webp') }}"
+                        />
+                        <img
+                            loading="lazy"
+                            style="height: 48px; width: auto;"
+                            src="{{ url_for('static', filename='images/klamont_logo.png') }}"
+                            alt="Klamont Logo"
+                        />
+                    </picture>
+                </a>
+            </div>
+            <div id="social-media-col" class="col s6 right-align" style="margin-bottom: 16px;">
+                <div style="display: inline-block;" class="center-align">
+                    <div>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{request.url_root}}">
+                            <img
+                                src="{{ url_for('static', filename='images/facebook.svg') }}"
+                                style="height: 32px; width: auto;"
+                            />
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?text={{request.url_root}}">
+                            <img
+                                src="{{ url_for('static', filename='images/twitter.svg') }}"
+                                style="height: 32px; width: auto; padding-left: 8px;"
+                            />
+                        </a>
+                        <a href="#zdielat" id="share-btn" style="display: none;">
+                            <i
+                                class="material-icons"
+                                style="font-size: 32px; padding-left: 8px;"
+                            >share</i>
+                        </a>
+                    </div>
+                    <div>Zdieľajte nás</div>
+                </div>
+            </div>
+        </div>
+        <blockquote style="border-left: 5px solid #757575; font-size: x-small;">
+            All photographs on this site are used for illustration purposes only and
+            their contents do not endorse any activities provided by Firma Tibor Modroczky.
+            The photographs are licensed under the
             <a
-                href="http://www.klamont.sk/"
+                href="https://www.pexels.com/license/" 
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <picture>
-                    <source
-                        type="image/webp"
-                        srcset="{{ url_for('static', filename='images/klamont_logo.webp') }}"
-                    />
-                    <img
-                        loading="lazy"
-                        style="height: 48px; width: auto;"
-                        src="{{ url_for('static', filename='images/klamont_logo.png') }}"
-                        alt="Klamont Logo"
-                    />
-                </picture>
+                <span style="font-weight: bold;">Pexels License</span>
+            </a> or
+            <a
+                href="https://creativecommons.org/publicdomain/zero/1.0/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span style="font-weight: bold;">CC0 1.0 Universal License</span>
             </a>
-            <blockquote style="border-left: 5px solid #757575;">
-                All photographs on this site are used for illustration purposes only and
-                their contents do not endorse any activities provided by Firma Tibor Modroczky.
-                The photographs are licensed under the
-                <a
-                    href="https://www.pexels.com/license/" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Pexels License</span>
-                </a> or
-                <a
-                    href="https://creativecommons.org/publicdomain/zero/1.0/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">CC0 1.0 Universal License</span>
-                </a>
-                and do not require attribution. SVG icons are from
-                <a
-                    href="https://github.com/FortAwesome/Font-Awesome"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Font Awesome Free</span>
-                </a>
-                and are licensed under the
-                <a
-                    href="https://fontawesome.com/license/free"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">CC BY 4.0 License</span>.
-                </a>
-            </blockquote>
-        </div>
+            and do not require attribution. SVG icons are from
+            <a
+                href="https://github.com/FortAwesome/Font-Awesome"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span style="font-weight: bold;">Font Awesome Free</span>
+            </a>
+            and are licensed under the
+            <a
+                href="https://fontawesome.com/license/free"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span style="font-weight: bold;">CC BY 4.0 License</span>.
+            </a>
+        </blockquote>
     </div>
     <div class="footer-copyright grey darken-3">
         <div class="container center-align">
@@ -688,39 +714,64 @@
                 triggerElement: '#kontakt'
             }).on("enter", function(event) { history.replaceState(null, null, '#kontakt'); })
         ]);
-    });
+        if (navigator.canShare) {
+            $('#share-btn').css('display', 'inline');
+            $('#share-btn').on('click', function() {
+                navigator.share({
+                    text: 'Firma Tibor Modroczky',
+                    url: window.location.protocol + '//' + window.location.host
+                })
+            });
+        }
+        $(window).resize(function() {
+            $('#uvod').animate({
+                'height': $(window).outerHeight(),
+                'min-height':
+                    $('#nav-normal').height() + $('.top-container').height() +
+                    $('#details').height()
+            }, 350);
+        });
 
-    $(window).resize(function() {
-        $('#uvod').animate({
-            'height': $(window).outerHeight(),
-            'min-height':
-                $('#nav-normal').height() + $('.top-container').height() +
-                $('#details').height()
-        }, 350);
-    });
+        var socialMediaCol = $('#social-media-col');
+        var klamontLogoCol = $('#klamont-logo-col');
+        $(window).resize(function() {
+            var width = $(window).width();
+            if (width <= 600){
+                socialMediaCol.removeClass('s6 right-align').addClass('s12 center-align');
+                klamontLogoCol.removeClass('s6 left-align').addClass('s12 center-align');
+                klamontLogoCol.insertAfter(socialMediaCol);
+            }
+            else {
+                socialMediaCol.removeClass('s12 center-align').addClass('s6 right-align');
+                klamontLogoCol.removeClass('s12 center-align').addClass('s6 left-align');
+                socialMediaCol.insertAfter(klamontLogoCol);
+            }
+        }).resize();
+        $('#footer-logo-socials').css('visibility', 'visible');
 
-    var fabMobileTablet = $('#fab-mobile-tablet');
-    var fabDesktop = $('#fab-desktop');
-    var navNormal = $('#nav-normal');
-    var navTransparent = $('#nav-transparent');
-    $(window).scroll(function() {
-        if ($(this).scrollTop() == 0) {
-            fabMobileTablet.stop(true, false).fadeOut(500);
-            fabDesktop.stop(true, false).fadeOut(500);
-        }
-        else {
-            fabMobileTablet.fadeIn(500);
-            fabDesktop.fadeIn(500);
-        }
+        var fabMobileTablet = $('#fab-mobile-tablet');
+        var fabDesktop = $('#fab-desktop');
+        var navNormal = $('#nav-normal');
+        var navTransparent = $('#nav-transparent');
+        $(window).scroll(function() {
+            if ($(this).scrollTop() == 0) {
+                fabMobileTablet.stop(true, false).fadeOut(500);
+                fabDesktop.stop(true, false).fadeOut(500);
+            }
+            else {
+                fabMobileTablet.fadeIn(500);
+                fabDesktop.fadeIn(500);
+            }
 
-        if ($(this).scrollTop() >= $('#uvod').height() - $('nav').height()) {
-            navNormal.fadeIn(500);
-            navTransparent.hide();
-        }
-        else {
-            navNormal.stop(true, false).fadeOut(500);
-            navTransparent.show();
-        }
+            if ($(this).scrollTop() >= $('#uvod').height() - $('nav').height()) {
+                navNormal.fadeIn(500);
+                navTransparent.hide();
+            }
+            else {
+                navNormal.stop(true, false).fadeOut(500);
+                navTransparent.show();
+            }
+        });
     });
 </script>
 <script type="application/ld+json">
@@ -740,7 +791,7 @@
             "latitude": 40.761293,
             "longitude": -73.982294
         },
-        "url": "{{url_for(request.endpoint, _external=True)}}",
+        "url": "{{request.url_root}}",
         "telephone": ["+421905460506", "0317826228"],
         "email": "modroczkyt@gmail.com",
         "logo": "{{url_for('static', filename='logo_large.webp', _external=True)}}",
