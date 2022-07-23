@@ -341,12 +341,14 @@
                     <div>
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{request.url_root}}">
                             <img
+                                loading="lazy"
                                 src="{{ url_for('static', filename='images/facebook.svg') }}"
                                 style="height: 32px; width: auto;"
                             />
                         </a>
                         <a href="https://twitter.com/intent/tweet?text={{request.url_root}}">
                             <img
+                                loading="lazy"
                                 src="{{ url_for('static', filename='images/twitter.svg') }}"
                                 style="height: 32px; width: auto; padding-left: 8px;"
                             />
