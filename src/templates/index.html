@@ -90,11 +90,12 @@
                 <picture>
                     <source
                         type="image/webp"
-                        srcset="{{ url_for('static', filename='images/'+value['image']) }}"
-                    />
+                        class="lazyload"
+                        data-srcset="{{ url_for('static', filename='images/'+value['image']) }}"
+                    >
                     <img
-                        loading="lazy"
-                        src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
+                        class="lazyload"
+                        data-src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
                         alt="{{value.short_name}}"
                     >
                 </picture>
@@ -104,13 +105,13 @@
                 <picture>
                     <source
                         type="image/webp"
-                        srcset="{{ url_for('static', filename='images/'+value['image']) }}"
-                    />
+                        class="lazyload"
+                        data-srcset="{{ url_for('static', filename='images/'+value['image']) }}"
+                    >
                     <img
-                        loading="lazy"
-                        src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
+                        class="static-parallax lazyload"
+                        data-src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
                         alt="{{value.short_name}}"
-                        class="static-parallax"
                     >
                 </picture>
             </div>
@@ -321,12 +322,13 @@
                 <picture>
                     <source
                         type="image/webp"
-                        srcset="{{ url_for('static', filename='images/klamont_logo.webp') }}"
+                        class="lazyload"
+                        data-srcset="{{ url_for('static', filename='images/klamont_logo.webp') }}"
                     />
                     <img
                         style="height: 48px; width: auto;"
-                        src="{{ url_for('static', filename='images/klamont_logo.png') }}"
-                        loading="lazy"
+                        class="lazyload"
+                        data-src="{{ url_for('static', filename='images/klamont_logo.png') }}"
                         alt="Klamont Logo"
                     />
                 </picture>
