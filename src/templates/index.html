@@ -93,6 +93,7 @@
                         srcset="{{ url_for('static', filename='images/'+value['image']) }}"
                     />
                     <img
+                        loading="lazy"
                         src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
                         alt="{{value.short_name}}"
                     >
@@ -106,6 +107,7 @@
                         srcset="{{ url_for('static', filename='images/'+value['image']) }}"
                     />
                     <img
+                        loading="lazy"
                         src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
                         alt="{{value.short_name}}"
                         class="static-parallax"
@@ -324,6 +326,7 @@
                     <img
                         style="height: 48px; width: auto;"
                         src="{{ url_for('static', filename='images/klamont_logo.png') }}"
+                        loading="lazy"
                         alt="Klamont Logo"
                     />
                 </picture>
