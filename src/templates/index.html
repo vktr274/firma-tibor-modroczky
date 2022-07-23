@@ -596,86 +596,90 @@
             details.effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000);
         };
         bounce();
+        var mapLoaded = false;
 
         new ScrollMagic.Controller().addScene([
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#uvod'
-            }).on("enter", function(event) { history.replaceState(null, null, '#uvod') }),
+            }).on("enter", function(event) { history.replaceState(null, null, '#uvod'); }),
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#oprava-spotrebnej-elektroniky'
-            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-spotrebnej-elektroniky') }),
+            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-spotrebnej-elektroniky'); }),
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#oprava-notebookov'
-            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-notebookov') }),
+            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-notebookov'); }),
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#oprava-pocitacov'
-            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-pocitacov') }),
+            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-pocitacov'); }),
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#instalacia-softveru'
-            }).on("enter", function(event) { history.replaceState(null, null, '#instalacia-softveru') }),
+            }).on("enter", function(event) { history.replaceState(null, null, '#instalacia-softveru'); }),
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#programovanie-obvodov'
-            }).on("enter", function(event) { history.replaceState(null, null, '#programovanie-obvodov') }),
+            }).on("enter", function(event) { history.replaceState(null, null, '#programovanie-obvodov'); }),
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#predaj'
-            }).on("enter", function(event) { history.replaceState(null, null, '#predaj') }),
+            }).on("enter", function(event) {
+                history.replaceState(null, null, '#predaj');
+                if (!mapLoaded) {
+                    var geo = [48.16455, 17.74351];
+                    var zoom = 9;
+                    var map = L.map('map', {
+                        center: geo,
+                        zoom: zoom,
+                        fullscreenControl: true,
+                        fullscreenControlOptions: {
+                            position: 'topright'
+                        }
+                    });
+                    L.control.resetView({
+                        position: "topleft",
+                        title: "Reset view",
+                        latlng: L.latLng(geo),
+                        zoom: zoom
+                    }).addTo(map);
+                    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                        subdomains: 'abcd',
+                        maxZoom: 20
+                    }).addTo(map);
+                    var tooltipText = 'Zobraziť zemepisnú šírku a dĺžku';
+                    var tooltipOptions = {
+                        direction: 'top',
+                        opacity: 1
+                    };
+                    var marker = L.marker(geo, {
+                        icon: L.icon({
+                            iconUrl: '../static/images/pin.png',
+                            iconSize: [64, 64],
+                            iconAnchor: [32, 64],
+                            popupAnchor: [0, -64],
+                            tooltipAnchor: [0, -68]
+                        })
+                    })  .bindPopup('Šírka: 48.16455<br>Dĺžka: 17.74351')
+                        .bindTooltip(tooltipText, tooltipOptions);
+                    marker.on('popupopen', function() {
+                        marker.unbindTooltip();
+                    });
+                    marker.on('popupclose', function() {
+                        marker.bindTooltip(tooltipText, tooltipOptions);
+                    });
+                    marker.addTo(map);
+                    $('#loading-map').css('display', 'none');
+                }
+            }),
             new ScrollMagic.Scene({
                 duration: '100%',
                 triggerElement: '#kontakt'
-            }).on("enter", function(event) { history.replaceState(null, null, '#kontakt') })
+            }).on("enter", function(event) { history.replaceState(null, null, '#kontakt'); })
         ]);
-
-        var geo = [48.16455, 17.74351];
-        var zoom = 9;
-        var map = L.map('map', {
-            center: geo,
-            zoom: zoom,
-            fullscreenControl: true,
-            fullscreenControlOptions: {
-                position: 'topright'
-            }
-        });
-        L.control.resetView({
-            position: "topleft",
-            title: "Reset view",
-            latlng: L.latLng(geo),
-            zoom: zoom
-        }).addTo(map);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
-            maxZoom: 20
-        }).addTo(map);
-        var tooltipText = 'Zobraziť zemepisnú šírku a dĺžku';
-        var tooltipOptions = {
-            direction: 'top',
-            opacity: 1
-        };
-        var marker = L.marker(geo, {
-            icon: L.icon({
-                iconUrl: '../static/images/pin.png',
-                iconSize: [64, 64],
-                iconAnchor: [32, 64],
-                popupAnchor: [0, -64],
-                tooltipAnchor: [0, -68]
-            })
-        })  .bindPopup('Šírka: 48.16455<br>Dĺžka: 17.74351')
-            .bindTooltip(tooltipText, tooltipOptions);
-        marker.on('popupopen', function() {
-            marker.unbindTooltip();
-        });
-        marker.on('popupclose', function() {
-            marker.bindTooltip(tooltipText, tooltipOptions);
-        });
-        marker.addTo(map);
-        $('#loading-map').css('display', 'none');
     });
 
     $(window).resize(function() {
