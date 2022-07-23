@@ -19,7 +19,6 @@ bundles = {
         'js/leaflet-1.8.0.js',
         'js/Control.FullScreen.js',
         'js/L.Control.ResetView.min.js',
-        'js/lazysizes.min.js',
         output='js/gen/index.js',
         filters='jsmin'
     ),
