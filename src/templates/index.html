@@ -9,7 +9,9 @@
 <link rel="preload" href="{{ url_for('static', filename='images/logo_center.webp') }}" as="image">
 <link rel="preload" href="{{ url_for('static', filename='images/bronze_partner_navbar.webp') }}" as="image">
 <link rel="preload" href="{{ url_for('static', filename='images/bronze_partner_navbar_sm.webp') }}" as="image">
+
 <meta name="google-site-verification" content="{{google_site_verification}}" />
+
 <meta property="og:url" content="{{request.url_root}}" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Firma Tibor Modroczky" />
@@ -17,6 +19,12 @@
 <meta property="og:description" content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné." />
 <meta property="og:image" content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}" />
 <meta property="og:image:alt" content="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky" />
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{request.url_root}}">
+<meta property="twitter:title" content="Servis výpočtovej techniky a spotrebnej elektroniky">
+<meta property="twitter:description" content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné.">
+<meta property="twitter:image" content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}">
 {% endblock %}
 
 {% block header_extra %}
