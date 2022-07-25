@@ -6,24 +6,25 @@ Hosted at [PythonAnywhere](https://eu.pythonanywhere.com/) on [modroczky.eu.pyth
 
 ### Python
 
-Flask 2.1.0\
-Flask-Sitemap 0.4.0\
-Flask-Mobility 1.1.0\
-Flask-Minify 0.39\
-Flask-Assets 2.0\
-jsmin 3.0.1\
-cssmin 0.2.0\
-Python-Dotenv 0.19.1\
+Flask 2.1.0 - [repo](https://github.com/pallets/flask), [docs](https://flask.palletsprojects.com/)\
+Flask-Sitemap 0.4.0 - [repo](https://github.com/inveniosoftware/flask-sitemap), [docs](http://flask-sitemap.readthedocs.io/)\
+Flask-Mobility 1.1.0 - [repo](https://github.com/rehandalal/flask-mobility), [docs](http://flask-mobility.readthedocs.org/)\
+Flask-Minify 0.39 - [repo](https://github.com/mrf345/flask_minify)\
+Flask-Assets 2.0 - [repo](https://github.com/miracle2k/flask-assets), [docs](https://flask-assets.readthedocs.io/)\
+jsmin 3.0.1 - [repo](https://github.com/tikitu/jsmin)\
+cssmin 0.2.0 - [repo](https://github.com/zacharyvoase/cssmin)\
+Python-Dotenv 0.19.1 - [repo](https://github.com/theskumar/python-dotenv)
 
 ### CSS and JavaScript
 
-Materialize 1.1.0 which is an unofficial fork of Materialize 1.0.0\
-jQuery 3.6.0 and jQuery UI 1.13.2\
-ScrollMagic 2.0.7\
-Leaflet 1.8.0 and Leaflet plug-ins - Leaflet Fullscreen 2.4.0 and Leaflet ResetView 1.1.1.
+Materialize 1.1.0 - [repo](https://github.com/materializecss/materialize), [docs](https://materializecss.github.io/) - fork of Materialize 1.0.0\
+jQuery 3.6.0 and jQuery UI 1.13.2 - [repo](https://github.com/jquery/jquery), [docs](https://api.jquery.com/)\
+ScrollMagic 2.0.7 - [repo](https://github.com/janpaepke/ScrollMagic), [docs](http://scrollmagic.io/docs/)\
+Leaflet 1.8.0 - [repo](https://github.com/Leaflet/Leaflet), [docs](https://leafletjs.com/reference.html)\
+Leaflet plug-ins: Leaflet Fullscreen 2.4.0 - [repo](https://github.com/Leaflet/Leaflet.fullscreen) and Leaflet ResetView 1.1.1 - [repo](https://github.com/drustack/Leaflet.ResetView).
 
 ## License
 
 The code is licensed under the [MIT License](LICENSE).\
-Firma Tibor Modroczky logo rights are reserved.\
+[Firma Tibor Modroczky](https://modroczky.eu.pythonanywhere.com/) logo rights are reserved.\
 Leaflet Fullscreen 2.4.0 and Leaflet ResetView 1.1.1 use [Font Awesome Free](https://github.com/FortAwesome/Font-Awesome) SVG icons licensed under [CC BY 4.0](https://fontawesome.com/license/free).
