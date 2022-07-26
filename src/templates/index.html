@@ -142,17 +142,6 @@
                     <ul>
                         {% for item in value['items'] %}
                         <li>
-                            <picture>
-                                <source
-                                    type="image/webp"
-                                    srcset="{{ url_for('static', filename='images/circle.webp') }}"
-                                />
-                                <img
-                                    class="responsive-marker"
-                                    src="{{ url_for('static', filename='images/circle.png') }}"
-                                    alt="marker"
-                                />
-                            </picture>
                             <span class="action-item">{{ item }}</span>
                         </li>
                         {% endfor %}
@@ -505,9 +494,19 @@
         height: 10px;
         width: 10px;
     }
+    span.action-item::before {
+        --marker-size: .45em;
+        content: "";
+        background-image: url('../static/images/circle.svg');
+        background-size: var(--marker-size) var(--marker-size);
+        width: var(--marker-size);
+        height: var(--marker-size);
+        margin-right: 1em;
+        margin-bottom: 0.05em;
+        display: inline-block;
+    }
     span.action-item {
-        padding-left: 8px; 
-        font-size: 115%;
+        font-size: 110%;
     }
     p.responsive-top-text {
         overflow-wrap: break-word;
@@ -581,8 +580,7 @@
             width: 8px;
         }
         span.action-item {
-            padding-left: 8px; 
-            font-size: 110%;
+            font-size: 105%;
         }
         .parallax-container {
             height: 300px;
