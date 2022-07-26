@@ -22,7 +22,7 @@
     </head>
     <body>
         <header>
-            <nav id="nav-transparent" class="fixed-top transparent z-depth-0" style="display: none;">
+            <nav id="nav-transparent" class="fixed-top transparent z-depth-0" style="display: none; z-index: 2;">
                 <div class="nav-wrapper transparent">
                     {% if show_hamburger %}
                     <a
@@ -69,7 +69,7 @@
                     </a>
                 </div>
             </nav>
-            <nav id="nav-normal" class="fixed-top" style="display: none;">
+            <nav id="nav-normal" class="fixed-top" style="display: none; z-index: 4">
                 <div class="nav-wrapper grey darken-3">
                     {% if show_hamburger %}
                     <a
@@ -177,6 +177,6 @@
         text-decoration: none;
     }
     nav.fixed-top {
-        position: fixed; top: 0px; z-index: 2;
+        position: fixed; top: 0px;
     }
 </style>
