@@ -4,6 +4,21 @@ intro = [
     "Programovanie pamätí a mikroprocesorov."
 ]
 
+highlights = {
+    "Rýchlosť": {
+        "icon": "speedometer.svg",
+        "description": "Naša prevádzka je profesionálne vybavená pre efektívne a rýchle opravy."
+    },
+    "Skúsenosť": {
+        "icon": "list.svg",
+        "description": "Máme za sebou tisícky opráv od začiatku svojho pôsobenia."
+    },
+    "Eset Bronze Partner": {
+        "icon": "contract.svg",
+        "description": "Sme súčasťou partnerského programu spoločnosti Eset pre predaj jej antivírusu."
+    }
+}
+
 actions = {
     "Oprava spotrebnej elektroniky všetkých značiek": {
         "image": "repair.webp",

@@ -94,12 +94,36 @@
                 {% endfor %}
             </div>
         </div>
-        <a href="#oprava-spotrebnej-elektroniky" class="top-icon-container" style="z-index: 3;">
+        <a href="#podrobnosti" class="top-icon-container" style="z-index: 3;">
             <div id="details">
                 <span class="white-text" style="display: block;">Podrobnosti</span>
                 <i class="white-text material-icons responsive-top-icon">expand_more</i>
             </div>
         </a>
+    </div>
+    <div id="podrobnosti" class="section grey lighten-5 z-depth-5 center-align">
+        <div class="row container">
+            <p class="responsive-header" style="margin-bottom: 0;">
+                Váš spoľahlivý a férový servis so skúsenosťami od roku 1994.
+            </p>
+        </div>
+        <div class="flex-container">
+            {% for key, value in highlights.items() %}
+            <div class="flex-child">
+                <img
+                    loading="lazy"
+                    src="{{ url_for('static', filename='images/'+value.icon) }}"
+                    alt="{{key}}"
+                    class="about-us-icon"
+                >
+                <p class="medium-text" style="font-weight: bold;">{{ key }}</p>
+                <div class="divider"></div>
+                <p class="normal-text">
+                    {{ value.description }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
     </div>
     {% for key, value in actions.items() %}
     <div id="{{ value.anchor }}">
@@ -135,14 +159,14 @@
             </div>
             <!-- end -->
         </div>
-        <div class="section white z-depth-5">
+        <div class="section grey lighten-5 z-depth-5">
             <div class="row container">
-                <h2 class="header responsive-h2">{{ key }}</h2>
-                <p class="grey-text text-darken-3 lighten-3">
+                <h2 class="header responsive-header">{{ key }}</h2>
+                <p>
                     <ul>
                         {% for item in value['items'] %}
                         <li>
-                            <span class="action-item">{{ item }}</span>
+                            <span class="normal-text with-marker">{{ item }}</span>
                         </li>
                         {% endfor %}
                     </ul>
@@ -499,11 +523,16 @@
     #nav-transparent {
         display: block !important;
     }
-    img.responsive-marker {
-        height: 10px;
-        width: 10px;
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    span.action-item::before {
+    .flex-child {
+        width: 24em;
+        margin: 2em;
+    }
+    .with-marker::before {
         --marker-size: .45em;
         content: "";
         background-image: url('../static/images/circle.svg');
@@ -511,37 +540,44 @@
         width: var(--marker-size);
         height: var(--marker-size);
         margin-right: 1em;
-        margin-bottom: 0.05em;
+        vertical-align: middle;
         display: inline-block;
     }
-    span.action-item {
+    .medium-text {
+        font-size: 130%;
+    }
+    .normal-text {
         font-size: 110%;
     }
-    p.responsive-top-text {
+    .about-us-icon {
+        height: 64px;
+        width: auto;
+    }
+    .responsive-top-text {
         overflow-wrap: break-word;
         font-weight: lighter;
         font-size: 200%;
     }
-    div.top-container {
+    .top-container {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    i.responsive-top-icon {
+    .responsive-top-icon {
         font-size: 32px;
     }
-    a.top-icon-container {
+    .top-icon-container {
         position: absolute;
         bottom: 2%;
         left: 50%;
         transform: translate(-50%,-2%);
     }
-    img.intro-logo {
+    .intro-logo {
         width: 520px;
         height: auto;
     }
-    a.contact-padding {
+    .contact-padding {
         padding: 8px;
     }
     #map {
@@ -549,13 +585,13 @@
         width: 100%;
         z-index: 1;
     }
-    div.loading {
+    .loading {
         position: absolute;
         top: 50%; 
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    h2.responsive-h2 {
+    .responsive-header {
         font-weight: lighter;
         font-size: 340%;
         margin-top: 20px;
@@ -584,55 +620,60 @@
         nav {
             width: 100%;
         }
-        img.responsive-marker {
-            height: 8px;
-            width: 8px;
+        .about-us-icon {
+            height: 56px;
         }
-        span.action-item {
+        .medium-text {
+            font-size: 125%;
+        }
+        .normal-text {
             font-size: 105%;
         }
         .parallax-container {
             height: 300px;
         }
-        img.static-parallax {
+        .static-parallax {
             height: 300px;
             width: 100%;
             object-fit: cover;
         }
-        p.responsive-top-text {
+        .responsive-top-text {
             font-size: 175%;
         }
-        i.responsive-top-icon {
+        .responsive-top-icon {
             font-size: 24px;
         }
-        img.intro-logo {
+        .intro-logo {
             width: 420px;
         }
-        h2.responsive-h2 {
+        .responsive-header {
             font-size: 300%;
             margin-top: 18px;
         }
     }
     @media only screen and (max-width : 600px) {
-        p.responsive-top-text {
+        .about-us-icon {
+            height: 48px;
+        }
+        .responsive-top-text {
             font-size: 140%;
         }
-        img.intro-logo {
+        .intro-logo {
             width: 320px;
         }
-        h2.responsive-h2 {
+        .responsive-header {
             font-size: 230%;
             margin-top: 16px;
         }
     }
     @media only screen and (max-width : 400px) {
-        p.responsive-top-text {
+        .responsive-top-text {
             font-size: 120%;
         }
-        img.intro-logo {
+        .intro-logo {
             width: 220px;
         }
-        h2.responsive-h2 {
+        .responsive-header {
             font-size: 200%;
             margin-top: 14px;
         }
