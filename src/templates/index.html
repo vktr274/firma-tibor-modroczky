@@ -97,7 +97,7 @@
         <a href="#podrobnosti" class="top-icon-container" style="z-index: 3;">
             <div id="details">
                 <span class="white-text" style="display: block;">Podrobnosti</span>
-                <i class="white-text material-icons responsive-top-icon">expand_more</i>
+                <i class="white-text material-icons responsive-icon">expand_more</i>
             </div>
         </a>
     </div>
@@ -564,7 +564,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    .responsive-top-icon {
+    .responsive-icon {
         font-size: 32px;
     }
     .top-icon-container {
@@ -640,7 +640,7 @@
         .responsive-top-text {
             font-size: 175%;
         }
-        .responsive-top-icon {
+        .responsive-icon {
             font-size: 24px;
         }
         .intro-logo {
@@ -699,7 +699,7 @@
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
         $('.parallax').parallax();
-        
+
         var details = $('#details');
         function bounce() {
             details.effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000);
