@@ -805,7 +805,7 @@
             $(this).css('display', 'none');
             $('#gallery-close-btn').css('display', 'inline-block');
             
-            $('.gallery-container').stop().slideDown({
+            $('.gallery-container').stop(true, false).slideDown({
                 duration: 500,
                 complete: function() {
                     var carousel = $('.carousel');
@@ -820,7 +820,7 @@
         $('#gallery-close-btn').on('click', function() {
             $(this).css('display', 'none');
             $('#gallery-open-btn').css('display', 'inline-block');
-            $('.gallery-container').stop().slideUp(500, function() {
+            $('.gallery-container').stop(true, false).slideUp(500, function() {
                 $('#gallery-interface').css('opacity', 0);
             });
         });
