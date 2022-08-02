@@ -805,16 +805,13 @@
             $(this).css('display', 'none');
             $('#gallery-close-btn').css('display', 'inline-block');
             
-            $('.gallery-container').stop(true, false).slideDown({
-                duration: 500,
-                complete: function() {
-                    var carousel = $('.carousel');
-                    carousel.carousel();
-                    carousel.ready(function() {
-                        $('#gallery-interface').animate({'opacity': 1}, 350);
-                    });
+            $('.gallery-container').stop(true, false).slideDown(
+                500,
+                function() {
+                    $('.carousel').carousel();
+                    $('#gallery-interface').animate({'opacity': 1}, 500);
                 },
-            });
+            );
         });
 
         $('#gallery-close-btn').on('click', function() {
