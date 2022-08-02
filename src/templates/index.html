@@ -124,6 +124,51 @@
             </div>
             {% endfor %}
         </div>
+        <a id="gallery-open-btn" href="#open" style="display: inline-block">
+            <div>
+                <span class="black-text" style="display: block;">Rozbaliť galériu výbavy</span>
+                <i class="black-text material-icons responsive-icon">expand_more</i>
+            </div>
+        </a>
+        <a id="gallery-close-btn" href="#close" style="display: none;">
+            <div>
+                <span class="black-text" style="display: block;">Skryť galériu výbavy</span>
+                <i class="black-text material-icons responsive-icon">expand_less</i>
+            </div>
+        </a>
+        <div class="gallery-container" style="display: none;">
+            <div id="gallery-interface" style="opacity: 0; position: relative;">
+                <div id="gallery" class="carousel gallery-height">
+                    {% for key, value in gallery.items() %}
+                    <div class="carousel-item" style="height: max-content; width: max-content;">
+                        <p class="small-text" style="font-weight: 550; margin-top: 0;">{{ key }}</p>
+                        <picture>
+                            <source
+                                type="image/webp"
+                                srcset="{{ url_for('static', filename='images/'+value['image']) }}"
+                            >
+                            <img
+                                loading="lazy"
+                                src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
+                                alt="{{key}}"
+                                class="gallery-img-width"
+                            >
+                        </picture>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a href="#previous" class="btn-floating blue darken-2 navigate-left">
+                    <i class="material-icons">
+                        navigate_before
+                    </i>
+                </a>
+                <a href="#next" class="btn-floating blue darken-2 navigate-right">
+                    <i class="material-icons">
+                        navigate_next
+                    </i>
+                </a>
+            </div>
+        </div>
     </div>
     {% for key, value in actions.items() %}
     <div id="{{ value.anchor }}">
@@ -527,6 +572,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        margin-bottom: 16px;
     }
     .flex-child {
         width: 24em;
@@ -542,6 +588,9 @@
         margin-right: 1em;
         vertical-align: middle;
         display: inline-block;
+    }
+    .small-text {
+        font-size: 100%;
     }
     .medium-text {
         font-size: 130%;
@@ -596,6 +645,24 @@
         font-size: 340%;
         margin-top: 20px;
     }
+    .navigate-right, .navigate-left {
+        position: absolute;
+        top: 50%;
+        margin: 16px;
+    }
+    .navigate-right {
+        right: 16px;
+    }
+    .navigate-left {
+        left: 16px;
+    }
+    .gallery-img-width {
+        width: 520px;
+        height: auto;
+    }
+    .gallery-height {
+        height: 500px;
+    }
     .leaflet-tooltip {
         background-color: #323232;
         color: white;
@@ -620,8 +687,17 @@
         nav {
             width: 100%;
         }
+        .gallery-img-width {
+            width: 420px;
+        }
+        .gallery-height {
+            height: 400px;
+        }
         .about-us-icon {
             height: 56px;
+        }
+        .small-text {
+            font-size: 95%;
         }
         .medium-text {
             font-size: 125%;
@@ -652,6 +728,16 @@
         }
     }
     @media only screen and (max-width : 600px) {
+        .navigate-right, .navigate-left {
+            position: static;
+            margin: 0 4px;
+        }
+        .gallery-img-width {
+            width: 320px;
+        }
+        .gallery-height {
+            height: 300px;
+        }
         .about-us-icon {
             height: 48px;
         }
@@ -665,8 +751,23 @@
             font-size: 230%;
             margin-top: 16px;
         }
+        .small-text {
+            font-size: 90%;
+        }
     }
     @media only screen and (max-width : 400px) {
+        .navigate-right, .navigate-left {
+            margin: 4px 4px 0;
+        }
+        .gallery-img-width {
+            width: 220px;
+        }
+        .gallery-height {
+            height: 200px;
+        }
+        .gallery-container {
+            margin-top: 16px;
+        }
         .responsive-top-text {
             font-size: 120%;
         }
@@ -699,6 +800,38 @@
         $('.sidenav').sidenav();
         $('.fixed-action-btn').floatingActionButton();
         $('.parallax').parallax();
+        
+        $('#gallery-open-btn').on('click', function() {
+            $(this).css('display', 'none');
+            $('#gallery-close-btn').css('display', 'inline-block');
+            
+            $('.gallery-container').stop().slideDown({
+                duration: 500,
+                complete: function() {
+                    var carousel = $('.carousel');
+                    carousel.carousel();
+                    carousel.ready(function() {
+                        $('#gallery-interface').animate({'opacity': 1}, 350);
+                    });
+                },
+            });
+        });
+
+        $('#gallery-close-btn').on('click', function() {
+            $(this).css('display', 'none');
+            $('#gallery-open-btn').css('display', 'inline-block');
+            $('.gallery-container').stop().slideUp(500, function() {
+                $('#gallery-interface').css('opacity', 0);
+            });
+        });
+
+        $('.navigate-left').on('click', function() {
+            $('#gallery').carousel('prev');
+        })
+
+        $('.navigate-right').on('click', function() {
+            $('#gallery').carousel('next');
+        })
 
         var details = $('#details');
         function bounce() {
@@ -806,6 +939,7 @@
                     $('#nav-normal').height() + $('.top-container').height() +
                     $('#details').height()
             }, 350);
+            $('.carousel').carousel();
         });
 
         var socialMediaCol = $('#social-media-col');

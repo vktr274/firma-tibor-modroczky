@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import render_template, send_from_directory
-from content import actions, intro, highlights
+from content import actions, intro, highlights, gallery
 import os
 
 page = Blueprint('page', __name__, template_folder='templates')
@@ -17,7 +17,8 @@ def index():
         google_site_verification=os.environ.get('GOOGLE_SITE_VERIFICATION'),
         actions=actions,
         intro=intro,
-        highlights=highlights
+        highlights=highlights,
+        gallery=gallery
     )
 
 

@@ -19,6 +19,29 @@ highlights = {
     }
 }
 
+gallery = {
+    "Infračervený spájkovací systém": {
+        "image": "bga.webp",
+        "image_fallback": "bga.jpg"
+    },
+    "Teplovzdušná spájkovacia súprava": {
+        "image": "heater.webp",
+        "image_fallback": "heater.jpg"
+    },
+    "Osciloskop a generátor priebehov": {
+        "image": "oscil.webp",
+        "image_fallback": "oscil.jpg"
+    },
+    "Programátory obvodov": {
+        "image": "programmer.webp",
+        "image_fallback": "programmer.jpg"
+    },
+    "Tester elektróniek": {
+        "image": "tester.webp",
+        "image_fallback": "tester.jpg"
+    }
+}
+
 actions = {
     "Oprava spotrebnej elektroniky všetkých značiek": {
         "image": "repair.webp",
