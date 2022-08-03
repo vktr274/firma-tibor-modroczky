@@ -146,7 +146,6 @@
                                 srcset="{{ url_for('static', filename='images/'+value['image']) }}"
                             >
                             <img
-                                loading="lazy"
                                 src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
                                 alt="{{key}}"
                                 class="gallery-img-width"
