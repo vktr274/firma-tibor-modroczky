@@ -204,15 +204,13 @@
         <div class="section grey lighten-4 z-depth-5">
             <div class="row container">
                 <h2 class="header responsive-header">{{ key }}</h2>
-                <p>
-                    <ul>
-                        {% for item in value['items'] %}
-                        <li>
-                            <span class="normal-text with-marker">{{ item }}</span>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </p>
+                <ul>
+                    {% for item in value['items'] %}
+                    <li>
+                        <span class="normal-text with-marker">{{ item }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
