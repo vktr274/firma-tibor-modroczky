@@ -1,6 +1,9 @@
 # Flask Web Application for Firma Tibor Modroczky
 
-Hosted at [PythonAnywhere](https://eu.pythonanywhere.com/) on [modroczky.eu.pythonanywhere.com](https://modroczky.eu.pythonanywhere.com/).
+[![tm_logo](src/static/images/logo_large.webp)](https://modroczky.eu.pythonanywhere.com/)©
+
+Firma Tibor Modroczky is an electronics repair shop based in Slovakia.\
+The Web Application is hosted at [PythonAnywhere](https://eu.pythonanywhere.com/) on [modroczky.eu.pythonanywhere.com](https://modroczky.eu.pythonanywhere.com/). It was built with responsiveness and cross-browser compatibility in mind. It was tested and works flawlessly in Chrome, Firefox, Opera, Edge and Brave. It has some flaws in Internet Explorer which is an unsupported browser.
 
 ## Used Frameworks and Libraries
 
@@ -26,5 +29,4 @@ Leaflet plug-ins - Leaflet Fullscreen 2.4.0 ([repo](https://github.com/Leaflet/L
 ## License
 
 The code is licensed under the [MIT License](LICENSE).\
-[Firma Tibor Modroczky](https://modroczky.eu.pythonanywhere.com/) logo rights are reserved.\
-Leaflet Fullscreen 2.4.0 and Leaflet ResetView 1.1.1 use [Font Awesome Free](https://github.com/FortAwesome/Font-Awesome) SVG icons licensed under [CC BY 4.0](https://fontawesome.com/license/free).
+© [Firma Tibor Modroczky](https://modroczky.eu.pythonanywhere.com/) logo rights are reserved.
