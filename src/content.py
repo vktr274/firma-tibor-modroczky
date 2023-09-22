@@ -1,45 +1,42 @@
 intro = [
     "Oprava a predaj elektroniky.",
     "Inštalácia softvéru a údržba počítačov.",
-    "Programovanie pamätí a mikroprocesorov."
+    "Programovanie pamätí a mikroprocesorov.",
 ]
 
 highlights = {
     "Rýchlosť": {
         "icon": "speedometer.svg",
-        "description": "Naša prevádzka je profesionálne vybavená pre efektívne a rýchle opravy."
+        "description": "Naša prevádzka je profesionálne vybavená pre efektívne a rýchle opravy.",
     },
     "Skúsenosť": {
         "icon": "list.svg",
-        "description": "Máme za sebou tisícky opráv od začiatku svojho pôsobenia."
+        "description": "Máme za sebou tisícky opráv od začiatku svojho pôsobenia.",
     },
     "Eset Bronze Partner": {
         "icon": "contract.svg",
-        "description": "Sme súčasťou partnerského programu spoločnosti Eset pre predaj jej antivírusu."
-    }
+        "description": "Sme súčasťou partnerského programu spoločnosti Eset pre predaj jej antivírusu.",
+    },
 }
 
 gallery = {
     "Infračervený spájkovací systém": {
         "image": "bga.webp",
-        "image_fallback": "bga.jpg"
+        "image_fallback": "bga.jpg",
     },
     "Teplovzdušná spájkovacia súprava": {
         "image": "heater.webp",
-        "image_fallback": "heater.jpg"
+        "image_fallback": "heater.jpg",
     },
     "Osciloskop a generátor priebehov": {
         "image": "oscil.webp",
-        "image_fallback": "oscil.jpg"
+        "image_fallback": "oscil.jpg",
     },
     "Programátory obvodov": {
         "image": "programmer.webp",
-        "image_fallback": "programmer.jpg"
+        "image_fallback": "programmer.jpg",
     },
-    "Tester elektróniek": {
-        "image": "tester.webp",
-        "image_fallback": "tester.jpg"
-    }
+    "Tester elektróniek": {"image": "tester.webp", "image_fallback": "tester.jpg"},
 }
 
 actions = {
@@ -54,8 +51,8 @@ actions = {
             "oprava satelitných prijímačov",
             "oprava monitorov",
             "oprava DVD prehrávačov a video zariadení",
-            "oprava audio zariadení"
-        ]
+            "oprava audio zariadení",
+        ],
     },
     "Oprava notebookov": {
         "image": "laptop.webp",
@@ -75,8 +72,8 @@ actions = {
             "výmena alebo rozšírenie RAM",
             "výmena HDD a SSD",
             "diagnostika",
-            "zálohovanie a obnovenie dát"
-        ]
+            "zálohovanie a obnovenie dát",
+        ],
     },
     "Oprava počítačov": {
         "image": "pc.webp",
@@ -88,8 +85,8 @@ actions = {
             "oprava základných dosiek",
             "oprava a výmena zdrojov",
             "výmena a rozšírenie komponentov",
-            "obnova poškodeného BIOS-u po neúspešnej aktualizácii"
-        ]
+            "obnova poškodeného BIOS-u po neúspešnej aktualizácii",
+        ],
     },
     "Inštalácia softvéru": {
         "image": "sw.webp",
@@ -104,8 +101,8 @@ actions = {
             "odvírenie systému",
             "záloha a obnova dát",
             "prenesenie systému a súborov na nový HDD alebo SSD",
-            "diagnostika a údržba počítačov a notebookov"
-        ]
+            "diagnostika a údržba počítačov a notebookov",
+        ],
     },
     "Programovanie obvodov": {
         "image": "chip.webp",
@@ -116,8 +113,8 @@ actions = {
         "items": [
             "programovanie pamätí EPROM, EEPROM, Flash EPROM a sériových E(E)PROM rôznych typov",
             "programovanie mikroprocesorov Atmel, PIC atď...",
-            "ponúkame aj možnosť odpájania a pripájania SMD obvodov"
-        ]
+            "ponúkame aj možnosť odpájania a pripájania SMD obvodov",
+        ],
     },
     "Predaj": {
         "image": "build.webp",
@@ -131,7 +128,7 @@ actions = {
             "zostavenie a predaj počítačov podľa požiadaviek zákazníka",
             "dodanie náhradných zdrojov k notebookom rôznych značiek",
             "dodanie náhradných a originálnych diaľkových ovládačov pre TV, DVD, SAT",
-            "na požiadanie dodávame aj iný tovar ako elektronické súčiastky, moduly, meniče, drobné náradie pre elektroniku, lupy, USB mikroskopy, spájkovačky, cín atď..."
-        ]
-    }
+            "na požiadanie dodávame aj iný tovar ako elektronické súčiastky, moduly, meniče, drobné náradie pre elektroniku, lupy, USB mikroskopy, spájkovačky, cín atď...",
+        ],
+    },
 }

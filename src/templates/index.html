@@ -1,1003 +1,1037 @@
-{% extends "layout.html" %}
-
-{% block head_extra %}
-{% assets "index_css" %}
-<link rel="preload" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
-<link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous">
+{% extends "layout.html" %} {% block head_extra %} {% assets "index_css" %}
+<link rel="preload" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous" />
+<link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous" />
 {% endassets %}
-<link rel="preload" href="{{ url_for('static', filename='images/top.webp') }}" as="image">
-<link rel="preload" href="{{ url_for('static', filename='images/logo_center.webp') }}" as="image">
+<link
+  rel="preload"
+  href="{{ url_for('static', filename='images/top.webp') }}"
+  as="image"
+/>
+<link
+  rel="preload"
+  href="{{ url_for('static', filename='images/logo_center.webp') }}"
+  as="image"
+/>
 
-<meta name="google-site-verification" content="VGmEmZ6WvyeG1-F3R4FFNPM38PnYnefJkFD0oKOg9Is" />
+<meta
+  name="google-site-verification"
+  content="VGmEmZ6WvyeG1-F3R4FFNPM38PnYnefJkFD0oKOg9Is"
+/>
 
 <meta property="og:url" content="{{request.url_root}}" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Firma Tibor Modroczky" />
-<meta property="og:title" content="Servis výpočtovej techniky a spotrebnej elektroniky" />
-<meta property="og:description" content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné." />
-<meta property="og:image" content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}" />
-<meta property="og:image:alt" content="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky" />
+<meta
+  property="og:title"
+  content="Servis výpočtovej techniky a spotrebnej elektroniky"
+/>
+<meta
+  property="og:description"
+  content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
+/>
+<meta
+  property="og:image"
+  content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}"
+/>
+<meta
+  property="og:image:alt"
+  content="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky"
+/>
 
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="{{request.url_root}}">
-<meta property="twitter:title" content="Servis výpočtovej techniky a spotrebnej elektroniky">
-<meta property="twitter:description" content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné.">
-<meta property="twitter:image" content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}">
-{% endblock %}
-
-{% block header_extra %}
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="{{request.url_root}}" />
+<meta
+  property="twitter:title"
+  content="Servis výpočtovej techniky a spotrebnej elektroniky"
+/>
+<meta
+  property="twitter:description"
+  content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
+/>
+<meta
+  property="twitter:image"
+  content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}"
+/>
+{% endblock %} {% block header_extra %}
 <ul id="slide-out" class="sidenav sidenav-fixed">
-    {% for key, value in actions.items() %}
-    <li>
-        <a href="#{{ value.anchor }}" class="sidenav-close">
-            <i class="material-icons">{{ value.icon }}</i>
-            {{ value.short_name }}
+  {% for key, value in actions.items() %}
+  <li>
+    <a href="#{{ value.anchor }}" class="sidenav-close">
+      <i class="material-icons">{{ value.icon }}</i>
+      {{ value.short_name }}
+    </a>
+  </li>
+  {% endfor %}
+  <li><div class="divider"></div></li>
+  <li>
+    <a href="#kontakt" class="sidenav-close">
+      <i class="material-icons">contact_page</i>
+      Kontakt
+    </a>
+  </li>
+  <li>
+    <a
+      href="https://forms.gle/KthsowBGahU9bZCJ8"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="modal-trigger"
+    >
+      <i class="material-icons">sticky_note_2</i>
+      Spätná väzba k stránke
+    </a>
+  </li>
+</ul>
+{% endblock %} {% block main %}
+<main style="visibility: hidden">
+  <div id="uvod" style="position: relative; text-align: center">
+    <picture>
+      <source
+        type="image/webp"
+        srcset="{{ url_for('static', filename='images/top.webp') }}"
+      />
+      <img
+        src="{{ url_for('static', filename='images/top.jpg') }}"
+        style="height: 100%; width: 100%; object-fit: cover"
+        alt="Plošný spoj"
+      />
+    </picture>
+    <div class="top-container">
+      <h1>
+        <picture>
+          <source
+            type="image/webp"
+            srcset="{{ url_for('static', filename='images/logo_center.webp') }}"
+          />
+          <img
+            class="intro-logo"
+            src="{{ url_for('static', filename='images/logo_center.png') }}"
+            alt="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky"
+          />
+        </picture>
+      </h1>
+      <div id="p-container">
+        {% for item in intro %}
+        <p class="white-text responsive-top-text">{{ item }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <a href="#podrobnosti" class="top-icon-container" style="z-index: 3">
+      <div id="details">
+        <span class="white-text" style="display: block">Podrobnosti</span>
+        <i class="white-text material-icons responsive-icon">expand_more</i>
+      </div>
+    </a>
+  </div>
+  <div id="podrobnosti" class="section grey lighten-4 z-depth-5 center-align">
+    <div class="row container">
+      <p class="responsive-header" style="margin-bottom: 0">
+        Váš spoľahlivý a férový servis so skúsenosťami od roku 1994.
+      </p>
+    </div>
+    <div class="flex-container">
+      {% for key, value in highlights.items() %}
+      <div class="flex-child">
+        <img
+          loading="lazy"
+          src="{{ url_for('static', filename='images/'+value.icon) }}"
+          alt="{{key}}"
+          class="about-us-icon"
+        />
+        <p class="medium-text" style="font-weight: bold">{{ key }}</p>
+        <div class="divider"></div>
+        <p class="normal-text">{{ value.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    <a id="gallery-open-btn" href="#open" style="display: inline-block">
+      <div>
+        <span class="black-text" style="display: block"
+          >Rozbaliť galériu výbavy</span
+        >
+        <i class="black-text material-icons responsive-icon">expand_more</i>
+      </div>
+    </a>
+    <a id="gallery-close-btn" href="#close" style="display: none">
+      <div>
+        <span class="black-text" style="display: block"
+          >Skryť galériu výbavy</span
+        >
+        <i class="black-text material-icons responsive-icon">expand_less</i>
+      </div>
+    </a>
+    <div class="gallery-container" style="display: none">
+      <div id="gallery-interface" style="opacity: 0; position: relative">
+        <div id="gallery" class="carousel gallery-height">
+          {% for key, value in gallery.items() %}
+          <div class="carousel-item" style="width: auto; height: auto">
+            <p class="small-text" style="font-weight: 550; margin-top: 0">
+              {{ key }}
+            </p>
+            <picture>
+              <source
+                type="image/webp"
+                srcset="{{ url_for('static', filename='images/'+value['image']) }}"
+              />
+              <img
+                src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
+                alt="{{key}}"
+                class="gallery-img-width"
+              />
+            </picture>
+          </div>
+          {% endfor %}
+        </div>
+        <a href="#previous" class="btn-floating blue darken-2 navigate-left">
+          <i class="material-icons"> navigate_before </i>
         </a>
-    </li>
-    {% endfor %}
-    <li><div class="divider"></div></li>
-    <li>
-        <a href="#kontakt" class="sidenav-close">
-            <i class="material-icons">contact_page</i>
-            Kontakt
+        <a href="#next" class="btn-floating blue darken-2 navigate-right">
+          <i class="material-icons"> navigate_next </i>
         </a>
-    </li>
-    <li>
-        <a
-            href="https://forms.gle/KthsowBGahU9bZCJ8"
+      </div>
+    </div>
+  </div>
+  {% for key, value in actions.items() %}
+  <div id="{{ value.anchor }}">
+    <div class="parallax-container">
+      <!-- Desktop only -->
+      <div class="parallax hide-on-med-and-down">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="{{ url_for('static', filename='images/'+value['image']) }}"
+          />
+          <img
+            loading="lazy"
+            src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
+            alt="{{value.short_name}}"
+          />
+        </picture>
+      </div>
+      <!-- Tablet and Mobile -->
+      <div class="parallax hide-on-large-only">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="{{ url_for('static', filename='images/'+value['image']) }}"
+          />
+          <img
+            loading="lazy"
+            class="static-parallax"
+            src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
+            alt="{{value.short_name}}"
+          />
+        </picture>
+      </div>
+      <!-- end -->
+    </div>
+    <div class="section grey lighten-4 z-depth-5">
+      <div class="row container">
+        <h2 class="header responsive-header">{{ key }}</h2>
+        <ul>
+          {% for item in value['items'] %}
+          <li>
+            <span class="normal-text with-marker">{{ item }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- Mobile and Tablet action buttons -->
+  <div class="hide-on-large-only">
+    <div
+      id="fab-mobile-tablet"
+      class="fixed-action-btn"
+      style="display: none; bottom: 88px; right: 28px"
+    >
+      <a href="{{ go_to }}" class="btn-floating btn-small blue darken-2">
+        <i class="material-icons">arrow_upward</i>
+      </a>
+    </div>
+    <div class="fixed-action-btn" style="bottom: 16px; right: 16px">
+      <a href="#kontakt" class="btn-floating btn-large blue darken-2">
+        <i class="material-icons">perm_phone_msg</i>
+      </a>
+    </div>
+  </div>
+  <!-- Desktop action button -->
+  <div
+    id="fab-desktop"
+    class="fixed-action-btn hide-on-med-and-down"
+    style="display: none"
+  >
+    <a
+      href="{{ go_to }}"
+      class="btn-floating btn-large blue darken-2 tooltipped"
+      data-position="left"
+      data-tooltip="Prejsť na začiatok"
+    >
+      <i class="material-icons">arrow_upward</i>
+    </a>
+  </div>
+  <!-- end -->
+</main>
+{% endblock %} {% block footer %}
+<footer class="page-footer grey darken-2">
+  <div class="container">
+    <div class="col s12">
+      <div id="kontakt" class="card {{ 'hoverable' if not request.MOBILE }}">
+        <div class="card-content black-text">
+          <div style="position: relative">
+            <div id="loading-map" class="loading">
+              <div class="preloader-wrapper small active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="gap-patch">
+                    <div class="circle"></div>
+                  </div>
+                  <div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="map"></div>
+          </div>
+          <span class="card-title" style="padding-top: 8px; padding-bottom: 8px"
+            >Kontaktné informácie</span
+          >
+          <!-- Desktop and Tablet contact -->
+          <div class="row valign-wrapper hide-on-small-only">
+            <div class="col s6">
+              <div class="container center-align">
+                <i class="material-icons">pin_drop</i>
+                <div>
+                  <p>Firma Tibor Modroczky</p>
+                  <p>Diakovská 712</p>
+                  <p>925 01 Matúškovo</p>
+                </div>
+              </div>
+            </div>
+            <div class="col s6">
+              <div class="container center-align">
+                <p class="valign-wrapper">
+                  <i class="material-icons">email</i>
+                  <a
+                    href="mailto:modroczkyt@gmail.com"
+                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                    data-position="right"
+                    data-tooltip="Poslať e-mail"
+                  >
+                    modroczkyt@gmail.com
+                  </a>
+                </p>
+                <p class="valign-wrapper">
+                  <i class="material-icons">smartphone</i>
+                  <a
+                    href="tel:+421905460506"
+                    class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
+                    data-position="right"
+                    data-tooltip="Zavolať na mobil"
+                  >
+                    0905 460 506
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!--  Mobile contact -->
+          <div class="container hide-on-med-and-up">
+            <div style="padding-bottom: 8px">
+              <p>Firma Tibor Modroczky</p>
+              <p>Diakovská 712</p>
+              <p>925 01 Matúškovo</p>
+            </div>
+            <p class="valign-wrapper">
+              <i class="material-icons">email</i>
+              <a href="mailto:modroczkyt@gmail.com" class="contact-padding">
+                modroczkyt@gmail.com
+              </a>
+            </p>
+            <p class="valign-wrapper">
+              <i class="material-icons">smartphone</i>
+              <a href="tel:+421905460506" class="contact-padding">
+                0905 460 506
+              </a>
+            </p>
+          </div>
+          <!-- end -->
+        </div>
+        <div class="card-action">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=48.16455,17.74351"
             target="_blank"
             rel="noopener noreferrer"
-            class="modal-trigger"
+            class="blue-text text-darken-2"
+          >
+            Otvoriť v Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+    <div id="footer-logo-socials" class="row" style="visibility: hidden">
+      <div id="klamont-logo-col" class="col s6 left-align">
+        <a
+          href="http://www.klamont.sk/"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-            <i class="material-icons">sticky_note_2</i>
-            Spätná väzba k stránke
-        </a>
-    </li>
-</ul>
-{% endblock %}
-
-{% block main %}
-<main style="visibility: hidden;">
-    <div id="uvod" style="position: relative; text-align: center;">
-        <picture>
+          <picture>
             <source
-                type="image/webp"
-                srcset="{{ url_for('static', filename='images/top.webp') }}"
+              type="image/webp"
+              srcset="{{ url_for('static', filename='images/klamont_logo.webp') }}"
             />
-            <img 
-                src="{{ url_for('static', filename='images/top.jpg') }}"
-                style="height: 100%; width: 100%; object-fit: cover;"
-                alt="Plošný spoj"
+            <img
+              loading="lazy"
+              style="height: 48px; width: auto"
+              src="{{ url_for('static', filename='images/klamont_logo.png') }}"
+              alt="Klamont Logo"
             />
-        </picture>
-        <div class="top-container">
-            <h1>
-                <picture>
-                    <source
-                        type="image/webp"
-                        srcset="{{ url_for('static', filename='images/logo_center.webp') }}"
-                    />
-                    <img
-                        class="intro-logo"
-                        src="{{ url_for('static', filename='images/logo_center.png') }}"
-                        alt="Firma Tibor Modroczky - Servis výpočtovej techniky a spotrebnej elektroniky"
-                    />
-                </picture>
-            </h1>
-            <div id="p-container">
-                {% for item in intro %}
-                <p class="white-text responsive-top-text">
-                    {{ item }}
-                </p>
-                {% endfor %}
-            </div>
-        </div>
-        <a href="#podrobnosti" class="top-icon-container" style="z-index: 3;">
-            <div id="details">
-                <span class="white-text" style="display: block;">Podrobnosti</span>
-                <i class="white-text material-icons responsive-icon">expand_more</i>
-            </div>
+          </picture>
         </a>
+      </div>
+      <div
+        id="social-media-col"
+        class="col s6 right-align"
+        style="margin-bottom: 16px"
+      >
+        <div style="display: inline-block" class="center-align">
+          <div>
+            <a
+              href="https://www.facebook.com/sharer/sharer.php?u={{request.url_root}}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                loading="lazy"
+                src="{{ url_for('static', filename='images/facebook.svg') }}"
+                style="height: 32px; width: auto"
+                alt="Facebook"
+              />
+            </a>
+            <a
+              href="https://twitter.com/intent/tweet?text={{request.url_root}}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                loading="lazy"
+                src="{{ url_for('static', filename='images/twitter.svg') }}"
+                style="height: 32px; width: auto; padding-left: 8px"
+                alt="Twitter"
+              />
+            </a>
+            <a href="#zdielat" id="share-btn" style="display: none">
+              <i
+                class="material-icons"
+                style="font-size: 32px; padding-left: 8px"
+                >share</i
+              >
+            </a>
+          </div>
+          <div>Zdieľajte nás</div>
+        </div>
+      </div>
     </div>
-    <div id="podrobnosti" class="section grey lighten-4 z-depth-5 center-align">
-        <div class="row container">
-            <p class="responsive-header" style="margin-bottom: 0;">
-                Váš spoľahlivý a férový servis so skúsenosťami od roku 1994.
-            </p>
-        </div>
-        <div class="flex-container">
-            {% for key, value in highlights.items() %}
-            <div class="flex-child">
-                <img
-                    loading="lazy"
-                    src="{{ url_for('static', filename='images/'+value.icon) }}"
-                    alt="{{key}}"
-                    class="about-us-icon"
-                >
-                <p class="medium-text" style="font-weight: bold;">{{ key }}</p>
-                <div class="divider"></div>
-                <p class="normal-text">
-                    {{ value.description }}
-                </p>
-            </div>
-            {% endfor %}
-        </div>
-        <a id="gallery-open-btn" href="#open" style="display: inline-block">
-            <div>
-                <span class="black-text" style="display: block;">Rozbaliť galériu výbavy</span>
-                <i class="black-text material-icons responsive-icon">expand_more</i>
-            </div>
-        </a>
-        <a id="gallery-close-btn" href="#close" style="display: none;">
-            <div>
-                <span class="black-text" style="display: block;">Skryť galériu výbavy</span>
-                <i class="black-text material-icons responsive-icon">expand_less</i>
-            </div>
-        </a>
-        <div class="gallery-container" style="display: none;">
-            <div id="gallery-interface" style="opacity: 0; position: relative;">
-                <div id="gallery" class="carousel gallery-height">
-                    {% for key, value in gallery.items() %}
-                    <div class="carousel-item" style="width: auto; height: auto;">
-                        <p class="small-text" style="font-weight: 550; margin-top: 0;">{{ key }}</p>
-                        <picture>
-                            <source
-                                type="image/webp"
-                                srcset="{{ url_for('static', filename='images/'+value['image']) }}"
-                            >
-                            <img
-                                src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
-                                alt="{{key}}"
-                                class="gallery-img-width"
-                            >
-                        </picture>
-                    </div>
-                    {% endfor %}
-                </div>
-                <a href="#previous" class="btn-floating blue darken-2 navigate-left">
-                    <i class="material-icons">
-                        navigate_before
-                    </i>
-                </a>
-                <a href="#next" class="btn-floating blue darken-2 navigate-right">
-                    <i class="material-icons">
-                        navigate_next
-                    </i>
-                </a>
-            </div>
-        </div>
-    </div>
-    {% for key, value in actions.items() %}
-    <div id="{{ value.anchor }}">
-        <div class="parallax-container">
-            <!-- Desktop only -->
-            <div class="parallax hide-on-med-and-down">
-                <picture>
-                    <source
-                        type="image/webp"
-                        srcset="{{ url_for('static', filename='images/'+value['image']) }}"
-                    >
-                    <img
-                        loading="lazy"
-                        src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
-                        alt="{{value.short_name}}"
-                    >
-                </picture>
-            </div>
-            <!-- Tablet and Mobile -->
-            <div class="parallax hide-on-large-only">
-                <picture>
-                    <source
-                        type="image/webp"
-                        srcset="{{ url_for('static', filename='images/'+value['image']) }}"
-                    >
-                    <img
-                        loading="lazy"
-                        class="static-parallax"
-                        src="{{ url_for('static', filename='images/'+value['image_fallback']) }}"
-                        alt="{{value.short_name}}"
-                    >
-                </picture>
-            </div>
-            <!-- end -->
-        </div>
-        <div class="section grey lighten-4 z-depth-5">
-            <div class="row container">
-                <h2 class="header responsive-header">{{ key }}</h2>
-                <ul>
-                    {% for item in value['items'] %}
-                    <li>
-                        <span class="normal-text with-marker">{{ item }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-
-    <!-- Mobile and Tablet action buttons -->
-    <div class="hide-on-large-only">
-        <div
-            id="fab-mobile-tablet"
-            class="fixed-action-btn"
-            style="display:none; bottom: 88px; right: 28px;"
+    <blockquote style="border-left: 5px solid #757575; font-size: small">
+      All photographs on this site are used for illustration purposes only and
+      their contents do not endorse any activities provided by Firma Tibor
+      Modroczky. The photographs are licensed under the
+      <a
+        href="https://www.pexels.com/license/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span style="font-weight: bold">Pexels License</span>
+      </a>
+      or
+      <a
+        href="https://creativecommons.org/publicdomain/zero/1.0/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span style="font-weight: bold">CC0 1.0 Universal License</span>
+      </a>
+      and do not require attribution. Some SVG icons are from
+      <a
+        href="https://github.com/FortAwesome/Font-Awesome"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span style="font-weight: bold">Font Awesome Free</span>
+      </a>
+      and are licensed under the
+      <a
+        href="https://fontawesome.com/license/free"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span style="font-weight: bold">CC BY 4.0 License</span>.
+      </a>
+    </blockquote>
+  </div>
+  <div class="footer-copyright grey darken-3">
+    <div class="container center-align">
+      <!-- Desktop only -->
+      <span class="left hide-on-med-and-down">
+        © 2022
+        <a
+          href="https://github.com/vktr274"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-            <a 
-                href="{{ go_to }}"
-                class="btn-floating btn-small blue darken-2"
-            >
-                <i class="material-icons">arrow_upward</i>
-            </a>
-        </div>
-        <div
-            class="fixed-action-btn"
-            style="bottom: 16px; right: 16px;"
-        >
-            <a 
-                href="#kontakt"
-                class="btn-floating btn-large blue darken-2"
-            >
-                <i class="material-icons">perm_phone_msg</i>
-            </a>
-        </div>
-    </div>
-    <!-- Desktop action button -->
-    <div
-        id="fab-desktop"
-        class="fixed-action-btn hide-on-med-and-down"
-        style="display:none;"
-    >
-        <a 
-            href="{{ go_to }}"
-            class="btn-floating btn-large blue darken-2 tooltipped"
-            data-position="left"
-            data-tooltip="Prejsť na začiatok"
-        >
-            <i class="material-icons">arrow_upward</i>
+          <span style="font-weight: bold">Viktor Modroczký</span>
         </a>
+      </span>
+      <!-- Mobile and Tablet -->
+      <p class="hide-on-large-only" style="margin: 0; padding: 0">
+        © 2022
+        <a
+          href="https://github.com/vktr274"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style="font-weight: bold">Viktor Modroczký</span>
+        </a>
+      </p>
+      <!-- end -->
+      <!-- Desktop only -->
+      <span class="right hide-on-med-and-down">
+        Made with
+        <a
+          href="https://palletsprojects.com/p/flask/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style="font-weight: bold">Flask</span>
+        </a>
+        and
+        <a
+          href="https://materializecss.github.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style="font-weight: bold">Materialize</span>
+        </a>
+      </span>
+      <!-- Mobile and Tablet -->
+      <p class="hide-on-large-only" style="margin: 0; padding: 0">
+        Made with
+        <a
+          href="https://palletsprojects.com/p/flask/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style="font-weight: bold">Flask</span>
+        </a>
+        and
+        <a
+          href="https://materializecss.github.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span style="font-weight: bold">Materialize</span>
+        </a>
+      </p>
+      <!-- end -->
     </div>
-    <!-- end -->
-</main>
-{% endblock %}
-
-{% block footer %}
-<footer class="page-footer grey darken-2">
-    <div class="container">
-        <div class="col s12">
-            <div id="kontakt" class="card {{ 'hoverable' if not request.MOBILE }}">
-                <div class="card-content black-text">
-                    <div style="position: relative;">
-                        <div id="loading-map" class="loading">
-                            <div class="preloader-wrapper small active">
-                                <div class="spinner-layer spinner-blue-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div><div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div><div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="map"></div>
-                    </div>
-                    <span class="card-title" style="padding-top: 8px; padding-bottom: 8px;">Kontaktné informácie</span>
-                    <!-- Desktop and Tablet contact -->
-                    <div class="row valign-wrapper hide-on-small-only">
-                        <div class="col s6">
-                            <div class="container center-align">
-                                <i class="material-icons">pin_drop</i>
-                                <div>
-                                    <p>Firma Tibor Modroczky</p>
-                                    <p>Diakovská 712</p>
-                                    <p>925 01 Matúškovo</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col s6">
-                            <div class="container center-align">
-                                <p class="valign-wrapper">
-                                    <i class="material-icons">email</i>
-                                    <a
-                                        href="mailto:modroczkyt@gmail.com"
-                                        class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
-                                        data-position="right"
-                                        data-tooltip="Poslať e-mail"
-                                    >
-                                        modroczkyt@gmail.com
-                                    </a>
-                                </p>
-                                <p class="valign-wrapper">
-                                    <i class="material-icons">call</i>
-                                    <a 
-                                        href="tel:0317826228"
-                                        class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
-                                        data-position="right"
-                                        data-tooltip="Zavolať na telefón"
-                                    >
-                                        031 782 6228
-                                    </a>
-                                </p>
-                                <p class="valign-wrapper">
-                                    <i class="material-icons">smartphone</i>
-                                    <a 
-                                        href="tel:+421905460506"
-                                        class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
-                                        data-position="right"
-                                        data-tooltip="Zavolať na mobil"
-                                    >
-                                        0905 460 506
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--  Mobile contact -->
-                    <div class="container hide-on-med-and-up">
-                        <div style="padding-bottom: 8px;">
-                            <p>Firma Tibor Modroczky</p>
-                            <p>Diakovská 712</p>
-                            <p>925 01 Matúškovo</p>
-                        </div>
-                        <p class="valign-wrapper">
-                            <i class="material-icons">email</i>
-                            <a
-                                href="mailto:modroczkyt@gmail.com"
-                                class="contact-padding"
-                            >
-                                modroczkyt@gmail.com
-                            </a>
-                        </p>
-                        <p class="valign-wrapper">
-                            <i class="material-icons">call</i>
-                            <a 
-                                href="tel:0317826228"
-                                class="contact-padding"
-                            >
-                                031 782 6228
-                            </a>
-                        </p>
-                        <p class="valign-wrapper">
-                            <i class="material-icons">smartphone</i>
-                            <a 
-                                href="tel:+421905460506"
-                                class="contact-padding"
-                            >
-                                0905 460 506
-                            </a>
-                        </p>
-                    </div>
-                    <!-- end -->
-                </div>
-                <div class="card-action">
-                    <a 
-                        href="https://www.google.com/maps/search/?api=1&query=48.16455,17.74351"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="blue-text text-darken-2"
-                    >
-                        Otvoriť v Google Maps
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="footer-logo-socials" class="row" style="visibility: hidden;">
-            <div id="klamont-logo-col" class="col s6 left-align">
-                <a
-                    href="http://www.klamont.sk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <picture>
-                        <source
-                            type="image/webp"
-                            srcset="{{ url_for('static', filename='images/klamont_logo.webp') }}"
-                        />
-                        <img
-                            loading="lazy"
-                            style="height: 48px; width: auto;"
-                            src="{{ url_for('static', filename='images/klamont_logo.png') }}"
-                            alt="Klamont Logo"
-                        />
-                    </picture>
-                </a>
-            </div>
-            <div id="social-media-col" class="col s6 right-align" style="margin-bottom: 16px;">
-                <div style="display: inline-block;" class="center-align">
-                    <div>
-                        <a
-                            href="https://www.facebook.com/sharer/sharer.php?u={{request.url_root}}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img
-                                loading="lazy"
-                                src="{{ url_for('static', filename='images/facebook.svg') }}"
-                                style="height: 32px; width: auto;"
-                                alt="Facebook"
-                            />
-                        </a>
-                        <a 
-                            href="https://twitter.com/intent/tweet?text={{request.url_root}}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <img
-                                loading="lazy"
-                                src="{{ url_for('static', filename='images/twitter.svg') }}"
-                                style="height: 32px; width: auto; padding-left: 8px;"
-                                alt="Twitter"
-                            />
-                        </a>
-                        <a href="#zdielat" id="share-btn" style="display: none;">
-                            <i
-                                class="material-icons"
-                                style="font-size: 32px; padding-left: 8px;"
-                            >share</i>
-                        </a>
-                    </div>
-                    <div>Zdieľajte nás</div>
-                </div>
-            </div>
-        </div>
-        <blockquote style="border-left: 5px solid #757575; font-size: small;">
-            All photographs on this site are used for illustration purposes only and
-            their contents do not endorse any activities provided by Firma Tibor Modroczky.
-            The photographs are licensed under the
-            <a
-                href="https://www.pexels.com/license/" 
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span style="font-weight: bold;">Pexels License</span>
-            </a> or
-            <a
-                href="https://creativecommons.org/publicdomain/zero/1.0/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span style="font-weight: bold;">CC0 1.0 Universal License</span>
-            </a>
-            and do not require attribution. Some SVG icons are from
-            <a
-                href="https://github.com/FortAwesome/Font-Awesome"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span style="font-weight: bold;">Font Awesome Free</span>
-            </a>
-            and are licensed under the
-            <a
-                href="https://fontawesome.com/license/free"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <span style="font-weight: bold;">CC BY 4.0 License</span>.
-            </a>
-        </blockquote>
-    </div>
-    <div class="footer-copyright grey darken-3">
-        <div class="container center-align">
-            <!-- Desktop only -->
-            <span class="left hide-on-med-and-down">
-                © 2022
-                <a
-                    href="https://github.com/vktr274"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Viktor Modroczký</span>
-                </a>
-            </span>
-            <!-- Mobile and Tablet -->
-            <p class="hide-on-large-only" style="margin: 0; padding: 0;">
-                © 2022
-                <a
-                    href="https://github.com/vktr274"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Viktor Modroczký</span>
-                </a>
-            </p>
-            <!-- end -->
-            <!-- Desktop only -->
-            <span 
-                class="right hide-on-med-and-down"
-            >
-                Made with
-                <a
-                    href="https://palletsprojects.com/p/flask/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Flask</span>
-                </a>
-                and
-                <a
-                    href="https://materializecss.github.io/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Materialize</span>
-                </a>
-            </span>
-            <!-- Mobile and Tablet -->
-            <p 
-                class="hide-on-large-only"
-                style="margin: 0; padding: 0;"
-            >
-                Made with
-                <a
-                    href="https://palletsprojects.com/p/flask/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Flask</span>
-                </a>
-                and
-                <a
-                    href="https://materializecss.github.io/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <span style="font-weight: bold;">Materialize</span>
-                </a>
-            </p>
-            <!-- end -->
-        </div>
-    </div>
+  </div>
 </footer>
-{% endblock %}
-
-{% block extra_styles %}
+{% endblock %} {% block extra_styles %}
 <style>
-    header, main, footer {
-        padding-left: 300px;
+  header,
+  main,
+  footer {
+    padding-left: 300px;
+  }
+  nav {
+    width: calc(100% - 300px);
+  }
+  #nav-transparent {
+    display: block !important;
+  }
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .flex-child {
+    width: 24em;
+    margin: 2em;
+  }
+  .with-marker::before {
+    --marker-size: 0.45em;
+    content: "";
+    background-image: url("../static/images/circle.svg");
+    background-size: var(--marker-size) var(--marker-size);
+    width: var(--marker-size);
+    height: var(--marker-size);
+    margin-right: 1em;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .small-text {
+    font-size: 100%;
+  }
+  .medium-text {
+    font-size: 130%;
+  }
+  .normal-text {
+    font-size: 110%;
+  }
+  .about-us-icon {
+    height: 64px;
+    width: auto;
+  }
+  .responsive-top-text {
+    overflow-wrap: break-word;
+    font-weight: lighter;
+    font-size: 200%;
+  }
+  .top-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .responsive-icon {
+    font-size: 32px;
+  }
+  .top-icon-container {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translate(-50%, -2%);
+  }
+  .intro-logo {
+    width: 520px;
+    height: auto;
+  }
+  .contact-padding {
+    padding: 8px;
+  }
+  #map {
+    height: 256px;
+    width: 100%;
+    z-index: 1;
+  }
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .responsive-header {
+    font-weight: lighter;
+    font-size: 340%;
+    margin-top: 20px;
+  }
+  .navigate-right,
+  .navigate-left {
+    position: absolute;
+    top: 50%;
+    margin: 16px;
+  }
+  .navigate-right {
+    right: 16px;
+  }
+  .navigate-left {
+    left: 16px;
+  }
+  .gallery-img-width {
+    width: 520px;
+    height: auto;
+  }
+  .gallery-height {
+    height: 500px;
+  }
+  .leaflet-tooltip {
+    background-color: #323232;
+    color: white;
+    border: 1px solid #323232;
+  }
+  .leaflet-tooltip-top::before {
+    border-top-color: #323232;
+  }
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-tip {
+    background-color: #323232;
+  }
+  .leaflet-popup-content {
+    color: white;
+  }
+  .leaflet-popup-close-button span {
+    color: white;
+  }
+  @media only screen and (max-width: 992px) {
+    header,
+    main,
+    footer {
+      padding-left: 0;
     }
     nav {
-        width: calc(100% - 300px);
-    }
-    #nav-transparent {
-        display: block !important;
-    }
-    .flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 16px;
-    }
-    .flex-child {
-        width: 24em;
-        margin: 2em;
-    }
-    .with-marker::before {
-        --marker-size: .45em;
-        content: "";
-        background-image: url('../static/images/circle.svg');
-        background-size: var(--marker-size) var(--marker-size);
-        width: var(--marker-size);
-        height: var(--marker-size);
-        margin-right: 1em;
-        vertical-align: middle;
-        display: inline-block;
-    }
-    .small-text {
-        font-size: 100%;
-    }
-    .medium-text {
-        font-size: 130%;
-    }
-    .normal-text {
-        font-size: 110%;
-    }
-    .about-us-icon {
-        height: 64px;
-        width: auto;
-    }
-    .responsive-top-text {
-        overflow-wrap: break-word;
-        font-weight: lighter;
-        font-size: 200%;
-    }
-    .top-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .responsive-icon {
-        font-size: 32px;
-    }
-    .top-icon-container {
-        position: absolute;
-        bottom: 2%;
-        left: 50%;
-        transform: translate(-50%,-2%);
-    }
-    .intro-logo {
-        width: 520px;
-        height: auto;
-    }
-    .contact-padding {
-        padding: 8px;
-    }
-    #map {
-        height: 256px;
-        width: 100%;
-        z-index: 1;
-    }
-    .loading {
-        position: absolute;
-        top: 50%; 
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .responsive-header {
-        font-weight: lighter;
-        font-size: 340%;
-        margin-top: 20px;
-    }
-    .navigate-right, .navigate-left {
-        position: absolute;
-        top: 50%;
-        margin: 16px;
-    }
-    .navigate-right {
-        right: 16px;
-    }
-    .navigate-left {
-        left: 16px;
+      width: 100%;
     }
     .gallery-img-width {
-        width: 520px;
-        height: auto;
+      width: 420px;
     }
     .gallery-height {
-        height: 500px;
+      height: 400px;
     }
-    .leaflet-tooltip {
-        background-color: #323232;
-        color: white;
-        border: 1px solid #323232;
+    .about-us-icon {
+      height: 56px;
     }
-    .leaflet-tooltip-top::before {
-        border-top-color: #323232;
+    .small-text {
+      font-size: 95%;
     }
-    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-        background-color: #323232
+    .medium-text {
+      font-size: 125%;
     }
-    .leaflet-popup-content {
-        color: white;
+    .normal-text {
+      font-size: 105%;
     }
-    .leaflet-popup-close-button span {
-        color: white;
+    .parallax-container {
+      height: 300px;
     }
-    @media only screen and (max-width : 992px) {
-        header, main, footer {
-            padding-left: 0;
-        }
-        nav {
-            width: 100%;
-        }
-        .gallery-img-width {
-            width: 420px;
-        }
-        .gallery-height {
-            height: 400px;
-        }
-        .about-us-icon {
-            height: 56px;
-        }
-        .small-text {
-            font-size: 95%;
-        }
-        .medium-text {
-            font-size: 125%;
-        }
-        .normal-text {
-            font-size: 105%;
-        }
-        .parallax-container {
-            height: 300px;
-        }
-        .static-parallax {
-            height: 300px;
-            width: 100%;
-            object-fit: cover;
-        }
-        .responsive-top-text {
-            font-size: 175%;
-        }
-        .responsive-icon {
-            font-size: 24px;
-        }
-        .intro-logo {
-            width: 420px;
-        }
-        .responsive-header {
-            font-size: 300%;
-            margin-top: 18px;
-        }
+    .static-parallax {
+      height: 300px;
+      width: 100%;
+      object-fit: cover;
     }
-    @media only screen and (max-width : 600px) {
-        .navigate-right, .navigate-left {
-            position: static;
-            margin: 0 4px;
-        }
-        .gallery-img-width {
-            width: 320px;
-        }
-        .gallery-height {
-            height: 300px;
-        }
-        .about-us-icon {
-            height: 48px;
-        }
-        .responsive-top-text {
-            font-size: 140%;
-        }
-        .intro-logo {
-            width: 320px;
-        }
-        .responsive-header {
-            font-size: 230%;
-            margin-top: 16px;
-        }
-        .small-text {
-            font-size: 90%;
-        }
+    .responsive-top-text {
+      font-size: 175%;
     }
-    @media only screen and (max-width : 400px) {
-        .navigate-right, .navigate-left {
-            margin: 4px 4px 0;
-        }
-        .gallery-img-width {
-            width: 220px;
-        }
-        .gallery-height {
-            height: 200px;
-        }
-        .gallery-container {
-            margin-top: 16px;
-        }
-        .responsive-top-text {
-            font-size: 120%;
-        }
-        .intro-logo {
-            width: 220px;
-        }
-        .responsive-header {
-            font-size: 200%;
-            margin-top: 14px;
-        }
+    .responsive-icon {
+      font-size: 24px;
     }
+    .intro-logo {
+      width: 420px;
+    }
+    .responsive-header {
+      font-size: 300%;
+      margin-top: 18px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .navigate-right,
+    .navigate-left {
+      position: static;
+      margin: 0 4px;
+    }
+    .gallery-img-width {
+      width: 320px;
+    }
+    .gallery-height {
+      height: 300px;
+    }
+    .about-us-icon {
+      height: 48px;
+    }
+    .responsive-top-text {
+      font-size: 140%;
+    }
+    .intro-logo {
+      width: 320px;
+    }
+    .responsive-header {
+      font-size: 230%;
+      margin-top: 16px;
+    }
+    .small-text {
+      font-size: 90%;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .navigate-right,
+    .navigate-left {
+      margin: 4px 4px 0;
+    }
+    .gallery-img-width {
+      width: 220px;
+    }
+    .gallery-height {
+      height: 200px;
+    }
+    .gallery-container {
+      margin-top: 16px;
+    }
+    .responsive-top-text {
+      font-size: 120%;
+    }
+    .intro-logo {
+      width: 220px;
+    }
+    .responsive-header {
+      font-size: 200%;
+      margin-top: 14px;
+    }
+  }
 </style>
-{% endblock %}
-
-{% block extra_scripts %}
-{% assets "index_js" %}
-<script type="text/javascript" src="{{ ASSET_URL }}" crossorigin="anonymous"></script>
+{% endblock %} {% block extra_scripts %} {% assets "index_js" %}
+<script
+  type="text/javascript"
+  src="{{ ASSET_URL }}"
+  crossorigin="anonymous"
+></script>
 {% endassets %}
 <script>
-    $(document).ready(function() {
-        $('#uvod').css({
-            'height': $(window).outerHeight(),
-            'min-height':
-                $('#nav-normal').height() + $('.top-container').height() +
-                $('#details').height()
-        });
-        $('#p-container').css('padding-bottom', $('#details').height());
-        $('main').css('visibility', 'visible');
-        $('html').css('scroll-padding-top', $('nav').height() - 1);
-        $('.sidenav').sidenav();
-        $('.fixed-action-btn').floatingActionButton();
-        $('.parallax').parallax();
-        
-        $('#gallery-open-btn').on('click', function() {
-            $(this).css('display', 'none');
-            $('#gallery-close-btn').css('display', 'inline-block');
-            
-            $('.gallery-container').stop(true, false).slideDown(
-                500,
-                function() {
-                    $('.carousel').carousel();
-                    $('#gallery-interface').animate({'opacity': 1}, 500);
-                }
-            );
-        });
+  $(document).ready(function () {
+    $("#uvod").css({
+      height: $(window).outerHeight(),
+      "min-height":
+        $("#nav-normal").height() +
+        $(".top-container").height() +
+        $("#details").height(),
+    });
+    $("#p-container").css("padding-bottom", $("#details").height());
+    $("main").css("visibility", "visible");
+    $("html").css("scroll-padding-top", $("nav").height() - 1);
+    $(".sidenav").sidenav();
+    $(".fixed-action-btn").floatingActionButton();
+    $(".parallax").parallax();
 
-        $('#gallery-close-btn').on('click', function() {
-            $(this).css('display', 'none');
-            $('#gallery-open-btn').css('display', 'inline-block');
-            $('.gallery-container').stop(true, false).slideUp(500, function() {
-                $('#gallery-interface').css('opacity', 0);
-            });
-        });
+    $("#gallery-open-btn").on("click", function () {
+      $(this).css("display", "none");
+      $("#gallery-close-btn").css("display", "inline-block");
 
-        $('.navigate-left').on('click', function() {
-            $('#gallery').carousel('prev');
-        })
-
-        $('.navigate-right').on('click', function() {
-            $('#gallery').carousel('next');
-        })
-
-        var details = $('#details');
-        function bounce() {
-            details.effect('bounce', { times: 2, duration: 750, complete: bounce }).delay(5000);
-        };
-        bounce();
-        var mapLoaded = false;
-
-        new ScrollMagic.Controller().addScene([
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#uvod'
-            }).on("enter", function(event) { history.replaceState(null, null, '#uvod'); }),
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#oprava-spotrebnej-elektroniky'
-            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-spotrebnej-elektroniky'); }),
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#oprava-notebookov'
-            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-notebookov'); }),
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#oprava-pocitacov'
-            }).on("enter", function(event) { history.replaceState(null, null, '#oprava-pocitacov'); }),
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#instalacia-softveru'
-            }).on("enter", function(event) { history.replaceState(null, null, '#instalacia-softveru'); }),
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#programovanie-obvodov'
-            }).on("enter", function(event) { history.replaceState(null, null, '#programovanie-obvodov'); }),
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#predaj'
-            }).on("enter", function(event) {
-                history.replaceState(null, null, '#predaj');
-                if (!mapLoaded) {
-                    mapLoaded = true;
-                    var geo = [48.16455, 17.74351];
-                    var zoom = 9;
-                    var map = L.map('map', {
-                        center: geo,
-                        zoom: zoom,
-                        fullscreenControl: true,
-                        fullscreenControlOptions: {
-                            position: 'topright'
-                        }
-                    });
-                    L.control.resetView({
-                        position: "topleft",
-                        title: "Reset view",
-                        latlng: L.latLng(geo),
-                        zoom: zoom
-                    }).addTo(map);
-                    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-                        subdomains: 'abcd',
-                        maxZoom: 20
-                    }).addTo(map);
-                    var tooltipText = 'Zobraziť zemepisnú šírku a dĺžku';
-                    var tooltipOptions = {
-                        direction: 'top',
-                        opacity: 1
-                    };
-                    var marker = L.marker(geo, {
-                        icon: L.icon({
-                            iconUrl: '../static/images/pin.png',
-                            iconSize: [64, 64],
-                            iconAnchor: [32, 64],
-                            popupAnchor: [0, -64],
-                            tooltipAnchor: [0, -68]
-                        })
-                    })  .bindPopup('Šírka: 48.16455<br>Dĺžka: 17.74351')
-                        .bindTooltip(tooltipText, tooltipOptions);
-                    marker.on('popupopen', function() {
-                        marker.unbindTooltip();
-                    });
-                    marker.on('popupclose', function() {
-                        marker.bindTooltip(tooltipText, tooltipOptions);
-                    });
-                    marker.addTo(map);
-                    $('#loading-map').css('display', 'none');
-                }
-            }),
-            new ScrollMagic.Scene({
-                duration: '100%',
-                triggerElement: '#kontakt'
-            }).on("enter", function(event) { history.replaceState(null, null, '#kontakt'); })
-        ]);
-        if (navigator.canShare) {
-            $('#share-btn').css('display', 'inline');
-            $('#share-btn').on('click', function() {
-                navigator.share({
-                    text: 'Firma Tibor Modroczky',
-                    url: window.location.protocol + '//' + window.location.host
-                })
-            });
-        }
-        $(window).resize(function() {
-            $('#uvod').animate({
-                'height': $(window).outerHeight(),
-                'min-height':
-                    $('#nav-normal').height() + $('.top-container').height() +
-                    $('#details').height()
-            }, 350);
-            $('.carousel').carousel();
-        });
-
-        var socialMediaCol = $('#social-media-col');
-        var klamontLogoCol = $('#klamont-logo-col');
-        $(window).resize(function() {
-            var width = $(window).width();
-            if (width <= 600){
-                socialMediaCol.removeClass('s6 right-align').addClass('s12 center-align');
-                klamontLogoCol.removeClass('s6 left-align').addClass('s12 center-align');
-                klamontLogoCol.insertAfter(socialMediaCol);
-            }
-            else {
-                socialMediaCol.removeClass('s12 center-align').addClass('s6 right-align');
-                klamontLogoCol.removeClass('s12 center-align').addClass('s6 left-align');
-                socialMediaCol.insertAfter(klamontLogoCol);
-            }
-        }).resize();
-        $('#footer-logo-socials').css('visibility', 'visible');
-
-        var fabMobileTablet = $('#fab-mobile-tablet');
-        var fabDesktop = $('#fab-desktop');
-        var navNormal = $('#nav-normal');
-        var navTransparent = $('#nav-transparent');
-        $(window).scroll(function() {
-            if ($(this).scrollTop() == 0) {
-                fabMobileTablet.stop(true, false).fadeOut(500);
-                fabDesktop.stop(true, false).fadeOut(500);
-            }
-            else {
-                fabMobileTablet.fadeIn(500);
-                fabDesktop.fadeIn(500);
-            }
-
-            if ($(this).scrollTop() >= $('#uvod').height() - $('nav').height()) {
-                navNormal.fadeIn(500);
-                navTransparent.hide();
-            }
-            else {
-                navNormal.stop(true, false).fadeOut(500);
-                navTransparent.show();
-            }
+      $(".gallery-container")
+        .stop(true, false)
+        .slideDown(500, function () {
+          $(".carousel").carousel();
+          $("#gallery-interface").animate({ opacity: 1 }, 500);
         });
     });
+
+    $("#gallery-close-btn").on("click", function () {
+      $(this).css("display", "none");
+      $("#gallery-open-btn").css("display", "inline-block");
+      $(".gallery-container")
+        .stop(true, false)
+        .slideUp(500, function () {
+          $("#gallery-interface").css("opacity", 0);
+        });
+    });
+
+    $(".navigate-left").on("click", function () {
+      $("#gallery").carousel("prev");
+    });
+
+    $(".navigate-right").on("click", function () {
+      $("#gallery").carousel("next");
+    });
+
+    var details = $("#details");
+    function bounce() {
+      details
+        .effect("bounce", { times: 2, duration: 750, complete: bounce })
+        .delay(5000);
+    }
+    bounce();
+    var mapLoaded = false;
+
+    new ScrollMagic.Controller().addScene([
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#uvod",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#uvod");
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#oprava-spotrebnej-elektroniky",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#oprava-spotrebnej-elektroniky");
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#oprava-notebookov",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#oprava-notebookov");
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#oprava-pocitacov",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#oprava-pocitacov");
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#instalacia-softveru",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#instalacia-softveru");
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#programovanie-obvodov",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#programovanie-obvodov");
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#predaj",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#predaj");
+        if (!mapLoaded) {
+          mapLoaded = true;
+          var geo = [48.16455, 17.74351];
+          var zoom = 9;
+          var map = L.map("map", {
+            center: geo,
+            zoom: zoom,
+            fullscreenControl: true,
+            fullscreenControlOptions: {
+              position: "topright",
+            },
+          });
+          L.control
+            .resetView({
+              position: "topleft",
+              title: "Reset view",
+              latlng: L.latLng(geo),
+              zoom: zoom,
+            })
+            .addTo(map);
+          L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+            {
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+              subdomains: "abcd",
+              maxZoom: 20,
+            }
+          ).addTo(map);
+          var tooltipText = "Zobraziť zemepisnú šírku a dĺžku";
+          var tooltipOptions = {
+            direction: "top",
+            opacity: 1,
+          };
+          var marker = L.marker(geo, {
+            icon: L.icon({
+              iconUrl: "../static/images/pin.png",
+              iconSize: [64, 64],
+              iconAnchor: [32, 64],
+              popupAnchor: [0, -64],
+              tooltipAnchor: [0, -68],
+            }),
+          })
+            .bindPopup("Šírka: 48.16455<br>Dĺžka: 17.74351")
+            .bindTooltip(tooltipText, tooltipOptions);
+          marker.on("popupopen", function () {
+            marker.unbindTooltip();
+          });
+          marker.on("popupclose", function () {
+            marker.bindTooltip(tooltipText, tooltipOptions);
+          });
+          marker.addTo(map);
+          $("#loading-map").css("display", "none");
+        }
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
+        triggerElement: "#kontakt",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#kontakt");
+      }),
+    ]);
+    if (navigator.canShare) {
+      $("#share-btn").css("display", "inline");
+      $("#share-btn").on("click", function () {
+        navigator.share({
+          text: "Firma Tibor Modroczky",
+          url: window.location.protocol + "//" + window.location.host,
+        });
+      });
+    }
+    $(window).resize(function () {
+      $("#uvod").animate(
+        {
+          height: $(window).outerHeight(),
+          "min-height":
+            $("#nav-normal").height() +
+            $(".top-container").height() +
+            $("#details").height(),
+        },
+        350
+      );
+      $(".carousel").carousel();
+    });
+
+    var socialMediaCol = $("#social-media-col");
+    var klamontLogoCol = $("#klamont-logo-col");
+    $(window)
+      .resize(function () {
+        var width = $(window).width();
+        if (width <= 600) {
+          socialMediaCol
+            .removeClass("s6 right-align")
+            .addClass("s12 center-align");
+          klamontLogoCol
+            .removeClass("s6 left-align")
+            .addClass("s12 center-align");
+          klamontLogoCol.insertAfter(socialMediaCol);
+        } else {
+          socialMediaCol
+            .removeClass("s12 center-align")
+            .addClass("s6 right-align");
+          klamontLogoCol
+            .removeClass("s12 center-align")
+            .addClass("s6 left-align");
+          socialMediaCol.insertAfter(klamontLogoCol);
+        }
+      })
+      .resize();
+    $("#footer-logo-socials").css("visibility", "visible");
+
+    var fabMobileTablet = $("#fab-mobile-tablet");
+    var fabDesktop = $("#fab-desktop");
+    var navNormal = $("#nav-normal");
+    var navTransparent = $("#nav-transparent");
+    $(window).scroll(function () {
+      if ($(this).scrollTop() == 0) {
+        fabMobileTablet.stop(true, false).fadeOut(500);
+        fabDesktop.stop(true, false).fadeOut(500);
+      } else {
+        fabMobileTablet.fadeIn(500);
+        fabDesktop.fadeIn(500);
+      }
+
+      if ($(this).scrollTop() >= $("#uvod").height() - $("nav").height()) {
+        navNormal.fadeIn(500);
+        navTransparent.hide();
+      } else {
+        navNormal.stop(true, false).fadeOut(500);
+        navTransparent.show();
+      }
+    });
+  });
 </script>
 <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Electrician",
-        "name": "Firma Tibor Modroczky",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Diakovská 712",
-            "addressLocality": "Matúškovo",
-            "postalCode": "92501",
-            "addressCountry": "SK"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 48.16455,
-            "longitude": 17.74351
-        },
-        "url": "{{request.url_root}}",
-        "telephone": ["+421905460506", "0317826228"],
-        "email": "modroczkyt@gmail.com",
-        "logo": "{{url_for('static', filename='images/logo_socials.webp', _external=True)}}",
-        "description": "Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
-    }
+  {
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    "name": "Firma Tibor Modroczky",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Diakovská 712",
+      "addressLocality": "Matúškovo",
+      "postalCode": "92501",
+      "addressCountry": "SK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.16455,
+      "longitude": 17.74351
+    },
+    "url": "{{request.url_root}}",
+    "telephone": ["+421905460506", "0317826228"],
+    "email": "modroczkyt@gmail.com",
+    "logo": "{{url_for('static', filename='images/logo_socials.webp', _external=True)}}",
+    "description": "Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
+  }
 </script>
 {% endblock %}

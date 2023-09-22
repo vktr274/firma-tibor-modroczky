@@ -1,190 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sk">
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
-        {% assets "global_css" %}
-        <link rel="preload" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous">
-        {% endassets %}
-        {% block head_extra %}{% endblock %}
-        <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-        <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-        
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné." />
-        <meta name="keywords" content="opravy, oprava, notebook, počítače, antivírus, NOD32, Eset, reflow, reballing, BGA obvody, inštalácia, servis, elektronika, LCD TV, TV, plasma" />
-        <meta name="author" content="Viktor Modroczký, Tibor Modroczky" />
-        <meta name="robots" content="index, follow" />
-        
-        <title>{{ title }}</title>
-    </head>
-    <body>
-        <header>
-            <nav id="nav-transparent" class="fixed-top transparent z-depth-0" style="display: none; z-index: 2;">
-                <div class="nav-wrapper transparent">
-                    {% if show_hamburger %}
-                    <a
-                        href="#"
-                        data-target="slide-out"
-                        class="sidenav-trigger"
-                    >
-                        <i class="material-icons">menu</i>
-                    </a>
-                    {% endif %}
-                    <a
-                        href="https://www.eset.com/sk/"
-                        class="right"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <i class="valign-wrapper">
-                            <!-- Desktop only -->
-                            <picture class="hide-on-med-and-down" style="height: 100%;">
-                                <source
-                                    type="image/webp"
-                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar.webp') }}"
-                                />
-                                <img
-                                    src="{{ url_for('static', filename='images/bronze_partner_navbar.png') }}"
-                                    alt="Eset Bronze Partner"
-                                    style="height: 100%; width: auto;"
-                                >
-                            </picture>
-                            <!-- Mobile and Tablet -->
-                            <picture class="hide-on-large-only" style="height: 100%;">
-                                <source
-                                    type="image/webp"
-                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar_sm.webp') }}"
-                                />
-                                <img
-                                    src="{{ url_for('static', filename='images/bronze_partner_navbar_sm.png') }}"
-                                    alt="Eset Bronze Partner"
-                                    style="height: 100%; width: auto;"
-                                >
-                            </picture>
-                            <!-- end -->
-                        </i>
-                    </a>
-                </div>
-            </nav>
-            <nav id="nav-normal" class="fixed-top" style="display: none; z-index: 4">
-                <div class="nav-wrapper grey darken-3">
-                    {% if show_hamburger %}
-                    <a
-                        href="#"
-                        data-target="slide-out"
-                        class="sidenav-trigger"
-                    >
-                        <i class="material-icons">menu</i>
-                    </a>
-                    {% endif %}
-                    <a
-                        href="{{ go_to }}"
-                        class="brand-logo"
-                        style="padding-left: 16px"
-                    >
-                        <i class="valign-wrapper">
-                            <!-- Desktop only -->
-                            <picture class="hide-on-med-and-down" style="height: 70%;">
-                                <source
-                                    type="image/webp"
-                                    srcset="{{ url_for('static', filename='images/logo_large.webp') }}"
-                                />
-                                <img
-                                    src="{{ url_for('static', filename='images/logo_large.png') }}"
-                                    alt="Firma Tibor Modroczky"
-                                    style="height: 100%; width: auto;"
-                                >
-                            </picture>
-                            <!-- Mobile and Tablet -->
-                            <picture class="hide-on-large-only" style="height: 70%;">
-                                <source
-                                    type="image/webp"
-                                    srcset="{{ url_for('static', filename='images/logo.webp') }}"
-                                />
-                                <img
-                                    src="{{ url_for('static', filename='images/logo.png') }}"
-                                    alt="Firma Tibor Modroczky"
-                                    style="height: 100%; width: auto;"
-                                >
-                            </picture>
-                            <!-- end -->
-                        </i>
-                    </a>
-                    <a
-                        href="https://www.eset.com/sk/"
-                        class="right"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <i class="valign-wrapper">
-                            <!-- Desktop only -->
-                            <picture class="hide-on-med-and-down" style="height: 100%;">
-                                <source
-                                    type="image/webp"
-                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar.webp') }}"
-                                />
-                                <img
-                                    src="{{ url_for('static', filename='images/bronze_partner_navbar.png') }}"
-                                    alt="Eset Bronze Partner"
-                                    style="height: 100%; width: auto;"
-                                >
-                            </picture>
-                            <!-- Mobile and Tablet -->
-                            <picture class="hide-on-large-only" style="height: 100%;">
-                                <source
-                                    type="image/webp"
-                                    srcset="{{ url_for('static', filename='images/bronze_partner_navbar_sm.webp') }}"
-                                />
-                                <img
-                                    src="{{ url_for('static', filename='images/bronze_partner_navbar_sm.png') }}"
-                                    alt="Eset Bronze Partner"
-                                    style="height: 100%; width: auto;"
-                                    
-                                >
-                            </picture>
-                            <!-- end -->
-                        </i>
-                    </a>
-                </div>
-            </nav>
-            {% block header_extra %}{% endblock %}
-        </header>
-        {% block main %}{% endblock %}
-        {% block footer %}{% endblock %}
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        {% assets "global_js" %}
-        <script type="text/javascript" src="{{ ASSET_URL }}" crossorigin="anonymous"></script>
-        {% endassets %}
+    {% assets "global_css" %}
+    <link
+      rel="preload"
+      href="{{ ASSET_URL }}"
+      as="style"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous" />
+    {% endassets %} {% block head_extra %}{% endblock %}
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+    />
 
-        {% block extra_scripts %}{% endblock %}
-        <script>
-            $(document).ready(function() {
-                $('.tooltipped').tooltip();
-            });
-        </script>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6ZBM16HZEE"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-6ZBM16HZEE');
-        </script>
-        <style>
-            html {
-                scroll-behavior: smooth;
-            }
-            a, a:hover, a:visited, a:active {
-                color: inherit;
-                text-decoration: none;
-            }
-            nav.fixed-top {
-                position: fixed; top: 0px;
-            }
-        </style>
-        {% block extra_styles %}{% endblock %}
-    </body>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
+    />
+    <meta
+      name="keywords"
+      content="opravy, oprava, notebook, počítače, antivírus, NOD32, Eset, reflow, reballing, BGA obvody, inštalácia, servis, elektronika, LCD TV, TV, plasma"
+    />
+    <meta name="author" content="Viktor Modroczký, Tibor Modroczky" />
+    <meta name="robots" content="index, follow" />
+
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <header>
+      <nav
+        id="nav-transparent"
+        class="fixed-top transparent z-depth-0"
+        style="display: none; z-index: 2"
+      >
+        <div class="nav-wrapper transparent">
+          {% if show_hamburger %}
+          <a href="#" data-target="slide-out" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+          </a>
+          {% endif %}
+          <a
+            href="https://www.eset.com/sk/"
+            class="right"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="valign-wrapper">
+              <!-- Desktop only -->
+              <picture class="hide-on-med-and-down" style="height: 100%">
+                <source
+                  type="image/webp"
+                  srcset="{{ url_for('static', filename='images/bronze_partner_navbar.webp') }}"
+                />
+                <img
+                  src="{{ url_for('static', filename='images/bronze_partner_navbar.png') }}"
+                  alt="Eset Bronze Partner"
+                  style="height: 100%; width: auto"
+                />
+              </picture>
+              <!-- Mobile and Tablet -->
+              <picture class="hide-on-large-only" style="height: 100%">
+                <source
+                  type="image/webp"
+                  srcset="{{ url_for('static', filename='images/bronze_partner_navbar_sm.webp') }}"
+                />
+                <img
+                  src="{{ url_for('static', filename='images/bronze_partner_navbar_sm.png') }}"
+                  alt="Eset Bronze Partner"
+                  style="height: 100%; width: auto"
+                />
+              </picture>
+              <!-- end -->
+            </i>
+          </a>
+        </div>
+      </nav>
+      <nav id="nav-normal" class="fixed-top" style="display: none; z-index: 4">
+        <div class="nav-wrapper grey darken-3">
+          {% if show_hamburger %}
+          <a href="#" data-target="slide-out" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+          </a>
+          {% endif %}
+          <a href="{{ go_to }}" class="brand-logo" style="padding-left: 16px">
+            <i class="valign-wrapper">
+              <!-- Desktop only -->
+              <picture class="hide-on-med-and-down" style="height: 70%">
+                <source
+                  type="image/webp"
+                  srcset="{{ url_for('static', filename='images/logo_large.webp') }}"
+                />
+                <img
+                  src="{{ url_for('static', filename='images/logo_large.png') }}"
+                  alt="Firma Tibor Modroczky"
+                  style="height: 100%; width: auto"
+                />
+              </picture>
+              <!-- Mobile and Tablet -->
+              <picture class="hide-on-large-only" style="height: 70%">
+                <source
+                  type="image/webp"
+                  srcset="{{ url_for('static', filename='images/logo.webp') }}"
+                />
+                <img
+                  src="{{ url_for('static', filename='images/logo.png') }}"
+                  alt="Firma Tibor Modroczky"
+                  style="height: 100%; width: auto"
+                />
+              </picture>
+              <!-- end -->
+            </i>
+          </a>
+          <a
+            href="https://www.eset.com/sk/"
+            class="right"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="valign-wrapper">
+              <!-- Desktop only -->
+              <picture class="hide-on-med-and-down" style="height: 100%">
+                <source
+                  type="image/webp"
+                  srcset="{{ url_for('static', filename='images/bronze_partner_navbar.webp') }}"
+                />
+                <img
+                  src="{{ url_for('static', filename='images/bronze_partner_navbar.png') }}"
+                  alt="Eset Bronze Partner"
+                  style="height: 100%; width: auto"
+                />
+              </picture>
+              <!-- Mobile and Tablet -->
+              <picture class="hide-on-large-only" style="height: 100%">
+                <source
+                  type="image/webp"
+                  srcset="{{ url_for('static', filename='images/bronze_partner_navbar_sm.webp') }}"
+                />
+                <img
+                  src="{{ url_for('static', filename='images/bronze_partner_navbar_sm.png') }}"
+                  alt="Eset Bronze Partner"
+                  style="height: 100%; width: auto"
+                />
+              </picture>
+              <!-- end -->
+            </i>
+          </a>
+        </div>
+      </nav>
+      {% block header_extra %}{% endblock %}
+    </header>
+    {% block main %}{% endblock %} {% block footer %}{% endblock %} {% assets
+    "global_js" %}
+    <script
+      type="text/javascript"
+      src="{{ ASSET_URL }}"
+      crossorigin="anonymous"
+    ></script>
+    {% endassets %} {% block extra_scripts %}{% endblock %}
+    <script>
+      $(document).ready(function () {
+        $(".tooltipped").tooltip();
+      });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-6ZBM16HZEE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-6ZBM16HZEE");
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      a,
+      a:hover,
+      a:visited,
+      a:active {
+        color: inherit;
+        text-decoration: none;
+      }
+      nav.fixed-top {
+        position: fixed;
+        top: 0px;
+      }
+    </style>
+    {% block extra_styles %}{% endblock %}
+  </body>
 </html>

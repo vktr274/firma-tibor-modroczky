@@ -8,7 +8,7 @@ from views import page
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 app.register_blueprint(page)
 
 Minify(app=app, html=True, js=True, cssless=True)
@@ -23,4 +23,4 @@ assets.register(bundles)
 
 @ext.register_generator
 def sitemap():
-    yield 'page.index', {}
+    yield "page.index", {}
