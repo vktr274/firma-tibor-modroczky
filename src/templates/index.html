@@ -478,7 +478,7 @@
     <div class="container center-align">
       <!-- Desktop only -->
       <span class="left hide-on-med-and-down">
-        © 2022 - 2025
+        © 2022 - 2026
         <a
           href="https://github.com/vktr274"
           target="_blank"
@@ -489,7 +489,7 @@
       </span>
       <!-- Mobile and Tablet -->
       <p class="hide-on-large-only" style="margin: 0; padding: 0">
-        © 2022 - 2025
+        © 2022 - 2026
         <a
           href="https://github.com/vktr274"
           target="_blank"
@@ -861,6 +861,12 @@
       }),
       new ScrollMagic.Scene({
         duration: "100%",
+        triggerElement: "#oprava-autoklucov",
+      }).on("enter", function (event) {
+        history.replaceState(null, null, "#oprava-autoklucov");
+      }),
+      new ScrollMagic.Scene({
+        duration: "100%",
         triggerElement: "#instalacia-softveru",
       }).on("enter", function (event) {
         history.replaceState(null, null, "#instalacia-softveru");
@@ -903,7 +909,7 @@
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
               subdomains: "abcd",
               maxZoom: 20,
-            }
+            },
           ).addTo(map);
           var tooltipText = "Zobraziť zemepisnú šírku a dĺžku";
           var tooltipOptions = {
@@ -956,7 +962,7 @@
             $(".top-container").height() +
             $("#details").height(),
         },
-        350
+        350,
       );
       $(".carousel").carousel();
     });
@@ -1031,7 +1037,7 @@
     "telephone": "+421905460506",
     "email": "modroczkyt@gmail.com",
     "logo": "{{url_for('static', filename='images/logo_socials.webp', _external=True)}}",
-    "description": "Oprava TV, PC, notebookov, audio a video zariadení, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
+    "description": "Oprava TV, PC, notebookov, audio a video zariadení, autokľúčov, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné."
   }
 </script>
 {% endblock %}

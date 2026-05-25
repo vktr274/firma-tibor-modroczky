@@ -88,6 +88,18 @@ actions = {
             "obnova poškodeného BIOS-u po neúspešnej aktualizácii",
         ],
     },
+    "Oprava autokľúčov": {
+        "image": "car_keys.webp",
+        "image_fallback": "car_keys.jpg",
+        "icon": "key",
+        "short_name": "Oprava autokľúčov",
+        "anchor": "oprava-autoklucov",
+        "items": [
+            "výmena mikrospínačov",
+            "výmena krytov a púzdier",
+            "výmena batérií",
+        ],
+    },
     "Inštalácia softvéru": {
         "image": "sw.webp",
         "image_fallback": "sw.jpg",
