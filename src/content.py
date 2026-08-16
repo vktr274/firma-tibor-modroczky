@@ -1,3 +1,25 @@
+meta = {
+    "name": "Firma Tibor Modroczky",
+    "title": "Servis výpočtovej techniky a spotrebnej elektroniky",
+    "description": "Oprava TV, PC, notebookov, audio a video zariadení, autokľúčov, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné.",
+    "keywords": "opravy, oprava, notebook, počítače, antivírus, NOD32, Eset, reflow, reballing, BGA obvody, inštalácia, servis, elektronika, LCD TV, TV, plasma, OLED, LCD, autokľúče, programovanie, obvody, audio, video",
+    "phone": "+421 905 460 506",
+    "email": "modroczkyt@gmail.com",
+    "address": {
+        "name": "Tibor Modroczky",
+        "street": "Diakovská 712",
+        "postal": "925 01",
+        "city": "Matúškovo",
+    },
+    "author": "Viktor Modroczký, Tibor Modroczky",
+    "robots": "index, follow",
+}
+
+geo = {
+    "latitude": 48.16455,
+    "longitude": 17.74351,
+}
+
 intro = [
     "Oprava a predaj elektroniky.",
     "Inštalácia softvéru a údržba počítačov.",
@@ -68,24 +90,28 @@ actions = {
             "obnova poškodeného BIOS-u po neúspešnej aktualizácii",
             "oprava grafických kariet",
             "reflow (pretavenie) BGA obvodov",
-            "reballing (preguličkovanie) a znovu osadenie BGA obvodov",
+            "reballing (preguličkovanie) a znovuosadenie BGA obvodov",
             "výmena alebo rozšírenie RAM",
             "výmena HDD a SSD",
             "diagnostika",
+            "výmena teplovodivej pasty alebo teplovodivých podložiek",
             "zálohovanie a obnovenie dát",
         ],
     },
-    "Oprava počítačov": {
+    "Oprava a údržba počítačov": {
         "image": "pc.webp",
         "image_fallback": "pc.jpg",
         "icon": "desktop_windows",
-        "short_name": "Oprava počítačov",
+        "short_name": "Oprava a údržba počítačov",
         "anchor": "oprava-pocitacov",
         "items": [
             "oprava základných dosiek",
             "oprava a výmena zdrojov",
             "výmena a rozšírenie komponentov",
             "obnova poškodeného BIOS-u po neúspešnej aktualizácii",
+            "čistenie počítačov a notebookov od prachu a nečistôt",
+            "prenesenie systému a súborov na nový disk",
+            "výmena teplovodivej pasty",
         ],
     },
     "Oprava autokľúčov": {
@@ -98,6 +124,29 @@ actions = {
             "výmena mikrospínačov",
             "výmena krytov a púzdier",
             "výmena batérií",
+        ],
+    },
+    "Oprava vybraných modulov": {
+        "image": "module.webp",
+        "image_fallback": "module.jpg",
+        "icon": "memory",
+        "short_name": "Oprava modulov",
+        "anchor": "oprava-modulov",
+        "items": [
+            "moduly automatických brán",
+            "moduly bielej techniky",
+        ],
+    },
+    "Skladanie počítačov na mieru": {
+        "image": "custom_pc.webp",
+        "image_fallback": "custom_pc.jpg",
+        "icon": "build",
+        "short_name": "Skladanie počítačov",
+        "anchor": "skladanie-pocitacov",
+        "items": [
+            "herné alebo kancelárske zostavy",
+            "výber vhodných komponentov podľa požiadaviek a rozpočtu zákazníka",
+            "výber vhodných komponentov podľa katalógu hier alebo softvéru, ktorý zákazník používa",
         ],
     },
     "Inštalácia softvéru": {
@@ -136,11 +185,10 @@ actions = {
         "anchor": "predaj",
         "items": [
             "predaj antivírusového programu ESET",
-            "predaj počítačov a notebookov",
-            "zostavenie a predaj počítačov podľa požiadaviek zákazníka",
+            "predaj repasovaných počítačov a notebookov",
             "dodanie náhradných zdrojov k notebookom rôznych značiek",
             "dodanie náhradných a originálnych diaľkových ovládačov pre TV, DVD, SAT",
-            "na požiadanie dodávame aj iný tovar ako elektronické súčiastky, moduly, meniče, drobné náradie pre elektroniku, lupy, USB mikroskopy, spájkovačky, cín atď...",
+            "na požiadanie dodávame aj iný tovar ako elektronické súčiastky, moduly, meniče, drobné náradie pre elektroniku, lupy, USB mikroskopy, spájkovačky, cín, atď...",
         ],
     },
 }

@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import render_template, send_from_directory
-from content import actions, intro, highlights, gallery
+from content import actions, intro, highlights, gallery, meta, geo
 
 page = Blueprint("page", __name__, template_folder="templates")
 
@@ -17,6 +17,8 @@ def index():
         intro=intro,
         highlights=highlights,
         gallery=gallery,
+        meta=meta,
+        geo=geo,
     )
 
 
