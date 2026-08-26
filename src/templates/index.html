@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block head_extra %} {% assets "index_css" %}
-<link rel="preload" href="{{ ASSET_URL }}" as="style" crossorigin="anonymous" />
-<link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous" />
+<link rel="preload" href="{{ ASSET_URL }}" as="style" />
+<link rel="stylesheet" href="{{ ASSET_URL }}" />
 {% endassets %}
 <link
   rel="preload"
@@ -760,11 +760,7 @@
   }
 </style>
 {% endblock %} {% block extra_scripts %} {% assets "index_js" %}
-<script
-  type="text/javascript"
-  src="{{ ASSET_URL }}"
-  crossorigin="anonymous"
-></script>
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 <script>
   $(document).ready(function () {

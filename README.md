@@ -10,7 +10,6 @@ The Web Application is hosted at [PythonAnywhere](https://eu.pythonanywhere.com/
 #### Python
 
 Flask 2.1.0 ([repo](https://github.com/pallets/flask), [docs](https://flask.palletsprojects.com/))\
-Flask-Sitemap 0.4.0 ([repo](https://github.com/inveniosoftware/flask-sitemap), [docs](http://flask-sitemap.readthedocs.io/))\
 Flask-Mobility 1.1.0 ([repo](https://github.com/rehandalal/flask-mobility), [docs](http://flask-mobility.readthedocs.org/))\
 Flask-Minify 0.39 ([repo](https://github.com/mrf345/flask_minify))\
 Flask-Assets 2.0 ([repo](https://github.com/miracle2k/flask-assets), [docs](https://flask-assets.readthedocs.io/))\

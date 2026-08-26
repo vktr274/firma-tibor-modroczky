@@ -4,13 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     {% assets "global_css" %}
-    <link
-      rel="preload"
-      href="{{ ASSET_URL }}"
-      as="style"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="{{ ASSET_URL }}" crossorigin="anonymous" />
+    <link rel="preload" href="{{ ASSET_URL }}" as="style" />
+    <link rel="stylesheet" href="{{ ASSET_URL }}" />
     {% endassets %} {% block head_extra %}{% endblock %}
     <link
       rel="shortcut icon"
@@ -155,11 +150,7 @@
     </header>
     {% block main %}{% endblock %} {% block footer %}{% endblock %} {% assets
     "global_js" %}
-    <script
-      type="text/javascript"
-      src="{{ ASSET_URL }}"
-      crossorigin="anonymous"
-    ></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
     {% endassets %} {% block extra_scripts %}{% endblock %}
     <script>
       $(document).ready(function () {
