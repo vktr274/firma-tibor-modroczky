@@ -215,7 +215,10 @@
         <ul>
           {% for item in value['items'] %}
           <li>
-            <span class="normal-text with-marker">{{ item }}</span>
+            <div class="service-enum-item">
+              <i class="material-icons blue-text text-darken-2">check</i>
+              <span class="normal-text">{{ item }}</span>
+            </div>
           </li>
           {% endfor %}
         </ul>
@@ -562,6 +565,12 @@
     vertical-align: middle;
     display: inline-block;
   }
+  .service-enum-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
   .small-text {
     font-size: 100%;
   }
@@ -617,6 +626,7 @@
     font-weight: lighter;
     font-size: 340%;
     margin-top: 20px;
+    position: relative;
   }
   .navigate-right,
   .navigate-left {
@@ -843,7 +853,7 @@
         if (element === "#predaj" && !mapLoaded) {
           mapLoaded = true;
           var geo = ["{{ geo['latitude'] }}", "{{ geo['longitude'] }}"];
-          var zoom = 9;
+          var zoom = 10;
           var map = L.map("map", {
             center: geo,
             zoom: zoom,
@@ -861,12 +871,13 @@
             })
             .addTo(map);
           L.tileLayer(
-            "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+            "https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.{ext}",
             {
-              attribution:
-                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-              subdomains: "abcd",
+              minZoom: 0,
               maxZoom: 20,
+              attribution:
+                '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+              ext: "png",
             },
           ).addTo(map);
           var tooltipText = "Zobraziť zemepisnú šírku a dĺžku";
