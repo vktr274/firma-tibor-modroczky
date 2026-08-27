@@ -1,8 +1,8 @@
 meta = {
-    "name": "Firma Tibor Modroczky",
-    "title": "Servis výpočtovej techniky a spotrebnej elektroniky",
+    "name": "Tibor Modroczky",
+    "title": "Servis a predaj výpočtovej techniky a spotrebnej elektroniky",
     "description": "Oprava TV, PC, notebookov, audio a video zariadení, autokľúčov, predaj antivírusu Eset, inštalácia, údržba počítačov a notebookov, programovanie obvodov a iné.",
-    "keywords": "opravy, oprava, notebook, počítače, antivírus, NOD32, Eset, reflow, reballing, BGA obvody, inštalácia, servis, elektronika, LCD TV, TV, plasma, OLED, LCD, autokľúče, programovanie, obvody, audio, video",
+    "keywords": "opravy, oprava, servis, notebook, počítače, antivírus, NOD32, Eset, reflow, reballing, BGA obvody, inštalácia, servis, elektronika, LCD TV, TV, plasma, OLED, LCD, autokľúče, programovanie, obvody, audio, video, predaj, software, elektronika, zosilňovače, elektrónka, elektrónkový, údržba",
     "phone": "+421 905 460 506",
     "email": "modroczkyt@gmail.com",
     "address": {
@@ -74,6 +74,7 @@ actions = {
             "oprava monitorov",
             "oprava DVD prehrávačov a video zariadení",
             "oprava audio zariadení",
+            "oprava elektrónkových zosilňovačov",
         ],
     },
     "Oprava notebookov": {
