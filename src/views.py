@@ -10,7 +10,6 @@ page = Blueprint("page", __name__, template_folder="templates")
 def index():
     return render_template(
         "index.html",
-        title="Servis výpočtovej techniky a spotrebnej elektroniky",
         go_to="#",
         show_hamburger=True,
         actions=actions,
