@@ -10,8 +10,10 @@ bundles = {
     "global_css": Bundle(
         "css/material-icons-v135-swap.css",
         "css/materialize-1.1.0.min.css",
+        "css/fontawesome-7.3.1.min.css",
+        "css/fontawesome-7.3.1-brands.min.css",
         output="css/gen/global.css",
-        filters="cssmin",
+        filters="cssrewrite,cssmin",
     ),
     "index_js": Bundle(
         "js/jquery-ui-1.13.2.bounce-only.js",

@@ -6,7 +6,15 @@
     {% assets "global_css" %}
     <link rel="preload" href="{{ ASSET_URL }}" as="style" />
     <link rel="stylesheet" href="{{ ASSET_URL }}" />
-    {% endassets %} {% block head_extra %}{% endblock %}
+    {% endassets %}
+    <link
+      rel="preload"
+      href="{{ url_for('static', filename='webfonts/fa-brands-400.woff2') }}"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    {% block head_extra %}{% endblock %}
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='images/favicon.ico') }}"

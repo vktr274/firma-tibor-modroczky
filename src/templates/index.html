@@ -393,37 +393,27 @@
         style="margin-bottom: 16px"
       >
         <div style="display: inline-block" class="center-align">
-          <div>
+          <div style="display: flex; align-items: center; gap: 8px">
             <a
               href="https://www.facebook.com/sharer/sharer.php?u={{request.url_root}}"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
-                loading="lazy"
-                src="{{ url_for('static', filename='images/facebook.svg') }}"
-                style="height: 32px; width: auto"
-                alt="Facebook"
-              />
+              <span style="font-size: 32px; color: white">
+                <i class="fa-brands fa-facebook"></i>
+              </span>
             </a>
             <a
-              href="https://twitter.com/intent/tweet?text={{request.url_root}}"
+              href="https://x.com/intent/tweet?text={{request.url_root}}"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
-                loading="lazy"
-                src="{{ url_for('static', filename='images/twitter.svg') }}"
-                style="height: 32px; width: auto; padding-left: 8px"
-                alt="Twitter"
-              />
+              <span style="font-size: 32px; color: white">
+                <i class="fa-brands fa-x-twitter"></i>
+              </span>
             </a>
             <a href="#zdielat" id="share-btn" style="display: none">
-              <i
-                class="material-icons"
-                style="font-size: 32px; padding-left: 8px"
-                >share</i
-              >
+              <i class="material-icons" style="font-size: 32px"> share </i>
             </a>
           </div>
           <div>Zdieľajte nás</div>
@@ -910,7 +900,7 @@
     new ScrollMagic.Controller().addScene(scene);
 
     if (navigator.canShare) {
-      $("#share-btn").css("display", "inline");
+      $("#share-btn").css("display", "flex");
       $("#share-btn").on("click", function () {
         navigator.share({
           text: "{{meta['name']}}",
