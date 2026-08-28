@@ -1,6 +1,4 @@
-# Tibor Modroczky - Electronics Repair Shop
-
-[![tm_logo](src/static/images/logo_large.webp)](https://modroczky.sk/)
+# [![tm_logo](src/static/images/logo_large.webp)](https://modroczky.sk/)
 
 ## Flask Web Application for Tibor Modroczky
 
