@@ -844,7 +844,7 @@
       }).on("enter", function (event) {
         history.replaceState(null, null, element);
         if (element === "#kontakt") {
-          gtag_report_conversion("{{request.url_root}}/#kontakt");
+          gtag_report_conversion("{{request.url_root}}#kontakt");
         }
         if (element === "#predaj" && !mapLoaded) {
           mapLoaded = true;
