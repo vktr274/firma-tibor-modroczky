@@ -95,11 +95,11 @@
               <picture class="hide-on-med-and-down" style="height: 70%">
                 <source
                   type="image/webp"
-                  srcset="{{ url_for('static', filename='images/logo_large.webp') }}"
+                  srcset="{{ url_for('static', filename='images/logo_large_' ~ language ~ '.webp') }}"
                 />
                 <img
-                  src="{{ url_for('static', filename='images/logo_large.png') }}"
-                  alt="Tibor Modroczky - Servis a predaj elektroniky"
+                  src="{{ url_for('static', filename='images/logo_large_' ~ language ~ '.png') }}"
+                  alt="{{meta['name']+' - '+meta['title']}}"
                   style="height: 100%; width: auto"
                 />
               </picture>
@@ -111,7 +111,7 @@
                 />
                 <img
                   src="{{ url_for('static', filename='images/logo.png') }}"
-                  alt="Tibor Modroczky - Servis a predaj elektroniky"
+                  alt="{{meta['name']+' - '+meta['title']}}"
                   style="height: 100%; width: auto"
                 />
               </picture>
