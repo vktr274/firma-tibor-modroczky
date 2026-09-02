@@ -182,7 +182,8 @@
       gtag("config", "AW-18415725903");
     </script>
     <script>
-      function gtag_report_conversion(url) {
+      function gtag_report_conversion(path) {
+        let url = "{{request.url_root}}{{ language }}" + path;
         var callback = function () {
           if (typeof url != "undefined") {
             window.location = url;
