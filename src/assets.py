@@ -1,4 +1,4 @@
-from flask_assets import Bundle
+from flask_assets import Bundle  # type: ignore
 
 bundles = {
     "global_js": Bundle(
