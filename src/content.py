@@ -17,7 +17,7 @@ meta = {
     },
     "hu": {
         "name": "Modroczky Tibor",
-        "title": "Számítástechnikai és fogyasztói elektronikai javítás és értékesítés",
+        "title": "Számítástechnikai és fogyasztói elektronika szervizelése és értékesítése",
         "description": "TV, PC, laptop, audio és video berendezések, autókulcsok javítása, Eset vírusirtó értékesítése, számítógépek és laptopok telepítése és karbantartása, áramkörök programozása és egyéb.",
         "keywords": "javítás, javítások, szerviz, laptop, számítógépek, vírusirtó, NOD32, Eset, reflow, reballing, BGA áramkörök, telepítés, szerviz, elektronika, LCD TV, TV, plazma, OLED, LCD, autókulcsok, programozás, áramkörök, audio, video, értékesítés, szoftverek, elektronika, erősítők, elektroncső, karbantartás",
         "phone": "+421 905 460 506",
