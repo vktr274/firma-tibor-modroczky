@@ -25,7 +25,7 @@
 <meta property="og:description" content="{{meta['description']}}" />
 <meta
   property="og:image"
-  content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}"
+  content="{{url_for('static', filename='images/logo_socials_' ~ language ~ '.webp', _external=True)}}"
 />
 <meta property="og:image:alt" content="{{meta['name']}} - {{meta['title']}}" />
 
@@ -35,7 +35,7 @@
 <meta property="twitter:description" content="{{meta['description']}}" />
 <meta
   property="twitter:image"
-  content="{{url_for('static', filename='images/logo_socials.webp', _external=True)}}"
+  content="{{url_for('static', filename='images/logo_socials_' ~ language ~ '.webp', _external=True)}}"
 />
 {% endblock %} {% block header_extra %}
 <ul id="slide-out" class="sidenav sidenav-fixed">
@@ -1112,7 +1112,7 @@
     "url": "{{request.url_root}}",
     "telephone": "{{ meta['phone'] }}",
     "email": "{{ meta['email'] }}",
-    "logo": "{{url_for('static', filename='images/logo_socials.webp', _external=True)}}",
+    "logo": "{{url_for('static', filename='images/logo_socials_' ~ language ~ '.webp', _external=True)}}",
     "description": "{{ meta['description'] }}"
   }
 </script>
