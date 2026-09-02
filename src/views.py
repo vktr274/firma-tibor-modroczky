@@ -1,5 +1,6 @@
-from flask import Blueprint
-from flask import render_template, Response
+from datetime import datetime
+
+from flask import Blueprint, Response, current_app, render_template, url_for
 from content import actions, intro, highlights, gallery, meta, geo, text
 import mimetypes
 
@@ -75,9 +76,9 @@ def page_not_found(e):
     )
 
 
-def render_text_file(filename):
+def render_text_file(filename, **context):
     mimetype, _ = mimetypes.guess_type(filename)
-    return Response(render_template(filename), mimetype=mimetype)
+    return Response(render_template(filename, **context), mimetype=mimetype)
 
 
 @page.route("/robots.txt", methods=["GET"])
@@ -87,4 +88,21 @@ def robots():
 
 @page.route("/sitemap.xml", methods=["GET"])
 def sitemap():
-    return render_text_file("sitemap.xml")
+    sitemap_entries = []
+    excluded_endpoints = {"page.sitemap", "page.robots"}
+
+    for rule in current_app.url_map.iter_rules():
+        rule_methods = rule.methods or set()
+        if (
+            rule.endpoint.startswith("page.")
+            and "GET" in rule_methods
+            and not rule.arguments
+            and rule.endpoint not in excluded_endpoints
+        ):
+            sitemap_entries.append(
+                {
+                    "url": url_for(rule.endpoint, _external=True),
+                    "lastmod": datetime.now().strftime("%Y-%m-%d"),
+                }
+            )
+    return render_text_file("sitemap.xml", entries=sitemap_entries)
