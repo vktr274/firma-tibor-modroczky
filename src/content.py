@@ -463,7 +463,7 @@ text = {
         "expand_gallery": "A galéria kibontása",
         "about_us": "Megbízható és tisztességes szerviz tapasztalattal 1994 óta.",
         "details": "Részletek",
-        "feedback": "Visszajelzés az oldalról",
+        "feedback": "Visszajelzés az oldalhoz",
         "contact": "Kapcsolat",
         "top_image_alt": "Nyomtatott áramkör",
     },
