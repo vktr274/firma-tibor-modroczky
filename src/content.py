@@ -45,8 +45,8 @@ intro = {
         "Programovanie pamätí a mikroprocesorov.",
     ],
     "hu": [
-        "Elektronikai javítás és értékesítés.",
-        "Szoftver telepítése és számítógépek karbantartása.",
+        "Elektronika javítása és értékesítése.",
+        "Szoftver telepítése és a számítógépek karbantartása.",
         "Memóriák és mikroprocesszorok programozása.",
     ],
 }
@@ -300,7 +300,7 @@ actions = {
                 "műholdvevők javítása",
                 "monitorok javítása",
                 "DVD-lejátszók és videoberendezések javítása",
-                "audio berendezések javítása",
+                "audioberendezések javítása",
                 "elektroncsöves erősítők javítása",
             ],
         },
