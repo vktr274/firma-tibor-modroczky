@@ -567,6 +567,11 @@
   #nav-transparent {
     display: block !important;
   }
+  #slide-out {
+    /* fallback for browsers without dvh support */
+    height: 100vh;
+    height: 100dvh;
+  }
   .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -866,23 +871,17 @@
     ) {
       redirectToLanguage("hu");
     }
-
-    const languageSelector = document.querySelector(".language-selector");
-    if (languageSelector) {
-      const skLink = languageSelector.querySelector("#language-sk");
-      const huLink = languageSelector.querySelector("#language-hu");
-
-      if (usedLanguage === "sk") {
-        skLink.classList.add("active-language");
-        huLink.classList.remove("active-language");
-      } else if (usedLanguage === "hu") {
-        huLink.classList.add("active-language");
-        skLink.classList.remove("active-language");
-      }
-    }
   }
 
   $(document).ready(function () {
+    if (usedLanguage === "sk") {
+      $("#language-sk").addClass("active-language");
+      $("#language-hu").removeClass("active-language");
+    } else if (usedLanguage === "hu") {
+      $("#language-hu").addClass("active-language");
+      $("#language-sk").removeClass("active-language");
+    }
+
     $("#current-year").text(new Date().getFullYear());
     $("#uvod").css({
       height: $(window).outerHeight(),
