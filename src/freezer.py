@@ -9,7 +9,7 @@ JS_GEN_DIR = "static/js/gen"
 app.config["FREEZER_BASE_URL"] = "https://modroczky.sk/"
 app.config["FREEZER_DESTINATION"] = BUILD_DIR
 app.config["FREEZER_RELATIVE_URLS"] = True
-assets.url = "static"
+assets.url = "/static"
 
 freezer = Freezer(app)
 
