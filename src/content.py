@@ -293,7 +293,7 @@ actions = {
             "image": "repair.webp",
             "image_fallback": "repair.jpg",
             "icon": "radio",
-            "short_name": "Elektronikai javítás",
+            "short_name": "Elektronika javítása",
             "anchor": "oprava-spotrebnej-elektroniky",
             "items": [
                 "televíziók javítása",
