@@ -182,16 +182,9 @@
       gtag("config", "AW-18415725903");
     </script>
     <script>
-      function gtag_report_conversion(path) {
-        let url = "{{request.url_root}}{{ language }}" + path;
-        var callback = function () {
-          if (typeof url != "undefined") {
-            window.location = url;
-          }
-        };
+      function gtag_report_conversion() {
         gtag("event", "conversion", {
           send_to: "AW-18415725903/aEMxCNS91uocEM_aps1E",
-          event_callback: callback,
         });
         return false;
       }
