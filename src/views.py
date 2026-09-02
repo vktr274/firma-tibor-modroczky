@@ -89,7 +89,11 @@ def robots():
 @page.route("/sitemap.xml", methods=["GET"])
 def sitemap():
     sitemap_entries = []
-    excluded_endpoints = {"page.sitemap", "page.robots"}
+    excluded_endpoints = {
+        "page.sitemap",
+        "page.robots",
+        "page.index",  # default index
+    }
 
     for rule in current_app.url_map.iter_rules():
         rule_methods = rule.methods or set()
