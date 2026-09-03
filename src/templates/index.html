@@ -93,18 +93,6 @@
       style="display: flex; flex-direction: column"
     >
       <a
-        href="{{ url_for('page.index_sk') }}"
-        onclick="saveLanguagePreference('sk')"
-      >
-        <img
-          data-language="sk"
-          loading="lazy"
-          src="{{ url_for('static', filename='images/slovakia.svg') }}"
-          alt="SK"
-          style="height: 32px; width: auto"
-        />
-      </a>
-      <a
         href="{{ url_for('page.index_hu') }}"
         onclick="saveLanguagePreference('hu')"
       >
@@ -113,6 +101,18 @@
           loading="lazy"
           src="{{ url_for('static', filename='images/hungary.svg') }}"
           alt="HU"
+          style="height: 32px; width: auto"
+        />
+      </a>
+      <a
+        href="{{ url_for('page.index_sk') }}"
+        onclick="saveLanguagePreference('sk')"
+      >
+        <img
+          data-language="sk"
+          loading="lazy"
+          src="{{ url_for('static', filename='images/slovakia.svg') }}"
+          alt="SK"
           style="height: 32px; width: auto"
         />
       </a>
