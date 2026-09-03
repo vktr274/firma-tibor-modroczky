@@ -68,7 +68,7 @@
   <li class="language-selector">
     <a
       href="{{ url_for('page.index_sk') }}"
-      id="language-sk"
+      data-language="sk"
       class="sidenav-close"
       onclick="saveLanguagePreference('sk')"
     >
@@ -77,7 +77,7 @@
     <span>|</span>
     <a
       href="{{ url_for('page.index_hu') }}"
-      id="language-hu"
+      data-language="hu"
       class="sidenav-close"
       onclick="saveLanguagePreference('hu')"
     >
@@ -264,6 +264,23 @@
     <div class="fixed-action-btn" style="bottom: 16px; right: 16px">
       <a href="#kontakt" class="btn-floating btn-large blue darken-2">
         <i class="material-icons">perm_phone_msg</i>
+      </a>
+    </div>
+    <div class="mobile-language-selector">
+      <a
+        href="{{ url_for('page.index_sk') }}"
+        data-language="sk"
+        onclick="saveLanguagePreference('sk')"
+      >
+        SK
+      </a>
+      <span>|</span>
+      <a
+        href="{{ url_for('page.index_hu') }}"
+        data-language="hu"
+        onclick="saveLanguagePreference('hu')"
+      >
+        HU
       </a>
     </div>
   </div>
@@ -612,6 +629,19 @@
     font-weight: bold;
     text-decoration: underline;
   }
+  .mobile-language-selector {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+  }
+  .mobile-language-selector .active-language {
+    font-weight: bold;
+    text-decoration: underline;
+  }
   .small-text {
     font-size: 100%;
   }
@@ -875,11 +905,11 @@
 
   $(document).ready(function () {
     if (usedLanguage === "sk") {
-      $("#language-sk").addClass("active-language");
-      $("#language-hu").removeClass("active-language");
+      $("[data-language='sk']").addClass("active-language");
+      $("[data-language='hu']").removeClass("active-language");
     } else if (usedLanguage === "hu") {
-      $("#language-hu").addClass("active-language");
-      $("#language-sk").removeClass("active-language");
+      $("[data-language='hu']").addClass("active-language");
+      $("[data-language='sk']").removeClass("active-language");
     }
 
     $("#current-year").text(new Date().getFullYear());
