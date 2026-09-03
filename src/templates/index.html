@@ -87,7 +87,24 @@
 </ul>
 {% endblock %} {% block main %}
 <main style="visibility: hidden">
-  <div id="uvod" style="position: relative; text-align: center">
+  <div id="uvod">
+    <div class="hide-on-large-only mobile-language-selector">
+      <a
+        href="{{ url_for('page.index_sk') }}"
+        data-language="sk"
+        onclick="saveLanguagePreference('sk')"
+      >
+        <div>SK</div>
+      </a>
+      <span>|</span>
+      <a
+        href="{{ url_for('page.index_hu') }}"
+        data-language="hu"
+        onclick="saveLanguagePreference('hu')"
+      >
+        <div>HU</div>
+      </a>
+    </div>
     <picture>
       <source
         type="image/webp"
@@ -99,34 +116,36 @@
         alt="{{text['top_image_alt']}}"
       />
     </picture>
-    <div class="top-container">
-      <h1>
-        <picture>
-          <source
-            type="image/webp"
-            srcset="{{ url_for('static', filename='images/logo_center_' ~ language ~ '.webp') }}"
-          />
-          <img
-            class="intro-logo"
-            src="{{ url_for('static', filename='images/logo_center_' ~ language ~ '.png') }}"
-            alt="{{meta['name']}} - {{meta['title']}}"
-          />
-        </picture>
-      </h1>
-      <div id="p-container">
-        {% for item in intro %}
-        <p class="white-text responsive-top-text">{{ item }}</p>
-        {% endfor %}
+    <div style="text-align: center">
+      <div class="top-container">
+        <h1>
+          <picture>
+            <source
+              type="image/webp"
+              srcset="{{ url_for('static', filename='images/logo_center_' ~ language ~ '.webp') }}"
+            />
+            <img
+              class="intro-logo"
+              src="{{ url_for('static', filename='images/logo_center_' ~ language ~ '.png') }}"
+              alt="{{meta['name']}} - {{meta['title']}}"
+            />
+          </picture>
+        </h1>
+        <div id="p-container">
+          {% for item in intro %}
+          <p class="white-text responsive-top-text">{{ item }}</p>
+          {% endfor %}
+        </div>
       </div>
+      <a href="#podrobnosti" class="top-icon-container" style="z-index: 3">
+        <div id="details">
+          <span class="white-text" style="display: block"
+            >{{text['details']}}</span
+          >
+          <i class="white-text material-icons responsive-icon">expand_more</i>
+        </div>
+      </a>
     </div>
-    <a href="#podrobnosti" class="top-icon-container" style="z-index: 3">
-      <div id="details">
-        <span class="white-text" style="display: block"
-          >{{text['details']}}</span
-        >
-        <i class="white-text material-icons responsive-icon">expand_more</i>
-      </div>
-    </a>
   </div>
   <div id="podrobnosti" class="section grey lighten-4 z-depth-5 center-align">
     <div class="row container">
@@ -264,23 +283,6 @@
     <div class="fixed-action-btn" style="bottom: 16px; right: 16px">
       <a href="#kontakt" class="btn-floating btn-large blue darken-2">
         <i class="material-icons">perm_phone_msg</i>
-      </a>
-    </div>
-    <div class="mobile-language-selector">
-      <a
-        href="{{ url_for('page.index_sk') }}"
-        data-language="sk"
-        onclick="saveLanguagePreference('sk')"
-      >
-        <div>SK</div>
-      </a>
-      <span>|</span>
-      <a
-        href="{{ url_for('page.index_hu') }}"
-        data-language="hu"
-        onclick="saveLanguagePreference('hu')"
-      >
-        <div>HU</div>
       </a>
     </div>
   </div>
