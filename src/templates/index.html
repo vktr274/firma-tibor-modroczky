@@ -88,21 +88,33 @@
 {% endblock %} {% block main %}
 <main style="visibility: hidden">
   <div id="uvod" style="position: relative">
-    <div class="hide-on-large-only mobile-language-selector">
+    <div
+      class="hide-on-large-only mobile-language-selector"
+      style="display: flex; flex-direction: column"
+    >
       <a
         href="{{ url_for('page.index_sk') }}"
-        data-language="sk"
         onclick="saveLanguagePreference('sk')"
       >
-        <div>SK</div>
+        <img
+          data-language="sk"
+          loading="lazy"
+          src="{{ url_for('static', filename='images/slovakia.svg') }}"
+          alt="SK"
+          style="height: 32px; width: auto"
+        />
       </a>
-      <span>|</span>
       <a
         href="{{ url_for('page.index_hu') }}"
-        data-language="hu"
         onclick="saveLanguagePreference('hu')"
       >
-        <div>HU</div>
+        <img
+          data-language="hu"
+          loading="lazy"
+          src="{{ url_for('static', filename='images/hungary.svg') }}"
+          alt="HU"
+          style="height: 32px; width: auto"
+        />
       </a>
     </div>
     <picture>
@@ -644,8 +656,11 @@
     color: white;
   }
   .mobile-language-selector .active-language {
-    font-weight: bold;
-    text-decoration: underline;
+    height: 34px !important;
+    width: auto;
+  }
+  .mobile-language-selector .inactive-language {
+    opacity: 0.4;
   }
   .small-text {
     font-size: 100%;
@@ -912,9 +927,13 @@
     if (usedLanguage === "sk") {
       $("[data-language='sk']").addClass("active-language");
       $("[data-language='hu']").removeClass("active-language");
+      $("[data-language='hu']").addClass("inactive-language");
+      $("[data-language='sk']").removeClass("inactive-language");
     } else if (usedLanguage === "hu") {
       $("[data-language='hu']").addClass("active-language");
       $("[data-language='sk']").removeClass("active-language");
+      $("[data-language='sk']").addClass("inactive-language");
+      $("[data-language='hu']").removeClass("inactive-language");
     }
 
     $("#current-year").text(new Date().getFullYear());
