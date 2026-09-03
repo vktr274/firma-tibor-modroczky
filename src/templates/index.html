@@ -272,7 +272,7 @@
         data-language="sk"
         onclick="saveLanguagePreference('sk')"
       >
-        SK
+        <div class="mobile-language">SK</div>
       </a>
       <span>|</span>
       <a
@@ -280,7 +280,7 @@
         data-language="hu"
         onclick="saveLanguagePreference('hu')"
       >
-        HU
+        <div class="mobile-language">HU</div>
       </a>
     </div>
   </div>
@@ -641,6 +641,9 @@
   .mobile-language-selector .active-language {
     font-weight: bold;
     text-decoration: underline;
+  }
+  .mobile-language-selector .mobile-language {
+    padding: 16px;
   }
   .small-text {
     font-size: 100%;
