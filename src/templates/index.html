@@ -884,28 +884,14 @@
   if (!usedLanguage) {
     const userLang = navigator.language || navigator.userLanguage;
     if (
-      userLang.startsWith("sk") &&
-      !window.location.pathname.startsWith("/sk") &&
-      isHttpsOrHttp
-    ) {
-      redirectToLanguage("sk");
-    } else if (
       userLang.startsWith("hu") &&
       !window.location.pathname.startsWith("/hu") &&
       isHttpsOrHttp
     ) {
       redirectToLanguage("hu");
-    } else {
-      redirectToLanguage("sk");
     }
   } else {
     if (
-      usedLanguage === "sk" &&
-      !window.location.pathname.startsWith("/sk") &&
-      isHttpsOrHttp
-    ) {
-      redirectToLanguage("sk");
-    } else if (
       usedLanguage === "hu" &&
       !window.location.pathname.startsWith("/hu") &&
       isHttpsOrHttp
