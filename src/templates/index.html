@@ -227,7 +227,12 @@
         <i class="black-text material-icons responsive-icon">expand_more</i>
       </div>
     </a>
-    <a id="gallery-close-btn" href="#close" style="display: none">
+    <a
+      id="gallery-close-btn"
+      href="#close"
+      style="display: none"
+      onclick="gtag('event', 'button_click', { name: '{{text.collapse_gallery}}' })"
+    >
       <div>
         <span class="black-text" style="display: block">
           {{text['collapse_gallery']}}
