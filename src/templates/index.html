@@ -41,7 +41,11 @@
 <ul id="slide-out" class="sidenav sidenav-fixed">
   {% for action in actions %}
   <li>
-    <a href="#{{ action.anchor }}" class="sidenav-close">
+    <a
+      href="#{{ action.anchor }}"
+      class="sidenav-close"
+      onclick="gtag('event', 'click', {source: '{{action.short_name}}'})"
+    >
       <i class="material-icons">{{ action.icon }}</i>
       {{ action.short_name }}
     </a>
@@ -49,7 +53,11 @@
   {% endfor %}
   <li><div class="divider"></div></li>
   <li>
-    <a href="#kontakt" class="sidenav-close">
+    <a
+      href="#kontakt"
+      class="sidenav-close"
+      onclick="gtag('event', 'click', { source: 'Kontakt' })"
+    >
       <i class="material-icons">contact_page</i>
       {{text['contact']}}
     </a>
@@ -60,6 +68,11 @@
       target="_blank"
       rel="noopener noreferrer"
       class="modal-trigger"
+      onclick="
+        gtag('event','click', {
+          source: '{{text.feedback}}',
+        })
+      "
     >
       <i class="material-icons">sticky_note_2</i>
       {{text['feedback']}}
@@ -164,6 +177,11 @@
       href="#podrobnosti"
       class="top-icon-container center-align"
       style="z-index: 3"
+      onclick="
+        gtag('event', 'click', {
+          source: 'details_btn',
+        })
+      "
     >
       <div id="details">
         <span class="white-text" style="display: block"
@@ -196,7 +214,12 @@
       </div>
       {% endfor %}
     </div>
-    <a id="gallery-open-btn" href="#open" style="display: inline-block">
+    <a
+      id="gallery-open-btn"
+      href="#open"
+      style="display: inline-block"
+      onclick="gtag('event', 'click', { source: gallery })"
+    >
       <div>
         <span class="black-text" style="display: block">
           {{text['expand_gallery']}}
@@ -307,7 +330,11 @@
       </a>
     </div>
     <div class="fixed-action-btn" style="bottom: 16px; right: 16px">
-      <a href="#kontakt" class="btn-floating btn-large blue darken-2">
+      <a
+        href="#kontakt"
+        class="btn-floating btn-large blue darken-2"
+        onclick="gtag('event', 'click', { source: 'floating-btn' })"
+      >
         <i class="material-icons">perm_phone_msg</i>
       </a>
     </div>
@@ -382,6 +409,7 @@
                     class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
                     data-position="right"
                     data-tooltip="{{text['send_email']}}"
+                    onclick="gtag('event', 'contact_click', { type: 'e-mail' })"
                   >
                     {{ meta['email'] }}
                   </a>
@@ -393,6 +421,7 @@
                     class="contact-padding {{ 'tooltipped' if not request.MOBILE }}"
                     data-position="right"
                     data-tooltip="{{text['call_mobile']}}"
+                    onclick="gtag('event', 'contact_click', { type: 'phone' })"
                   >
                     {{ meta['phone'] }}
                   </a>
@@ -409,13 +438,21 @@
             </div>
             <p class="valign-wrapper">
               <i class="material-icons">email</i>
-              <a href="mailto:{{meta['email']}}" class="contact-padding">
+              <a
+                href="mailto:{{meta['email']}}"
+                class="contact-padding"
+                onclick="gtag('event', 'contact_click', { type: 'e-mail' })"
+              >
                 {{ meta['email'] }}
               </a>
             </p>
             <p class="valign-wrapper">
               <i class="material-icons">smartphone</i>
-              <a href="tel:{{meta['phone']}}" class="contact-padding">
+              <a
+                href="tel:{{meta['phone']}}"
+                class="contact-padding"
+                onclick="gtag('event', 'contact', { type: 'phone' })"
+              >
                 {{ meta['phone'] }}
               </a>
             </p>
@@ -428,6 +465,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="blue-text text-darken-2"
+            onclick="gtag('event', 'open_google_maps')"
           >
             {{text['open_in_google_maps']}}
           </a>
@@ -473,6 +511,7 @@
               href="https://www.facebook.com/sharer/sharer.php?u={{request.url_root}}"
               target="_blank"
               rel="noopener noreferrer"
+              onclick="clickShare('facebook')"
             >
               <span style="font-size: 32px; color: white">
                 <i class="fa-brands fa-facebook"></i>
@@ -482,12 +521,18 @@
               href="https://x.com/intent/tweet?text={{request.url_root}}"
               target="_blank"
               rel="noopener noreferrer"
+              onclick="clickShare('x')"
             >
               <span style="font-size: 32px; color: white">
                 <i class="fa-brands fa-x-twitter"></i>
               </span>
             </a>
-            <a href="#zdielat" id="share-btn" style="display: none">
+            <a
+              href="#zdielat"
+              id="share-btn"
+              style="display: none"
+              onclick="clickShare('generic')"
+            >
               <i class="material-icons" style="font-size: 32px"> share </i>
             </a>
           </div>
@@ -855,16 +900,28 @@
 <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 <script>
+  function clickShare(platform) {
+    gtag("event", "share", {
+      platform,
+    });
+  }
+
   function saveLanguagePreference(language) {
     if (language !== "sk" && language !== "hu") {
       console.error("Invalid language:", language);
       return;
     }
     localStorage.setItem("language", language);
+    gtag("event", "save_language_preference", {
+      language,
+    });
   }
 
   function redirectToLanguage(language) {
     if (language === "sk") {
+      gtag("event", "redirect_to_language", {
+        language,
+      });
       window.location.href = "{{ url_for('page.index_sk') }}";
     } else if (language === "hu") {
       window.location.href = "{{ url_for('page.index_hu') }}";
@@ -991,7 +1048,7 @@
       }).on("enter", function (event) {
         history.replaceState(null, null, element);
         if (element === "#kontakt") {
-          gtag_report_conversion();
+          gtag("event", "show_contact");
         }
         if (element === "#predaj" && !mapLoaded) {
           mapLoaded = true;
