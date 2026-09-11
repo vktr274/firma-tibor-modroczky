@@ -56,7 +56,7 @@
     <a
       href="#kontakt"
       class="sidenav-close"
-      onclick="gtag('event', 'menu_click', { item: '{{text.contact}}' })"
+      onclick="gtag('event', 'contact_menu_click', { item: '{{text.contact}}' })"
     >
       <i class="material-icons">contact_page</i>
       {{text['contact']}}
@@ -339,7 +339,9 @@
         href="#kontakt"
         class="btn-floating btn-large blue darken-2"
         onclick="
-          gtag('event', 'button_click', { name: 'contact-btn-floating' })
+          gtag('event', 'contact_button_click', {
+            name: 'contact-btn-floating',
+          })
         "
       >
         <i class="material-icons">perm_phone_msg</i>
