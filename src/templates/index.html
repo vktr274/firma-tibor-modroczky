@@ -44,7 +44,7 @@
     <a
       href="#{{ action.anchor }}"
       class="sidenav-close"
-      onclick="gtag('event', 'click', {source: '{{action.short_name}}'})"
+      onclick="gtag('event', 'menu_click', {item: '{{action.short_name}}'})"
     >
       <i class="material-icons">{{ action.icon }}</i>
       {{ action.short_name }}
@@ -56,7 +56,7 @@
     <a
       href="#kontakt"
       class="sidenav-close"
-      onclick="gtag('event', 'click', { source: 'Kontakt' })"
+      onclick="gtag('event', 'menu_click', { item: '{{text.contact}}' })"
     >
       <i class="material-icons">contact_page</i>
       {{text['contact']}}
@@ -69,8 +69,8 @@
       rel="noopener noreferrer"
       class="modal-trigger"
       onclick="
-        gtag('event','click', {
-          source: '{{text.feedback}}',
+        gtag('event','menu_click', {
+          item: '{{text.feedback}}',
         })
       "
     >
@@ -178,8 +178,8 @@
       class="top-icon-container center-align"
       style="z-index: 3"
       onclick="
-        gtag('event', 'click', {
-          source: 'details_btn',
+        gtag('event', 'button_click', {
+          name: 'details',
         })
       "
     >
@@ -218,7 +218,7 @@
       id="gallery-open-btn"
       href="#open"
       style="display: inline-block"
-      onclick="gtag('event', 'click', { source: gallery })"
+      onclick="gtag('event', 'button_click', { name: '{{text.expand_gallery}}' })"
     >
       <div>
         <span class="black-text" style="display: block">
@@ -333,7 +333,9 @@
       <a
         href="#kontakt"
         class="btn-floating btn-large blue darken-2"
-        onclick="gtag('event', 'click', { source: 'floating-btn' })"
+        onclick="
+          gtag('event', 'button_click', { name: 'contact-btn-floating' })
+        "
       >
         <i class="material-icons">perm_phone_msg</i>
       </a>
